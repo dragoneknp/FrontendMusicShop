@@ -1,0 +1,27 @@
+.banner {
+    background: url("./background.svg") no-repeat;
+    background-size: cover;
+    height: 593px;
+}
+.banner__container {
+    padding: 200px 0 200px 0;
+}
+.banner__header {
+    margin: 0 0 12px 0;
+    text-align: center;
+    font-size: 46px;
+}
+.banner__description {
+    margin: 0 0 40px 0;
+    text-align: center;
+    font-size: 20px;
+}
+.banner__button {
+    text-align: center;
+    & button {
+        padding: 16px 36px;
+        background: linear-gradient(90deg, #5d00fa 0%, #d70bca 100%);
+        border-radius: 46px;
+        font-size: 18px;
+    }
+}

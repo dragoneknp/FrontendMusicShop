@@ -1,0 +1,133 @@
+.footer {
+    background: #09010d;
+    padding: 48px 0 36px 0;
+}
+.footer__subscribe {
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+.footer-subscribe__header {
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0 0 24px 0;
+}
+.footer-subscribe__form {
+    text-align: center;
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+}
+.footer-subscribe__input {
+    border: 1px solid #d0d0d0;
+    border-radius: 48px;
+    padding: 16px 72px 16px 48px;
+    background: transparent;
+    position: relative;
+    width: 400px;
+}
+.footer-subscribe__form::before {
+    content: url("./img/email.svg");
+
+    left: 20px;
+    top: 50%;
+    transform: translate(0, -50%);
+
+    position: absolute;
+    width: 18px;
+    height: 18px;
+}
+.footer-subscribe__subscribeButton {
+    background: linear-gradient(90deg, #5d00fa 0%, #d70bca 100%);
+    border-radius: 48px;
+
+    position: absolute;
+    box-sizing: border-box;
+
+    // padding: 13px 16px 13px 20px;
+    height: 48px;
+    width: 60px;
+    right: 1px;
+
+    top: 50%;
+    transform: translate(0, -50%);
+}
+.footer-subscribe__subscribeButton::after {
+    content: url("./img/send.svg");
+
+    right: 18px;
+    top: 12px;
+
+    position: absolute;
+    width: 24px;
+    height: 24px;
+}
+.footer__topics {
+    margin: 56px 0 0 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 48px;
+}
+
+.footer-topic__header {
+    padding: 0 0 8px 0;
+    text-transform: uppercase;
+    border-bottom: 0.5px solid #d0d0d0;
+    font-weight: 500;
+    font-size: 14px;
+}
+.footer-topic__content {
+    padding: 16px 0 0 0;
+}
+.footer-topic-socialNetworks {
+    margin: 12px 0 0 0;
+    display: inline-grid;
+    grid-auto-flow: column;
+    column-gap: 12px;
+    cursor: pointer;
+}
+.footer-topic-socialNetworks__telegram {
+    background: url(./img/tg.svg);
+    width: 35px;
+    height: 35px;
+}
+.footer-topic-socialNetworks__instagram {
+    background: url(./img/Instagram.svg);
+    width: 35px;
+    height: 35px;
+}
+.footer-topic-socialNetworks__twitter {
+    background: url(./img/twitter.svg);
+    width: 35px;
+    height: 35px;
+}
+.footer-topic-app {
+    display: grid;
+    row-gap: 12px;
+    cursor: pointer;
+}
+.footer-topic-app__appStore {
+    background: url("./img/App\ Store.svg");
+    width: 163px;
+    height: 53px;
+}
+.footer-topic-app__googlePlay {
+    background: url("./img/Google\ Play.svg");
+    width: 163px;
+    height: 53px;
+}
+.footer-topic__listItem {
+    padding: 4px 0 4px 12px;
+    list-style: none;
+    cursor: pointer;
+    text-transform: capitalize;
+    background: url("./img/tick.svg") no-repeat left 0 top 50%;
+}
+.footer__rights {
+    margin: 64px 0 0 0;
+}
+.footer-rights {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
