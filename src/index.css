@@ -19,6 +19,8 @@ code {
     line-height: 120%;
     border: none;
     box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
 }
 input:focus {
     outline: none;

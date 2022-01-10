@@ -1,0 +1,48 @@
+.card {
+    background: radial-gradient(
+        2464.13% 850.69% at 100% 6.65%,
+        #bb82db 0%,
+        #636dc1 19.3%,
+        #1d0f35 100%
+    );
+    border-radius: 10px;
+    padding: 24px 0 24px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 436px;
+    align-items: center;
+}
+.card__button {
+    background: #ffffff;
+    border-radius: 37px;
+    padding: 16px 48px;
+    & p {
+        background: linear-gradient(90deg, #5d00fa 0%, #d70bca 100%);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    font-weight: 600;
+    font-size: 16px;
+    max-width: 200px;
+    margin: 16px 0 0 0;
+}
+.card__header {
+    font-weight: 600;
+    font-size: 18px;
+    margin: 0 0 24px 0;
+}
+.card__label_bold {
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.card__minBid {
+    font-weight: 500;
+    font-size: 14px;
+    margin: 0 0 12px 0;
+}
+.card__buyNow {
+    font-weight: 500;
+    font-size: 14px;
+}
