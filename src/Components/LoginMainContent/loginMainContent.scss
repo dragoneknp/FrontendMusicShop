@@ -1,0 +1,132 @@
+.loginMain {
+    background: #101029;
+
+    padding: 104px 0 160px 0;
+}
+.loginMain__content {
+    display: grid;
+    grid-template-columns: 1fr 1.7fr;
+    column-gap: 64px;
+}
+.loginMain__login {
+    background: rgb(30, 30, 55, 0.5);
+    border-radius: 10px;
+    padding: 24px 32px;
+}
+.loginMain-login {
+    &__header {
+        font-weight: bold;
+        font-size: 20px;
+        margin: 0 0 16px 0;
+    }
+    &__email {
+        position: relative;
+        &::after {
+            content: url("./emailIcon.svg");
+            width: 15px;
+            left: 16px;
+            top: 50%;
+            position: absolute;
+            transform: translate(0, -50%);
+        }
+    }
+    &__password {
+        position: relative;
+        &::after {
+            content: url("./passwordIcon.svg");
+            width: 15px;
+            left: 16px;
+            top: 50%;
+            position: absolute;
+            transform: translate(0, -50%);
+        }
+    }
+}
+.loginMain-login__form {
+    display: flex;
+    flex-direction: column;
+    & input {
+        font-size: 15px;
+        width: 100%;
+        position: relative;
+        margin: 16px 0;
+        border: 0.5px solid #ffffff;
+        box-sizing: border-box;
+        border-radius: 48px;
+        color: #fff;
+        padding: 16px 24px 16px 40px;
+        background: transparent;
+    }
+}
+.loginMain-login__checkbox {
+    margin: 0 8px 0 16px;
+    border: 1px solid #ffffff;
+
+    border-radius: 3px;
+}
+.loginMain-login__footer {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 48px 0;
+}
+.loginMain-login__loginButton {
+    padding: 16px 40px;
+    background: linear-gradient(90deg, #5d00fa 0%, #d70bca 100%);
+    border-radius: 46px;
+    font-weight: bold;
+    font-size: 18px;
+}
+.loginMain-login__button {
+    text-align: right;
+}
+.loginMain-login__forgotPassword {
+    cursor: pointer;
+}
+u {
+    text-decoration: underline;
+}
+.loginMain-registration-input__input {
+    font-size: 15px;
+    width: 100%;
+    position: relative;
+    margin: 16px 0;
+    border: 0.5px solid #ffffff;
+    box-sizing: border-box;
+    border-radius: 48px;
+    color: #fff;
+    padding: 16px 24px 16px 40px;
+    background: transparent;
+}
+.loginMain-registration__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+    row-gap: 24px;
+}
+.loginMain-registration__registerButton {
+    padding: 16px 40px;
+    background: linear-gradient(90deg, #5d00fa 0%, #d70bca 100%);
+    border-radius: 46px;
+    font-weight: bold;
+    font-size: 18px;
+}
+.loginMain-registration__footer {
+    margin: 24px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+.loginMain-registration {
+    &__header {
+        font-weight: bold;
+        font-size: 20px;
+        margin: 0 0 16px 0;
+    }
+}
+.loginMain-regitration__checkbox {
+    margin: 0 8px 0 0px;
+    border: 1px solid #ffffff;
+
+    border-radius: 3px;
+}

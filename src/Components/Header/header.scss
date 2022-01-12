@@ -36,8 +36,9 @@
     font-weight: 600;
     text-transform: uppercase;
     padding: 24px 0;
+    position: relative;
 }
-.header-menu__item.active {
+.header-menu__item.active a {
     transition: 0.3s ease;
     color: #5b00fb;
     &:after {
@@ -49,4 +50,34 @@
         right: -25%;
         border-top: 2px solid #5b00fb;
     }
+}
+.header-menu__item_link {
+    padding: inherit;
+}
+.avatar__icon {
+    border: 0.5px solid #ffffff;
+    border-radius: 50%;
+    padding: 12px;
+}
+.header__dropdown {
+    text-align: center;
+    background: rgb(24, 24, 24);
+    left: -50%;
+    transform: translate(-25%, 0);
+    width: 200px;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease;
+    &.active {
+        visibility: visible;
+        opacity: 1;
+        transition: 0.3s ease;
+    }
+}
+.header__dropdown-menu__item {
+    &:not(:last-child) {
+        border-bottom: 1px solid #fff;
+    }
+    padding: 12px;
 }

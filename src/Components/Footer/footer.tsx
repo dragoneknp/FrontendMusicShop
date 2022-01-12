@@ -1,4 +1,5 @@
-import React from "react";
+import React, { memo } from "react";
+import { Link } from "react-router-dom";
 import "./footer.scss";
 const Footer = () => {
     return (
@@ -61,7 +62,9 @@ const Footer = () => {
                     <div className="footer__topic footer-topic">
                         <div className="footer-topic__header">Legalese</div>
                         <div className="footer-topic__content">
-                            <li className="footer-topic__listItem">terms</li>
+                            <li className="footer-topic__listItem">
+                                <Link to="/terms">terms</Link>
+                            </li>
                             <li className="footer-topic__listItem">privacy</li>
                             <li className="footer-topic__listItem">
                                 returns & refunds
@@ -74,7 +77,7 @@ const Footer = () => {
                 </div>
                 <div className="footer__rights footer-rights">
                     <div className="footer-rights__header">
-                        ©2021 Curios Music. All rights reserved
+                        ©2021 Beatiful Music. All rights reserved
                     </div>
                     <div className="footer-rights__icons">
                         <img
@@ -88,4 +91,4 @@ const Footer = () => {
         </footer>
     );
 };
-export default Footer;
+export default memo(Footer);

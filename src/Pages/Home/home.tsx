@@ -3,14 +3,16 @@ import "./home.scss";
 import Header from "../../Components/Header/header";
 import Banner from "../../Components/Banner/banner";
 import Footer from "../../Components/Footer/footer";
-import MainContent from "../../Components/HomeMainContent/mainContent";
+import HomeMainContent from "../../Components/HomeMainContent/homeMainContent";
+import ToTop from "../../Components/ToTop/toTop";
 const Home = () => {
     return (
         <div className="home">
             <div className="home__container">
+                <ToTop />
                 <Header />
                 <Banner />
-                <MainContent />
+                <HomeMainContent />
                 <Footer />
             </div>
         </div>

@@ -1,13 +1,15 @@
-import React from "react";
+import React, { memo } from "react";
 import "./gridOfCards.scss";
 import Card from "../Card/card";
 interface ICard {
     performer: string;
-    bidding: boolean;
-    minBid: number;
-    buyNow: number;
+    bidding?: boolean;
+    minBid?: number;
+    buyNow?: number;
     picture: string;
     id: string;
+    album?: boolean;
+    availableListenings?: number;
 }
 interface GridOfCards {
     columns: number;
@@ -23,10 +25,10 @@ const GridOfCards = (props: GridOfCards) => {
                 gridTemplateRows: `repeat(${props.rows}, 1fr)`,
             }}
         >
-            {props.cards.map((card) => {
+            {props.cards.slice(0, props.columns * props.rows).map((card) => {
                 return <Card {...card} key={card.id} />;
             })}
         </div>
     );
 };
-export default GridOfCards;
+export default memo(GridOfCards);

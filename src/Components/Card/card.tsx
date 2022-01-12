@@ -1,12 +1,14 @@
-import React from "react";
+import React, { memo } from "react";
 import "./card.scss";
 interface ICard {
     performer: string;
-    bidding: boolean;
-    minBid: number;
-    buyNow: number;
+    bidding?: boolean;
+    minBid?: number;
+    buyNow?: number;
     picture: string;
     id: string;
+    album?: boolean;
+    availableListenings?: number;
 }
 const Card = (props: ICard) => {
     const getPriceWithComma = (price: string): string => {
@@ -32,20 +34,31 @@ const Card = (props: ICard) => {
             </div>
 
             <div className="card__header">{props.performer}</div>
-            {props.bidding && (
+            {props.bidding && props.minBid && (
                 <div className="card__minBid">
                     <span className="card__label_bold">min bid </span>$
                     {getPriceWithComma(props.minBid.toString())}.00
                 </div>
             )}
-            <div className="card__buyNow">
-                <span className="card__label_bold">buy now </span>$
-                {getPriceWithComma(props.buyNow.toString())}.00
-            </div>
+            {props.buyNow && (
+                <div className="card__buyNow">
+                    <span className="card__label_bold">buy now </span>$
+                    {getPriceWithComma(props.buyNow.toString())}.00
+                </div>
+            )}
+            {props.availableListenings && (
+                <div className="card__buyNow">
+                    <span className="card__label_bold">
+                        Available listenings :{" "}
+                    </span>
+                    {props.availableListenings}
+                </div>
+            )}
+
             <button className="card__button">
-                <p>View details</p>
+                {props.album ? <p>View all listenings</p> : <p>View details</p>}
             </button>
         </div>
     );
 };
-export default Card;
+export default memo(Card);

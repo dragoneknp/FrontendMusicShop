@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import "./banner.scss";
 const Banner = () => {
     return (
@@ -19,4 +19,4 @@ const Banner = () => {
         </div>
     );
 };
-export default Banner;
+export default memo(Banner);
