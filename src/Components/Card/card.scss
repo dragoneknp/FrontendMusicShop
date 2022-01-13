@@ -18,10 +18,19 @@
     background: #ffffff;
     border-radius: 37px;
     padding: 16px 48px;
+    opacity: 0.8;
+    transition: 0.3s ease;
     & p {
         background: linear-gradient(90deg, #5d00fa 0%, #d70bca 100%);
         background-clip: text;
         -webkit-text-fill-color: transparent;
+    }
+    &:hover {
+        transition: 0.3s ease;
+        opacity: 1;
+    }
+    &:active {
+        transform: scale(110%);
     }
     font-weight: 600;
     font-size: 16px;

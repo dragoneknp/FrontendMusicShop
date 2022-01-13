@@ -56,6 +56,11 @@
         color: #fff;
         padding: 16px 24px 16px 40px;
         background: transparent;
+        transition: 0.3s ease;
+        &:focus {
+            transition: 0.3s ease;
+            border: 0.5px solid #d70bca;
+        }
     }
 }
 .loginMain-login__checkbox {
@@ -75,6 +80,16 @@
     border-radius: 46px;
     font-weight: bold;
     font-size: 18px;
+    opacity: 0.8;
+    transition: 0.3s ease;
+    &:hover {
+        transition: 0.3s ease;
+        opacity: 1;
+    }
+    &:active {
+        transition: 0.3s ease;
+        transform: scale(110%);
+    }
 }
 .loginMain-login__button {
     text-align: right;
@@ -94,8 +109,13 @@ u {
     box-sizing: border-box;
     border-radius: 48px;
     color: #fff;
-    padding: 16px 24px 16px 40px;
+    padding: 16px 24px 16px 24px;
     background: transparent;
+    transition: 0.3s ease;
+    &:focus {
+        transition: 0.3s ease;
+        border: 0.5px solid #d70bca;
+    }
 }
 .loginMain-registration__form {
     display: grid;
@@ -109,6 +129,16 @@ u {
     border-radius: 46px;
     font-weight: bold;
     font-size: 18px;
+    opacity: 0.8;
+    transition: 0.3s ease;
+    &:hover {
+        transition: 0.3s ease;
+        opacity: 1;
+    }
+    &:active {
+        transition: 0.3s ease;
+        transform: scale(110%);
+    }
 }
 .loginMain-registration__footer {
     margin: 24px 0 0 0;

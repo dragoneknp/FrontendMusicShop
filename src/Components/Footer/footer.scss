@@ -25,6 +25,11 @@
     background: transparent;
     position: relative;
     width: 400px;
+    transition: 0.3s ease;
+    &:focus {
+        transition: 0.3s ease;
+        border: 1px solid #d70bca;
+    }
 }
 .footer-subscribe__form::before {
     content: url("./img/email.svg");
@@ -40,11 +45,16 @@
 .footer-subscribe__subscribeButton {
     background: linear-gradient(90deg, #5d00fa 0%, #d70bca 100%);
     border-radius: 48px;
+    opacity: 0.8;
+    transition: 0.3s ease;
+    &:hover {
+        opacity: 1;
+        transition: 0.3s ease;
+    }
 
     position: absolute;
     box-sizing: border-box;
 
-    // padding: 13px 16px 13px 20px;
     height: 48px;
     width: 60px;
     right: 1px;
@@ -122,6 +132,15 @@
     cursor: pointer;
     text-transform: capitalize;
     background: url("./img/tick.svg") no-repeat left 0 top 50%;
+    transition: 0.3s ease;
+    & a:hover {
+        transition: 0.3s ease;
+        color: #d70bca;
+    }
+    &:hover {
+        transition: 0.3s ease;
+        color: #d70bca;
+    }
 }
 .footer__rights {
     margin: 64px 0 0 0;

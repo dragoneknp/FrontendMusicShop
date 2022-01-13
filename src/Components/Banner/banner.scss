@@ -17,11 +17,25 @@
     font-size: 20px;
 }
 .banner__button {
+    transition: 0.3s ease;
     text-align: center;
     & button {
         padding: 16px 36px;
-        background: linear-gradient(90deg, #5d00fa 0%, #d70bca 100%);
+        background: linear-gradient(90deg, rgb(93, 0, 250) 0%, #d70bca 100%);
+
         border-radius: 46px;
         font-size: 18px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        opacity: 0.8;
+        &:hover {
+            transition: 0.3s ease;
+            opacity: 1;
+            // background: linear-gradient(90deg, rgb(34, 4, 87) 0%, #d70bca 100%);
+        }
+        &:active {
+            transition: 0.3s ease;
+            transform: scale(110%);
+        }
     }
 }

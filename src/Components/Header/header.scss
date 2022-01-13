@@ -53,6 +53,11 @@
 }
 .header-menu__item_link {
     padding: inherit;
+    transition: 0.3s ease;
+    &:hover {
+        transition: 0.3s ease;
+        color: #5b00fb;
+    }
 }
 .avatar__icon {
     border: 0.5px solid #ffffff;

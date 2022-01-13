@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import GridOfCards from "../GridOfCards/gridOfCards";
 import { cards } from "../../mock/mock";
 import "./homeMainContent.scss";
-const HomeMainContent = () => {
+const HomeMainContent = (props: { reference: React.Ref<HTMLDivElement> }) => {
     const [isActive, changeActive] = useState({
         All: true,
         Audio: false,
@@ -30,7 +30,12 @@ const HomeMainContent = () => {
                     <GridOfCards cards={cards} columns={4} rows={1} />
                 </section>
                 <section className="main__latestNFTs main-latestNFTs">
-                    <div className="main-latestNFTs__header">Latest NFTs</div>
+                    <div
+                        className="main-latestNFTs__header"
+                        ref={props.reference}
+                    >
+                        Latest NFTs
+                    </div>
                     <div className="main-latestNFTs__filters">
                         <div
                             className={`main-latestNFTs__filter ${

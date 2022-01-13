@@ -9,7 +9,10 @@ const Footer = () => {
                     <div className="footer-subscribe__header">
                         Enter your email to subscribe to our newsletter
                     </div>
-                    <form className="footer-subscribe__form">
+                    <form
+                        className="footer-subscribe__form"
+                        onClick={(event) => event.preventDefault()}
+                    >
                         <input
                             className="footer-subscribe__input"
                             placeholder="Your email"
