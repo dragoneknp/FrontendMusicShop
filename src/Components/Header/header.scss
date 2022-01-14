@@ -39,24 +39,35 @@
     position: relative;
 }
 .header-menu__item.active a {
-    transition: 0.3s ease;
+    transition: 0.5s ease-in-out;
     color: #5b00fb;
     &:after {
-        content: "";
-        transition: 0.3s ease;
-        position: absolute;
-        top: -2px;
-        left: -25%;
-        right: -25%;
-        border-top: 2px solid #5b00fb;
+        transition: 0.5s ease-in-out;
+        transform: scaleX(1);
+        background: #5b00fb;
     }
 }
 .header-menu__item_link {
     padding: inherit;
-    transition: 0.3s ease;
+    transition: 0.3s ease-in-out;
+    &:after {
+        content: "";
+        transition: 0.3s ease-in-out;
+        position: absolute;
+        top: -2px;
+        transform: scaleX(0);
+        left: -25%;
+
+        right: -25%;
+        height: 2px;
+        background: #5b00fb;
+    }
     &:hover {
-        transition: 0.3s ease;
+        transition: 0.3s ease-in-out;
         color: #5b00fb;
+        &:after {
+            transform: scaleX(1);
+        }
     }
 }
 .avatar__icon {

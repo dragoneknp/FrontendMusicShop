@@ -1,0 +1,42 @@
+.aboutMain {
+    background: #101029;
+
+    padding: 104px 0 160px 0;
+}
+.aboutMain__content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    background: rgba(30, 30, 55, 0.5);
+
+    border-radius: 10px;
+    position: relative;
+}
+.aboutMain__description {
+    padding: 32px 32px 54px 32px;
+    font-size: 16px;
+    line-height: 140%;
+}
+.aboutMain__picture {
+    margin: 12px 0 -12px 0;
+    z-index: 2;
+    position: relative;
+    background: radial-gradient(
+        2464.13% 850.69% at 100% 6.65%,
+        #bb82db 0%,
+        #636dc1 19.3%,
+        #1d0f35 100%
+    );
+    border-radius: 5px;
+}
+.aboutMain__picture_pic {
+    position: absolute;
+    z-index: 3;
+    border-radius: 5px;
+    left: 24px;
+    bottom: 24px;
+}
+.aboutMain__paragraph {
+    &:not(:last-child) {
+        padding: 0 0 20px 0;
+    }
+}

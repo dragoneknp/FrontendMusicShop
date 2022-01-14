@@ -5,7 +5,6 @@ const Banner = (props: { reference: React.RefObject<HTMLDivElement> }) => {
     useEffect(() => {
         changeRef(props.reference);
     }, [props.reference.current]);
-    console.log(ref.current);
     return (
         <div className="banner">
             <div className="banner__container container">

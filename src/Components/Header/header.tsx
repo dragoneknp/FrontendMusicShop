@@ -6,7 +6,7 @@ import "./header.scss";
 const Header = () => {
     const isLogin = false;
     const [isActive, changeActive] = useState({
-        Home: true,
+        Home: false,
         Discover: false,
         Marketplace: false,
     });
@@ -15,6 +15,7 @@ const Header = () => {
     const handleClick = () => {
         changeOpen(!isOpen);
     };
+
     let location = useLocation();
     useEffect(() => {
         changeActive({

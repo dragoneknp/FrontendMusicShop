@@ -53,7 +53,9 @@ const Footer = () => {
                         <div className="footer-topic__content">
                             <ul className="footer-topic__list">
                                 <li className="footer-topic__listItem">
-                                    about this marketplace
+                                    <Link to="/about">
+                                        about this marketplace
+                                    </Link>
                                 </li>
                                 <li className="footer-topic__listItem">
                                     frequently asked questions
