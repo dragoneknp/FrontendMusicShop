@@ -10,6 +10,7 @@ import "./index.css";
 import About from "./Pages/About/about";
 import Discover from "./Pages/Discover/discover";
 import Error from "./Pages/Error/error";
+import FAQ from "./Pages/FAQ/faq";
 import Home from "./Pages/Home/home";
 import Login from "./Pages/Login/login";
 import Marketplace from "./Pages/Marketplace/marketplace";
@@ -26,6 +27,7 @@ ReactDOM.render(
             <Route path="/terms" element={<Terms />} />
             <Route path="/error" element={<Error />} />
             <Route path="/about" element={<About />} />
+            <Route path="/FAQ" element={<FAQ />} />
             <Route path="*" element={<Navigate to="/error" />} />
         </Routes>
     </Router>,

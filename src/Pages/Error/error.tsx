@@ -1,17 +1,11 @@
-import React from "react";
-import Header from "../../Components/Header/header";
-import Footer from "../../Components/Footer/footer";
 import "./error.scss";
 import ErrorMainContent from "../../Components/ErrorMainContent/errorMainContent";
+import PageLayout from "../../Layout/pageLayout";
 const Error = () => {
     return (
-        <div className="error">
-            <div className="error__container">
-                <Header />
-                <ErrorMainContent />
-                <Footer />
-            </div>
-        </div>
+        <PageLayout page={"error"}>
+            <ErrorMainContent />
+        </PageLayout>
     );
 };
 export default Error;

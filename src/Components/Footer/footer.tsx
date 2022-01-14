@@ -58,7 +58,9 @@ const Footer = () => {
                                     </Link>
                                 </li>
                                 <li className="footer-topic__listItem">
-                                    frequently asked questions
+                                    <Link to="/FAQ">
+                                        frequently asked questions
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
