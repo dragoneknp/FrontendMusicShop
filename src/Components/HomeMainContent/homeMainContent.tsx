@@ -27,7 +27,12 @@ const HomeMainContent = (props: { reference: React.Ref<HTMLDivElement> }) => {
                     <div className="main-featuredNFTs__header">
                         Featured NFTs
                     </div>
-                    <GridOfCards cards={cards} columns={4} rows={1} />
+                    <GridOfCards
+                        cards={cards}
+                        columns={4}
+                        rows={1}
+                        to="/home"
+                    />
                 </section>
                 <section className="main__latestNFTs main-latestNFTs">
                     <div
@@ -70,7 +75,7 @@ const HomeMainContent = (props: { reference: React.Ref<HTMLDivElement> }) => {
                             Video
                         </div>
                     </div>
-                    <GridOfCards cards={cards} columns={4} rows={2} />
+                    <GridOfCards cards={cards} columns={4} rows={2} to="/home" />
                 </section>
             </div>
         </main>

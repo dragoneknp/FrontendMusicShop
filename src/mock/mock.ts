@@ -1,13 +1,5 @@
-interface Card {
-    performer: string;
-    bidding?: boolean;
-    minBid?: number;
-    buyNow?: number;
-    picture: string;
-    id: string;
-    album?: boolean;
-    availableListenings?: number;
-}
+import { MarketPlaceCard, Card } from "../types/types";
+
 // /Users/dragonek/Desktop/music shop/music-shop-app/src/mock/img/1.svg
 const cards: Card[] = [
     {
@@ -156,8 +148,28 @@ const cards: Card[] = [
         performer: "Come Down official Music Video",
         album: true,
         picture: "/Images/1big.svg",
-        id: "rtk_2125_1652",
+        id: "rtk_query_1228",
         availableListenings: 15,
     },
 ];
+
+const marketPlaceCard: MarketPlaceCard = {
+    performer: "Come down official music",
+    picture: "/Images/1big.svg",
+    id: "rtk_query_1228",
+    description:
+        "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+    album: "open edition",
+    sellingCards: [
+        {
+            edition: "#3",
+            price: "9",
+            timeRemaining: "0d left Thu 03:11 PM",
+            seller: "@curios",
+            sellerAvatar: "/Images/3.svg",
+            token: "0x2d0c8af807ef45ac17cafb2973d866ba8f38caa9",
+        },
+    ],
+};
+export { marketPlaceCard };
 export { cards };

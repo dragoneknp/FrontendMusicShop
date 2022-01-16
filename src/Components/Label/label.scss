@@ -1,15 +1,15 @@
 .label {
-  padding: 16px 0 16px 0;
-  background: rgba(30, 30, 55, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  & h4 {
-      font-weight: 500;
-      font-size: 20px;
-  }
-  margin: 0 0 64px 0;
-}
-.label__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    padding: 16px 0 16px 0;
+    background: rgba(30, 30, 55, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    & h4 {
+        font-weight: 500;
+        font-size: 20px;
+    }
+    margin: 0 0 64px 0;
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 }

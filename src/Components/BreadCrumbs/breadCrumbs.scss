@@ -2,9 +2,9 @@
     display: flex;
 }
 .breadCrumbs__item {
+    margin: 0 8px 0 0;
     &:not(:first-child) {
         background: url(nav.svg) no-repeat left 0px top 50%;
         padding: 0 0 0 10px;
-        margin: 0 8px;
     }
 }

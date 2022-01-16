@@ -1,22 +1,14 @@
 import React, { memo } from "react";
 import "./gridOfCards.scss";
 import Card from "../Card/card";
-interface ICard {
-    performer: string;
-    bidding?: boolean;
-    minBid?: number;
-    buyNow?: number;
-    picture: string;
-    id: string;
-    album?: boolean;
-    availableListenings?: number;
-}
-interface GridOfCards {
+import { Card as ICard } from "../../types/types";
+interface GridOfCardsProps {
     columns: number;
     rows: number;
     cards: ICard[];
+    to: string;
 }
-const GridOfCards = (props: GridOfCards) => {
+const GridOfCards = (props: GridOfCardsProps) => {
     return (
         <div
             className="gridOfCards"
@@ -26,7 +18,7 @@ const GridOfCards = (props: GridOfCards) => {
             }}
         >
             {props.cards.slice(0, props.columns * props.rows).map((card) => {
-                return <Card {...card} key={card.id} />;
+                return <Card {...card} key={card.id} to={props.to}/>;
             })}
         </div>
     );

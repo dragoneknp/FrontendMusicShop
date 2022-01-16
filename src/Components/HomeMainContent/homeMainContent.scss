@@ -3,35 +3,41 @@
     padding: 100px 0 160px 0;
     text-align: center;
 }
-.main-featuredNFTs__header {
-    margin: 0 0 32px 0;
-    font-weight: 600;
-    font-size: 36px;
-}
-.main__latestNFTs {
-    margin: 160px 0 0 0;
-}
-.main-latestNFTs__header {
-    font-weight: 600;
-    font-size: 36px;
-    margin: 0 0 32px 0;
-}
-.main-latestNFTs__filters {
-    display: flex;
-    justify-content: center;
-    margin: 0 0 40px 0;
-}
-.main-latestNFTs__filter {
-    margin: 0 20px 0 20px;
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-    padding: 8px 16px;
-    transition: 0.3s ease;
-    cursor: pointer;
-}
-.main-latestNFTs__filter.active {
-    transition: 0.3s ease background;
-    background: linear-gradient(90deg, #5d00fa 0%, #d70bca 100%);
-    border-radius: 23px;
+.main {
+    &-featuredNFTs {
+        &__header {
+            margin: 0 0 32px 0;
+            font-weight: 600;
+            font-size: 36px;
+        }
+    }
+    &__latestNFTs {
+        margin: 160px 0 0 0;
+    }
+    &-latestNFTs {
+        &__header {
+            font-weight: 600;
+            font-size: 36px;
+            margin: 0 0 32px 0;
+        }
+        &__filters {
+            display: flex;
+            justify-content: center;
+            margin: 0 0 40px 0;
+        }
+        &__filter {
+            margin: 0 20px 0 20px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            transition: 0.3s ease;
+            cursor: pointer;
+            &.active {
+                transition: 0.3s ease background;
+                background: linear-gradient(90deg, #5d00fa 0%, #d70bca 100%);
+                border-radius: 23px;
+            }
+        }
+    }
 }

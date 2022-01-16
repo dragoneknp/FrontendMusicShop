@@ -14,45 +14,47 @@
     align-items: center;
     text-align: center;
 }
-.card__button {
-    background: #ffffff;
-    border-radius: 37px;
-    padding: 16px 48px;
-    opacity: 0.8;
-    transition: 0.3s ease;
-    & p {
-        background: linear-gradient(90deg, #5d00fa 0%, #d70bca 100%);
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-    &:hover {
+.card {
+    &__button {
+        background: #ffffff;
+        border-radius: 37px;
+        padding: 16px 48px;
+        opacity: 0.8;
         transition: 0.3s ease;
-        opacity: 1;
+        & p {
+            background: linear-gradient(90deg, #5d00fa 0%, #d70bca 100%);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        &:hover {
+            transition: 0.3s ease;
+            opacity: 1;
+        }
+        &:active {
+            transform: scale(110%);
+        }
+        font-weight: 600;
+        font-size: 16px;
+        min-width: 200px;
+        margin: 16px 0 0 0;
     }
-    &:active {
-        transform: scale(110%);
+    &__header {
+        font-weight: 600;
+        font-size: 18px;
+        margin: 0 0 24px 0;
     }
-    font-weight: 600;
-    font-size: 16px;
-    min-width: 200px;
-    margin: 16px 0 0 0;
-}
-.card__header {
-    font-weight: 600;
-    font-size: 18px;
-    margin: 0 0 24px 0;
-}
-.card__label_bold {
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-}
-.card__minBid {
-    font-weight: 500;
-    font-size: 14px;
-    margin: 0 0 12px 0;
-}
-.card__buyNow {
-    font-weight: 500;
-    font-size: 14px;
+    &__label_bold {
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+    &__minBid {
+        font-weight: 500;
+        font-size: 14px;
+        margin: 0 0 12px 0;
+    }
+    &__buyNow {
+        font-weight: 500;
+        font-size: 14px;
+    }
 }

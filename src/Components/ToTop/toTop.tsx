@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./toTop.scss";
 const ToTop = () => {
     const [Yoffset, setYOffset] = useState(0);

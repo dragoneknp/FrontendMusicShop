@@ -51,9 +51,19 @@ const DiscoverMainContent = () => {
                         </div>
                     </div>
                     {isGrid ? (
-                        <GridOfCards cards={cards} columns={4} rows={3} />
+                        <GridOfCards
+                            cards={cards}
+                            columns={4}
+                            rows={3}
+                            to="/discover"
+                        />
                     ) : (
-                        <GridOfCards cards={cards} columns={2} rows={2} />
+                        <GridOfCards
+                            cards={cards}
+                            columns={2}
+                            rows={2}
+                            to="/discover"
+                        />
                     )}
                 </section>
                 <div className="discoverMain__pagination discoverMain-pagination">

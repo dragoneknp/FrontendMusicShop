@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { cards } from "../../mock/mock";
-import BreadCrumbs from "../BreadCrumbs/breadCrumbs";
 import DropDown from "../DropDown/dropDown";
 import GridOfCards from "../GridOfCards/gridOfCards";
 import Label from "../Label/label";
@@ -56,12 +55,14 @@ const MarketplaceMainContent = () => {
                             cards={cards.slice(-3)}
                             columns={3}
                             rows={1}
+                            to="/marketplace"
                         />
                     ) : (
                         <GridOfCards
                             cards={cards.slice(-3)}
                             columns={3}
                             rows={1}
+                            to="/marketplace"
                         />
                     )}
                 </section>

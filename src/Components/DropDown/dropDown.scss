@@ -1,39 +1,43 @@
-.dropDown__select {
-    border: 0.5px solid #ffffff;
-    display: inline-flex;
-    align-self: center;
-    padding: 8px 80px 8px 12px;
-    border-radius: 30px;
-    position: relative;
-    transition: 0.3s ease;
-    min-width: 200px;
-    cursor: pointer;
-    &::after {
-        content: url("./dropDownArrow.svg");
-        position: absolute;
-        top: 50%;
-        right: 16px;
+.dropDown {
+    &__select {
+        border: 0.5px solid #ffffff;
+        display: inline-flex;
+        align-self: center;
+        padding: 8px 80px 8px 12px;
+        border-radius: 30px;
+        position: relative;
         transition: 0.3s ease;
-        transform: translate(0, -50%);
+        min-width: 200px;
+        cursor: pointer;
+        &::after {
+            content: url("./dropDownArrow.svg");
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            transition: 0.3s ease;
+            transform: translate(0, -50%);
+        }
+        &.open::after {
+            transition: 0.3s ease;
+            content: url("./dropDownArrow.svg");
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            transform: translate(0, -50%) rotate(180deg);
+        }
     }
-    &.open::after {
-        transition: 0.3s ease;
-        content: url("./dropDownArrow.svg");
+    &__menu {
         position: absolute;
-        top: 50%;
-        right: 16px;
-        transform: translate(0, -50%) rotate(180deg);
+        transition: 0.3s ease;
+        background: #000;
+        min-width: 200px;
     }
-}
-.dropDown__menu {
-    position: absolute;
-    transition: 0.3s ease;
-    background: #000;
-    min-width: 200px;
-}
-.dropDown-menu__item {
-    padding: 8px;
-    border: 1px solid #bb82db;
+    &-menu {
+        &__item {
+            padding: 8px;
+            border: 1px solid #bb82db;
 
-    cursor: pointer;
+            cursor: pointer;
+        }
+    }
 }

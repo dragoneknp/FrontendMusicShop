@@ -1,13 +1,6 @@
-import React, { useState } from "react";
-
 import Label from "../Label/label";
 import "./aboutMainContent.scss";
 const AboutMainContent = () => {
-    const [isGrid, changeGrid] = useState(true);
-
-    const handleClick = () => {
-        changeGrid(!isGrid);
-    };
     return (
         <main className="aboutMain">
             <Label

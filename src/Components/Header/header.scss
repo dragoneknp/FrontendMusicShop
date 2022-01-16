@@ -9,91 +9,96 @@
 
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-.header__container {
-    position: relative;
-}
-.header-menu {
-    transition: 0.3s ease;
-    flex: 1;
-    list-style: none;
-    display: flex;
-    width: 500px;
-    margin: 0 auto;
-    justify-content: space-between;
-}
-.header__avatar {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translate(0, -50%);
-}
-.header-menu__item {
-    transition: 0.3s ease;
-    position: relative;
-    cursor: pointer;
-    color: #fff;
-    font-weight: 600;
-    text-transform: uppercase;
-    padding: 24px 0;
-    position: relative;
-}
-.header-menu__item.active a {
-    transition: 0.5s ease-in-out;
-    color: #5b00fb;
-    &:after {
-        transition: 0.5s ease-in-out;
-        transform: scaleX(1);
-        background: #5b00fb;
+    &__container {
+        position: relative;
     }
-}
-.header-menu__item_link {
-    padding: inherit;
-    transition: 0.3s ease-in-out;
-    &:after {
-        content: "";
-        transition: 0.3s ease-in-out;
-        position: absolute;
-        top: -2px;
-        transform: scaleX(0);
-        left: -25%;
+    &-menu {
+        transition: 0.3s ease;
+        flex: 1;
+        list-style: none;
+        display: flex;
+        width: 500px;
+        margin: 0 auto;
+        justify-content: space-between;
+        &__item {
+            transition: 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 24px 0;
+            position: relative;
+            &.active a {
+                transition: 0.5s ease-in-out;
+                color: #5b00fb;
+                &:after {
+                    transition: 0.5s ease-in-out;
+                    transform: scaleX(1);
+                    background: #5b00fb;
+                }
+            }
+            &_link {
+                padding: inherit;
+                transition: 0.3s ease-in-out;
+                &:after {
+                    content: "";
+                    transition: 0.3s ease-in-out;
+                    position: absolute;
+                    top: -2px;
+                    transform: scaleX(0);
+                    left: -25%;
 
-        right: -25%;
-        height: 2px;
-        background: #5b00fb;
+                    right: -25%;
+                    height: 2px;
+                    background: #5b00fb;
+                }
+                &:hover {
+                    transition: 0.3s ease-in-out;
+                    color: #5b00fb;
+                    &:after {
+                        transform: scaleX(1);
+                    }
+                }
+            }
+        }
     }
-    &:hover {
-        transition: 0.3s ease-in-out;
-        color: #5b00fb;
-        &:after {
-            transform: scaleX(1);
+    &__avatar {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(0, -50%);
+    }
+    &__dropdown {
+        text-align: center;
+        background: rgb(24, 24, 24);
+        left: -50%;
+        transform: translate(-25%, 0);
+        width: 200px;
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.3s ease;
+        &.active {
+            visibility: visible;
+            opacity: 1;
+            transition: 0.3s ease;
+        }
+        &-menu {
+            &__item {
+                &:not(:last-child) {
+                    border-bottom: 1px solid #fff;
+                }
+                padding: 12px;
+            }
         }
     }
 }
-.avatar__icon {
-    border: 0.5px solid #ffffff;
-    border-radius: 50%;
-    padding: 12px;
-}
-.header__dropdown {
-    text-align: center;
-    background: rgb(24, 24, 24);
-    left: -50%;
-    transform: translate(-25%, 0);
-    width: 200px;
-    position: absolute;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.3s ease;
-    &.active {
-        visibility: visible;
-        opacity: 1;
-        transition: 0.3s ease;
+
+.avatar {
+    &__icon {
+        border: 0.5px solid #ffffff;
+        border-radius: 50%;
+        padding: 12px;
     }
-}
-.header__dropdown-menu__item {
-    &:not(:last-child) {
-        border-bottom: 1px solid #fff;
-    }
-    padding: 12px;
 }
