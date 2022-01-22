@@ -1,10 +1,19 @@
-import React, { useState } from "react";
-import { cards } from "../../mock/mock";
+import React, { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
+import { fetchAlbumCards } from "../../Store/ActionCreators/albumCardAction";
 import DropDown from "../DropDown/dropDown";
 import GridOfCards from "../GridOfCards/gridOfCards";
 import Label from "../Label/label";
+import Loader from "../Loader/loader";
 import "./marketplaceMainContent.scss";
 const MarketplaceMainContent = () => {
+    const dispatch = useAppDispatch();
+    const { cards, isLoading, error } = useAppSelector(
+        (state) => state.albumCard
+    );
+    useEffect(() => {
+        dispatch(fetchAlbumCards());
+    }, []);
     const [isGrid, changeGrid] = useState(true);
 
     const handleClick = () => {
@@ -51,15 +60,21 @@ const MarketplaceMainContent = () => {
                         </div>
                     </div>
                     {isGrid ? (
-                        <GridOfCards
-                            cards={cards.slice(-3)}
-                            columns={3}
-                            rows={1}
-                            to="/marketplace"
-                        />
+                        isLoading ? (
+                            <Loader />
+                        ) : (
+                            <GridOfCards
+                                cards={cards}
+                                columns={3}
+                                rows={1}
+                                to="/marketplace"
+                            />
+                        )
+                    ) : isLoading ? (
+                        <Loader />
                     ) : (
                         <GridOfCards
-                            cards={cards.slice(-3)}
+                            cards={cards}
                             columns={3}
                             rows={1}
                             to="/marketplace"

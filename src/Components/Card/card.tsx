@@ -5,7 +5,6 @@ import "./card.scss";
 import { Link } from "react-router-dom";
 
 const Card = (props: CardProps) => {
-    console.log(`${props.to}/${props.id}`);
     return (
         <div className="card">
             <div className="card__picture">
@@ -33,16 +32,15 @@ const Card = (props: CardProps) => {
                     {props.availableListenings}
                 </div>
             )}
-
-            <button className="card__button">
-                <Link to={`${props.to}/${props.id}`}>
+            <Link to={`${props.to}/${props.id}`}>
+                <button className="card__button">
                     {props.album ? (
                         <p>View all listenings</p>
                     ) : (
                         <p>View details</p>
                     )}
-                </Link>
-            </button>
+                </button>
+            </Link>
         </div>
     );
 };

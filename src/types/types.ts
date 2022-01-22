@@ -27,3 +27,18 @@ export interface Card {
     availableListenings?: number;
     to?: string;
 }
+
+export enum NFTTypes {
+    Audio,
+    Video,
+}
+export interface CardDetails extends Omit<Card, "picture"> {
+    pictures: string[];
+    timeRemaining: string;
+    header: string;
+    collectionId: string;
+    editionOf: number;
+    description: string;
+    type: NFTTypes;
+    creator: string;
+}

@@ -1,10 +1,17 @@
-import React, { useState } from "react";
-import { cards } from "../../mock/mock";
+import React, { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
+import { fetchCards } from "../../Store/ActionCreators/cardAction";
 import DropDown from "../DropDown/dropDown";
 import GridOfCards from "../GridOfCards/gridOfCards";
 import Label from "../Label/label";
+import Loader from "../Loader/loader";
 import "./discoverMainContent.scss";
 const DiscoverMainContent = () => {
+    const dispatch = useAppDispatch();
+    const { cards, isLoading, error } = useAppSelector((state) => state.card);
+    useEffect(() => {
+        dispatch(fetchCards());
+    }, []);
     const [isGrid, changeGrid] = useState(true);
 
     const handleClick = () => {
@@ -51,12 +58,18 @@ const DiscoverMainContent = () => {
                         </div>
                     </div>
                     {isGrid ? (
-                        <GridOfCards
-                            cards={cards}
-                            columns={4}
-                            rows={3}
-                            to="/discover"
-                        />
+                        isLoading ? (
+                            <Loader />
+                        ) : (
+                            <GridOfCards
+                                cards={cards}
+                                columns={4}
+                                rows={3}
+                                to="/discover"
+                            />
+                        )
+                    ) : isLoading ? (
+                        <Loader />
                     ) : (
                         <GridOfCards
                             cards={cards}

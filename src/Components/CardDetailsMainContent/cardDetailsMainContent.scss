@@ -1,0 +1,130 @@
+.cardDetailsMain {
+    background: #101029;
+
+    padding: 104px 0 160px 0;
+}
+.cardDetailsMain {
+    &__content {
+    }
+    &__card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 48px;
+        row-gap: 48px;
+        margin: 0 0 80px 0;
+    }
+    &__slider {
+        background: rgb(30, 30, 55, 0.5);
+        padding: 40px;
+        border-radius: 10px;
+    }
+    &__details {
+        background: rgba(30, 30, 55, 0.5);
+        padding: 24px 40px 40px 40px;
+        border-radius: 10px;
+    }
+    &-details {
+        &__title {
+            font-weight: bold;
+            font-size: 18px;
+            margin: 0 0 20px 0;
+        }
+        &__description {
+            font-size: 14px;
+            line-height: 140%;
+            padding: 0 0 48px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        &__information {
+            margin: 24px 0 0 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 40px;
+        }
+        &-information {
+            &__label {
+                font-weight: bold;
+                font-size: 14px;
+                margin: 0 0 12px 0;
+                text-transform: uppercase;
+            }
+        }
+        &__collection {
+            padding: 0 0 0 64px;
+            background: url("./assets/Collection.svg") no-repeat;
+        }
+        &__editionOf {
+            padding: 0 0 0 64px;
+            background: url("./assets/EditionOf.svg") no-repeat;
+        }
+        &__type {
+            padding: 0 0 0 64px;
+            background: url("./assets/Type.svg") no-repeat;
+        }
+        &__creator {
+            padding: 0 0 0 64px;
+            background: url("./assets/Creator.svg") no-repeat;
+        }
+    }
+    &-information {
+        &__title {
+            font-weight: bold;
+            font-size: 36px;
+            margin: 0 0 16px 0;
+        }
+        &__subtitle {
+            font-size: 20px;
+            padding: 0 0 24px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        &__timeRemaining {
+            margin: 20px 0 48px 0;
+            font-size: 16px;
+        }
+        &__price {
+            margin: 0 0 32px 12px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        &__button {
+            padding: 16px 40px 16px 64px;
+            background: linear-gradient(90deg, #5d00fa 0%, #d70bca 100%);
+            border-radius: 46px;
+            font-weight: bold;
+            font-size: 18px;
+            position: relative;
+            margin: 0 0 48px 0;
+            &::after {
+                content: url("./assets/shoppingBasket.svg");
+                position: absolute;
+                left: 40px;
+            }
+            transition: 0.3s ease;
+            opacity: 0.8;
+            &:hover {
+                transition: 0.3s ease;
+                opacity: 1;
+            }
+            &:active {
+                transform: scale(110%);
+            }
+        }
+        &__collectionId {
+            & span {
+                font-weight: bold;
+                font-size: 14px;
+                text-transform: uppercase;
+                margin: 0 8px 0 0;
+            }
+        }
+        &__editionOf {
+            margin: 12px 0 0 0;
+            & span {
+                font-weight: bold;
+                font-size: 14px;
+                text-transform: uppercase;
+                margin: 0 8px 0 0;
+            }
+        }
+    }
+}

@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GridOfCards from "../GridOfCards/gridOfCards";
-import { cards } from "../../mock/mock";
 import "./homeMainContent.scss";
+import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
+import { fetchCards } from "../../Store/ActionCreators/cardAction";
+import Loader from "../Loader/loader";
 const HomeMainContent = (props: { reference: React.Ref<HTMLDivElement> }) => {
+    const dispatch = useAppDispatch();
+    const { cards, isLoading, error } = useAppSelector((state) => state.card);
+    useEffect(() => {
+        dispatch(fetchCards());
+    }, []);
     const [isActive, changeActive] = useState({
         All: true,
         Audio: false,
@@ -27,12 +34,16 @@ const HomeMainContent = (props: { reference: React.Ref<HTMLDivElement> }) => {
                     <div className="main-featuredNFTs__header">
                         Featured NFTs
                     </div>
-                    <GridOfCards
-                        cards={cards}
-                        columns={4}
-                        rows={1}
-                        to="/home"
-                    />
+                    {isLoading ? (
+                        <Loader />
+                    ) : (
+                        <GridOfCards
+                            cards={cards}
+                            columns={4}
+                            rows={1}
+                            to="/home"
+                        />
+                    )}
                 </section>
                 <section className="main__latestNFTs main-latestNFTs">
                     <div
@@ -75,7 +86,16 @@ const HomeMainContent = (props: { reference: React.Ref<HTMLDivElement> }) => {
                             Video
                         </div>
                     </div>
-                    <GridOfCards cards={cards} columns={4} rows={2} to="/home" />
+                    {isLoading ? (
+                        <Loader />
+                    ) : (
+                        <GridOfCards
+                            cards={cards}
+                            columns={4}
+                            rows={2}
+                            to="/home"
+                        />
+                    )}
                 </section>
             </div>
         </main>

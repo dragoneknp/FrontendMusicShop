@@ -136,7 +136,7 @@ const LoginMainContent = () => {
                                 <p>
                                     <input
                                         type="checkbox"
-                                        className="loginMain-regitration__checkbox"
+                                        className="loginMain-registration__checkbox"
                                         id="registrationCheckbox"
                                     />
                                     <label htmlFor="registrationCheckbox">
