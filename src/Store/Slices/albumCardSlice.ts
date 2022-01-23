@@ -16,6 +16,7 @@ export const albumCardSlice = createSlice({
     reducers: {
         cardsFetching(state) {
             state.isLoading = true;
+            state.error = "";
         },
         cardsFetchingSuccess(state, action: PayloadAction<Card[]>) {
             state.isLoading = false;
@@ -24,7 +25,7 @@ export const albumCardSlice = createSlice({
         },
         cardsFetchingFailed(state, action: PayloadAction<string>) {
             state.isLoading = false;
-            state.error = "";
+            state.error = action.payload;
         },
     },
 });

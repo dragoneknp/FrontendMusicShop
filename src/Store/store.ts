@@ -1,8 +1,15 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { albumCardDetailsSlice } from "./Slices/albumCardDetailsSlice";
 import { albumCardSlice } from "./Slices/albumCardSlice";
+import { cardDetailsSlice } from "./Slices/cardDetailsSlice";
 import { cardSlice } from "./Slices/cardSlice";
 export const store = configureStore({
-    reducer: { card: cardSlice.reducer, albumCard: albumCardSlice.reducer },
+    reducer: {
+        card: cardSlice.reducer,
+        albumCard: albumCardSlice.reducer,
+        cardDetails: cardDetailsSlice.reducer,
+        albumCardDetails: albumCardDetailsSlice.reducer,
+    },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

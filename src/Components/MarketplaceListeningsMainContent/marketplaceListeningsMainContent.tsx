@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MarketPlaceCard, SellingCard } from "../../types/types";
 import "./marketplaceListeningsMainContent.scss";
 import DropDown from "../DropDown/dropDown";
 import Label from "../Label/label";
 import { formatPrice } from "../../utils/formatPrice";
-const MarketplaceListeningsMainContent = (props: MarketPlaceCard) => {
+import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
+import { fetchAlbumCardDetails } from "../../Store/ActionCreators/albumCardDetailsAction";
+import { useNavigate, useParams } from "react-router-dom";
+import { v4 as uuid4 } from "uuid";
+const MarketplaceListeningsMainContent = () => {
+    const { id } = useParams();
+    const history = useNavigate();
+    const dispatch = useAppDispatch();
+    const { isLoading, error, card } = useAppSelector(
+        (state) => state.albumCardDetails
+    );
+    useEffect(() => {
+        dispatch(fetchAlbumCardDetails(id as string));
+    });
+    if (error) {
+        history("/error");
+    }
     const SellingItem = (props: SellingCard) => {
         return (
             <div className="marketplaceListeningsMain-listOfSellingsNFTs__sellingItem">
@@ -29,28 +45,28 @@ const MarketplaceListeningsMainContent = (props: MarketPlaceCard) => {
     return (
         <main className="marketplaceListeningsMain">
             <Label
-                header={props.performer}
+                header={card.performer}
                 breadCrumbs={[
                     { path: "/home", title: "Home" },
                     { path: "/marketplace", title: "Marketplace" },
-                    { title: props.performer },
+                    { title: card.performer },
                 ]}
             />
             <div className="marketplaceListeningsMain__container container">
                 <section className="marketplaceListeningsMain__content">
                     <div className="marketplaceListeningsMain__card marketplaceListeningsMain-card">
                         <section className="marketplaceListeningsMain-card__image">
-                            <img src={props.picture} alt="Artist" />
+                            <img src={card.picture} alt="Artist" />
                         </section>
                         <section className="marketplaceListeningsMain-card__content">
                             <div className="marketplaceListeningsMain-card__header">
-                                {props.performer}
+                                {card.performer}
                             </div>
                             <div className="marketplaceListeningsMain-card__album">
-                                {props.album}
+                                {card.album}
                             </div>
                             <div className="marketplaceListeningsMain-card__description">
-                                {props.description}
+                                {card.description}
                             </div>
                             <div className="marketplaceListeningsMain-card__sorts marketplaceListeningsMain-card-sorts">
                                 <div className="marketplaceListeningsMain-card-sorts__label">
@@ -91,8 +107,8 @@ const MarketplaceListeningsMainContent = (props: MarketPlaceCard) => {
                                 Seller
                             </div>
                         </div>
-                        {props.sellingCards?.map((item) => (
-                            <SellingItem {...item} />
+                        {card.sellingCards?.map((item) => (
+                            <SellingItem key={uuid4()} {...item} />
                         ))}
                     </div>
                 </section>

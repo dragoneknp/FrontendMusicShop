@@ -1,6 +1,8 @@
 import { AppDispatch } from "../store";
 import axios from "axios";
 import { albumCardSlice } from "../Slices/albumCardSlice";
+import { useNavigate } from "react-router-dom";
+
 export const fetchAlbumCards = () => async (dispatch: AppDispatch) => {
     try {
         dispatch(albumCardSlice.actions.cardsFetching());

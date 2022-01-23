@@ -1,17 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CardDetails, NFTTypes } from "../../types/types";
 import "./cardDetailsMainContent.scss";
 import Label from "../Label/label";
 import { formatPrice } from "../../utils/formatPrice";
-import { useLocation } from "react-router-dom";
+import {
+    Navigate,
+    useLocation,
+    useNavigate,
+    useParams,
+} from "react-router-dom";
 import Slider from "../Slider/slider";
-const CardDetailsMainContent = (props: CardDetails) => {
+import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
+import { fetchCardDetails } from "../../Store/ActionCreators/cardDetailsAction";
+const CardDetailsMainContent = () => {
     const location = useLocation();
-    console.log();
+    const { id } = useParams();
+    const dispatch = useAppDispatch();
+    const history = useNavigate();
+    const { isLoading, error, cardDetails } = useAppSelector(
+        (state) => state.cardDetails
+    );
+    if (error) history("/error");
+    useEffect(() => {
+        dispatch(fetchCardDetails(id as string));
+    }, []);
     return (
         <main className="cardDetailsMain">
             <Label
-                header={props.performer}
+                header={cardDetails.performer}
                 breadCrumbs={[
                     {
                         path: `/${location.pathname.split("/")[1]}`,
@@ -20,29 +36,31 @@ const CardDetailsMainContent = (props: CardDetails) => {
                             location.pathname.split("/")[1].slice(1)
                         }`,
                     },
-                    { title: props.performer },
+                    { title: cardDetails.performer },
                 ]}
             />
             <div className="cardDetailsMain__container container">
                 <section className="cardDetailsMain__content">
                     <section className="cardDetailsMain__card">
                         <section className="cardDetailsMain__slider">
-                            <Slider pictures={props.pictures} />
+                            <Slider pictures={cardDetails.pictures} />
                         </section>
                         <section className="cardDetailsMain__information cardDetailsMain-information">
                             <div className="cardDetailsMain-information__title">
-                                {props.performer}
+                                {cardDetails.performer}
                             </div>
                             <div className="cardDetailsMain-information__subtitle">
-                                {props.header}
+                                {cardDetails.header}
                             </div>
                             <div className="cardDetailsMain-information__timeRemaining">
-                                Time Remaining: {props.timeRemaining}
+                                Time Remaining: {cardDetails.timeRemaining}
                             </div>
                             <div className="cardDetailsMain-information__price">
                                 Buy Now: $
-                                {props.buyNow
-                                    ? formatPrice(props.buyNow?.toString())
+                                {cardDetails.buyNow
+                                    ? formatPrice(
+                                          cardDetails.buyNow?.toString()
+                                      )
                                     : null}
                             </div>
                             <button className="cardDetailsMain-information__button">
@@ -50,11 +68,11 @@ const CardDetailsMainContent = (props: CardDetails) => {
                             </button>
                             <div className="cardDetailsMain-information__collectionId">
                                 <span>Collection id</span>
-                                {props.collectionId}
+                                {cardDetails.collectionId}
                             </div>
                             <div className="cardDetailsMain-information__editionOf">
                                 <span>Edition Of</span>
-                                {props.editionOf}
+                                {cardDetails.editionOf}
                             </div>
                         </section>
                     </section>
@@ -63,7 +81,7 @@ const CardDetailsMainContent = (props: CardDetails) => {
                             Details
                         </div>
                         <div className="cardDetailsMain-details__description">
-                            {props.description}
+                            {cardDetails.description}
                         </div>
                         <div className="cardDetailsMain-details__information cardDetailsMain-details-information">
                             <div className="cardDetailsMain-details__collection">
@@ -71,7 +89,7 @@ const CardDetailsMainContent = (props: CardDetails) => {
                                     Collection:
                                 </div>
                                 <div className="cardDetailsMain-details-information__value">
-                                    {props.collectionId}
+                                    {cardDetails.collectionId}
                                 </div>
                             </div>
                             <div className="cardDetailsMain-details__editionOf">
@@ -79,7 +97,7 @@ const CardDetailsMainContent = (props: CardDetails) => {
                                     Edition Of
                                 </div>
                                 <div className="cardDetailsMain-details-information__value">
-                                    {props.editionOf}
+                                    {cardDetails.editionOf}
                                 </div>
                             </div>
                             <div className="cardDetailsMain-details__type">
@@ -87,7 +105,7 @@ const CardDetailsMainContent = (props: CardDetails) => {
                                     Type
                                 </div>
                                 <div className="cardDetailsMain-details-information__value">
-                                    {NFTTypes[props.type]}
+                                    {NFTTypes[cardDetails.type]}
                                 </div>
                             </div>
                             <div className="cardDetailsMain-details__creator">
@@ -95,7 +113,7 @@ const CardDetailsMainContent = (props: CardDetails) => {
                                     Creator
                                 </div>
                                 <div className="cardDetailsMain-details-information__value">
-                                    {props.creator}
+                                    {cardDetails.creator}
                                 </div>
                             </div>
                         </div>

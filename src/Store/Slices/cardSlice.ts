@@ -6,25 +6,26 @@ interface CardState {
     isLoading: boolean;
 }
 const initialState: CardState = {
-  error: "",
-  isLoading: false,
-  cards: []
+    error: "",
+    isLoading: false,
+    cards: [],
 };
 export const cardSlice = createSlice({
     name: "card",
     initialState,
     reducers: {
-      cardsFetching(state){
-        state.isLoading = true;
-      },
-      cardsFetchingSuccess(state, action: PayloadAction<Card[]>){
-        state.isLoading = false;
-        state.error = "";
-        state.cards = action.payload;
-      },
-      cardsFetchingFailed(state, action: PayloadAction<string>){
-        state.isLoading = false;
-        state.error = "";
-      }
+        cardsFetching(state) {
+            state.isLoading = true;
+            state.error = "";
+        },
+        cardsFetchingSuccess(state, action: PayloadAction<Card[]>) {
+            state.isLoading = false;
+            state.error = "";
+            state.cards = action.payload;
+        },
+        cardsFetchingFailed(state, action: PayloadAction<string>) {
+            state.isLoading = false;
+            state.error = action.payload;
+        },
     },
 });
