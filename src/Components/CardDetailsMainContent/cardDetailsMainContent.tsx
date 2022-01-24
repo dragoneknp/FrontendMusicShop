@@ -12,18 +12,30 @@ import {
 import Slider from "../Slider/slider";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchCardDetails } from "../../Store/ActionCreators/cardDetailsAction";
+import { cardDetailsSlice } from "../../Store/Slices/cardDetailsSlice";
 const CardDetailsMainContent = () => {
     const location = useLocation();
     const { id } = useParams();
     const dispatch = useAppDispatch();
     const history = useNavigate();
-    const { isLoading, error, cardDetails } = useAppSelector(
+    let { isLoading, error, cardDetails } = useAppSelector(
         (state) => state.cardDetails
     );
-    if (error) history("/error");
     useEffect(() => {
         dispatch(fetchCardDetails(id as string));
+        const cleanUp = () => {
+            isLoading = false;
+            error = "";
+        };
+        return cleanUp();
     }, []);
+
+    useEffect(() => {
+        if (error !== "") {
+            history("/error");
+        }
+    }, [error]);
+
     return (
         <main className="cardDetailsMain">
             <Label

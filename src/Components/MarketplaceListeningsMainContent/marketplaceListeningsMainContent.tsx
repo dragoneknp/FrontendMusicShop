@@ -6,21 +6,28 @@ import Label from "../Label/label";
 import { formatPrice } from "../../utils/formatPrice";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchAlbumCardDetails } from "../../Store/ActionCreators/albumCardDetailsAction";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { v4 as uuid4 } from "uuid";
 const MarketplaceListeningsMainContent = () => {
     const { id } = useParams();
     const history = useNavigate();
     const dispatch = useAppDispatch();
-    const { isLoading, error, card } = useAppSelector(
+    let { isLoading, error, card } = useAppSelector(
         (state) => state.albumCardDetails
     );
     useEffect(() => {
         dispatch(fetchAlbumCardDetails(id as string));
-    });
-    if (error) {
-        history("/error");
-    }
+        const cleanUp = () => {
+            isLoading = false;
+            error = "";
+        };
+        return cleanUp();
+    }, []);
+    useEffect(() => {
+        if (error !== "") {
+            history("/error");
+        }
+    }, [error]);
     const SellingItem = (props: SellingCard) => {
         return (
             <div className="marketplaceListeningsMain-listOfSellingsNFTs__sellingItem">
