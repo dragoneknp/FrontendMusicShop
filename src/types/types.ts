@@ -42,3 +42,12 @@ export interface CardDetails extends Omit<Card, "picture"> {
     type: NFTTypes;
     creator: string;
 }
+
+export interface RegistrationProps {
+    firstName: string;
+    lastName: string;
+    emailAdress: string;
+    phoneNumber: string;
+    displayName: string;
+    password: string;
+}

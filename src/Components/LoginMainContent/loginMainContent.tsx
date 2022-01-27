@@ -1,28 +1,57 @@
-import { useState } from "react";
+import React, { ChangeEventHandler, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
+import { registerUser } from "../../Store/ActionCreators/registerAction";
 import Label from "../Label/label";
 import "./loginMainContent.scss";
-const LoginMainContent = () => {
-    const RegistrationInput = (props: {
-        header: string;
-        value: string;
-        setValue: Function;
-        type?: string;
-    }) => {
-        return (
-            <div className="loginMain-registration__input loginMain-registration-input">
-                <div className="loginMain-registration-input__header">
-                    {props.header}
-                </div>
-                <input
-                    type={props.type ? props.type : "text"}
-                    className="loginMain-registration-input__input"
-                    value={props.value}
-                    onChange={(event) => props.setValue(event.target.value)}
-                    placeholder={props.header}
-                />
+const RegistrationInput = (props: {
+    header: string;
+    value: string;
+    setValue: Function;
+    type?: string;
+}) => {
+    return (
+        <div className="loginMain-registration__input loginMain-registration-input">
+            <div className="loginMain-registration-input__header">
+                {props.header}
             </div>
-        );
+            <input
+                type={props.type ? props.type : "text"}
+                className="loginMain-registration-input__input"
+                value={props.value}
+                onChange={(event) => props.setValue(event.target.value)}
+                placeholder={props.header}
+            />
+        </div>
+    );
+};
+const LoginMainContent = () => {
+    const dispatch = useAppDispatch();
+    const { error, isLoading } = useAppSelector((store) => store.register);
+    const handleRegisterClick = () => {
+        const {
+            firstName,
+            lastName,
+            emailAdress,
+            phoneNumber,
+            displayName,
+            password,
+        } = registerForm;
+        if (
+            firstName &&
+            lastName &&
+            emailAdress &&
+            phoneNumber &&
+            displayName &&
+            password
+        ) {
+            dispatch(registerUser(registerForm));
+        }
     };
+
+    const [loginForm, changeLoginForm] = useState({
+        login: "",
+        password: "",
+    });
     const [registerForm, changeRegisterForm] = useState({
         firstName: "",
         lastName: "",
@@ -31,9 +60,15 @@ const LoginMainContent = () => {
         displayName: "",
         password: "",
     });
+
     const handleChangeRegisterForm = (form: string) => {
-        return (value: string) => {
+        return (value: string) =>
             changeRegisterForm({ ...registerForm, [form]: value });
+    };
+
+    const handleChangeLoginForm = (form: string) => {
+        return (value: string) => {
+            changeLoginForm({ ...loginForm, [form]: value });
         };
     };
     return (
@@ -55,6 +90,12 @@ const LoginMainContent = () => {
                                     type="text"
                                     className="loginMain-login__emailInput"
                                     placeholder="Email..."
+                                    value={loginForm.login}
+                                    onChange={(event) =>
+                                        handleChangeLoginForm("login")(
+                                            event?.target.value
+                                        )
+                                    }
                                 ></input>
                             </div>
                             <div className="loginMain-login__password">
@@ -62,6 +103,12 @@ const LoginMainContent = () => {
                                     type="password"
                                     className="loginMain-login__passwordInput"
                                     placeholder="Password..."
+                                    value={loginForm.password}
+                                    onChange={(event) =>
+                                        handleChangeLoginForm("password")(
+                                            event?.target.value
+                                        )
+                                    }
                                 ></input>
                             </div>
                         </div>
@@ -126,8 +173,8 @@ const LoginMainContent = () => {
                             />
                             <RegistrationInput
                                 header="Password"
-                                value={registerForm.password}
                                 type="password"
+                                value={registerForm.password}
                                 setValue={handleChangeRegisterForm("password")}
                             />
                         </div>
@@ -144,7 +191,10 @@ const LoginMainContent = () => {
                                     </label>
                                 </p>
                             </div>
-                            <button className="loginMain-registration__registerButton">
+                            <button
+                                className="loginMain-registration__registerButton"
+                                onClick={handleRegisterClick}
+                            >
                                 Register
                             </button>
                         </div>

@@ -1,0 +1,198 @@
+{
+    "albumCards": [
+        {
+            "album": true,
+            "availableListenings": 1,
+            "id": "rtk_2125_1650",
+            "performer": "Come Down official Music Video",
+            "picture": "/Images/1big.svg"
+        },
+        {
+            "album": true,
+            "availableListenings": 5,
+            "id": "rtk_2125_1651",
+            "performer": "Come Down official Music Video",
+            "picture": "/Images/1big.svg"
+        },
+        {
+            "album": true,
+            "availableListenings": 15,
+            "id": "rtk_query_1228",
+            "performer": "Come Down official Music Video",
+            "picture": "/Images/1big.svg"
+        }
+    ],
+    "cardDetails": {
+        "rtk_2125_1632": {
+            "bidding": false,
+            "buyNow": 9,
+            "collectionId": "#0x2d0c8af807ef45ac17cafb2973d866ba8f38caa9",
+            "creator": "Best Music",
+            "description": "Run the Jewels 2 is the second studio album by American hip hop duo Run the Jewels, which consists of Killer Mike and El-P. The album was released early for free on October 24, 2014, and the following day on iTunes. It was made available on CD and LP by Mass Appeal Records and RBC Records on October 28, 2014.",
+            "editionOf": 20000,
+            "header": "Studio album by Run The Jewels",
+            "id": "rtk_2125_1632",
+            "minBid": 0,
+            "performer": "Run the Jewels 2",
+            "pictures": [
+                "/Images/test1.svg",
+                "/Images/4.svg",
+                "/Images/4.svg",
+                "/Images/4.svg",
+                "/Images/4.svg"
+            ],
+            "timeRemaining": "29d 23h 19m 31s",
+            "type": "NFTTypes.Audio"
+        }
+    },
+    "cards": [
+        {
+            "bidding": false,
+            "buyNow": 9,
+            "id": "rtk_2125_1632",
+            "minBid": 0,
+            "performer": "Run the Jewels 2",
+            "picture": "/Images/1.svg"
+        },
+        {
+            "bidding": true,
+            "buyNow": 25000,
+            "id": "rtk_2125_1633",
+            "minBid": 1000,
+            "performer": "Come Down official Music Video",
+            "picture": "/Images/2.svg"
+        },
+        {
+            "bidding": false,
+            "buyNow": 5,
+            "id": "rtk_2125_1634",
+            "minBid": 0,
+            "performer": "Smiley",
+            "picture": "/Images/3.svg"
+        },
+        {
+            "bidding": false,
+            "buyNow": 2,
+            "id": "rtk_2125_1635",
+            "minBid": 0,
+            "performer": "Pressa",
+            "picture": "/Images/4.svg"
+        },
+        {
+            "bidding": false,
+            "buyNow": 9,
+            "id": "rtk_2125_1636",
+            "minBid": 0,
+            "performer": "Run the Jewels 2",
+            "picture": "/Images/1.svg"
+        },
+        {
+            "bidding": true,
+            "buyNow": 25000,
+            "id": "rtk_2125_1637",
+            "minBid": 1000,
+            "performer": "Come Down official Music Video",
+            "picture": "/Images/2.svg"
+        },
+        {
+            "bidding": false,
+            "buyNow": 5,
+            "id": "rtk_2125_1638",
+            "minBid": 0,
+            "performer": "Smiley",
+            "picture": "/Images/3.svg"
+        },
+        {
+            "bidding": false,
+            "buyNow": 2,
+            "id": "rtk_2125_1639",
+            "minBid": 0,
+            "performer": "Pressa",
+            "picture": "/Images/4.svg"
+        },
+        {
+            "bidding": false,
+            "buyNow": 9,
+            "id": "rtk_2125_1641",
+            "minBid": 0,
+            "performer": "Run the Jewels 2",
+            "picture": "/Images/1.svg"
+        },
+        {
+            "bidding": true,
+            "buyNow": 25000,
+            "id": "rtk_2125_1642",
+            "minBid": 1000,
+            "performer": "Come Down official Music Video",
+            "picture": "/Images/2.svg"
+        },
+        {
+            "bidding": false,
+            "buyNow": 5,
+            "id": "rtk_2125_1643",
+            "minBid": 0,
+            "performer": "Smiley",
+            "picture": "/Images/3.svg"
+        },
+        {
+            "bidding": false,
+            "buyNow": 2,
+            "id": "rtk_2125_1644",
+            "minBid": 0,
+            "performer": "Pressa",
+            "picture": "/Images/4.svg"
+        },
+        {
+            "bidding": false,
+            "buyNow": 9,
+            "id": "rtk_2125_1645",
+            "minBid": 0,
+            "performer": "Run the Jewels 2",
+            "picture": "/Images/1.svg"
+        },
+        {
+            "bidding": true,
+            "buyNow": 25000,
+            "id": "rtk_2125_1646",
+            "minBid": 1000,
+            "performer": "Come Down official Music Video",
+            "picture": "/Images/2.svg"
+        },
+        {
+            "bidding": false,
+            "buyNow": 5,
+            "id": "rtk_2125_1647",
+            "minBid": 0,
+            "performer": "Smiley",
+            "picture": "/Images/3.svg"
+        },
+        {
+            "bidding": false,
+            "buyNow": 2,
+            "id": "rtk_2125_1648",
+            "minBid": 0,
+            "performer": "Pressa",
+            "picture": "/Images/4.svg"
+        }
+    ],
+    "marketplaceCards": {
+        "rtk_query_1228": {
+            "album": "open edition",
+            "description": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
+            "id": "rtk_query_1228",
+            "performer": "Come down official music",
+            "picture": "/Images/1big.svg",
+            "sellingCards": [
+                {
+                    "edition": "#3",
+                    "price": "9",
+                    "seller": "@curios",
+                    "sellerAvatar": "/Images/3.svg",
+                    "timeRemaining": "0d left Thu 03:11 PM",
+                    "token": "0x2d0c8af807ef45ac17cafb2973d866ba8f38caa9"
+                }
+            ]
+        }
+    },
+    "accounts": []
+}

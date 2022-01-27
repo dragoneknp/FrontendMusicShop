@@ -2,7 +2,6 @@ import { AppDispatch } from "../store";
 import axios from "axios";
 import { cardDetailsSlice } from "../Slices/cardDetailsSlice";
 import { CardDetails } from "../../types/types";
-import { Exception } from "sass";
 export const fetchCardDetails =
     (id: string) => async (dispatch: AppDispatch) => {
         try {

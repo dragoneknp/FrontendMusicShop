@@ -3,12 +3,14 @@ import { albumCardDetailsSlice } from "./Slices/albumCardDetailsSlice";
 import { albumCardSlice } from "./Slices/albumCardSlice";
 import { cardDetailsSlice } from "./Slices/cardDetailsSlice";
 import { cardSlice } from "./Slices/cardSlice";
+import { registerSlice } from "./Slices/registerSlice";
 export const store = configureStore({
     reducer: {
         card: cardSlice.reducer,
         albumCard: albumCardSlice.reducer,
         cardDetails: cardDetailsSlice.reducer,
         albumCardDetails: albumCardDetailsSlice.reducer,
+        register: registerSlice.reducer,
     },
 });
 
