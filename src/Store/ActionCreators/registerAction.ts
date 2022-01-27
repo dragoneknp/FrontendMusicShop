@@ -1,7 +1,7 @@
 import { AppDispatch } from "../store";
 import axios from "axios";
 import { registerSlice } from "../Slices/registerSlice";
-import { RegistrationProps } from "../../types/types";
+import { UserProps } from "../../types/types";
 export const registerUser =
     ({
         firstName,
@@ -10,7 +10,7 @@ export const registerUser =
         phoneNumber,
         displayName,
         password,
-    }: RegistrationProps) =>
+    }: UserProps) =>
     async (dispatch: AppDispatch) => {
         try {
             dispatch(registerSlice.actions.registerStart());

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface RegisterState{
   error: string;
-  isLoading: Boolean;
+  isLoading: boolean;
 }
 const initialState: RegisterState = {
     error: "",

@@ -43,7 +43,7 @@ export interface CardDetails extends Omit<Card, "picture"> {
     creator: string;
 }
 
-export interface RegistrationProps {
+export interface UserProps {
     firstName: string;
     lastName: string;
     emailAdress: string;

@@ -1,5 +1,6 @@
 import React, { ChangeEventHandler, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
+import { loginUser } from "../../Store/ActionCreators/loginAction";
 import { registerUser } from "../../Store/ActionCreators/registerAction";
 import Label from "../Label/label";
 import "./loginMainContent.scss";
@@ -47,9 +48,15 @@ const LoginMainContent = () => {
             dispatch(registerUser(registerForm));
         }
     };
+    const handleLoginClick = () => {
+        const { email, password } = loginForm;
+        if (email && password) {
+            dispatch(loginUser(loginForm));
+        }
+    };
 
     const [loginForm, changeLoginForm] = useState({
-        login: "",
+        email: "",
         password: "",
     });
     const [registerForm, changeRegisterForm] = useState({
@@ -90,9 +97,9 @@ const LoginMainContent = () => {
                                     type="text"
                                     className="loginMain-login__emailInput"
                                     placeholder="Email..."
-                                    value={loginForm.login}
+                                    value={loginForm.email}
                                     onChange={(event) =>
-                                        handleChangeLoginForm("login")(
+                                        handleChangeLoginForm("email")(
                                             event?.target.value
                                         )
                                     }
@@ -130,7 +137,10 @@ const LoginMainContent = () => {
                             </div>
                         </div>
                         <div className="loginMain-login__button">
-                            <button className="loginMain-login__loginButton">
+                            <button
+                                className="loginMain-login__loginButton"
+                                onClick={handleLoginClick}
+                            >
                                 Login
                             </button>
                         </div>
