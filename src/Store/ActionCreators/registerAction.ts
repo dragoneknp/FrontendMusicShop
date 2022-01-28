@@ -2,6 +2,7 @@ import { AppDispatch } from "../store";
 import axios from "axios";
 import { registerSlice } from "../Slices/registerSlice";
 import { UserProps } from "../../types/types";
+import { getCurrentDate } from "../../utils/getCurrentDate";
 export const registerUser =
     ({
         firstName,
@@ -22,9 +23,9 @@ export const registerUser =
                     emailAdress,
                     phoneNumber,
                     displayName,
+                    joinedAt: getCurrentDate(),
                 }
             );
-            console.log(response);
             dispatch(registerSlice.actions.registerSuccess());
         } catch (e: any) {
             dispatch(registerSlice.actions.registerFailed(e));

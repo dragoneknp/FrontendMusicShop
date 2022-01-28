@@ -7,6 +7,7 @@ import Home from "../Pages/Home/home";
 import Login from "../Pages/Login/login";
 import Marketplace from "../Pages/Marketplace/marketplace";
 import MarketplaceListenings from "../Pages/MarketplaceListenings/marketplaceListenings";
+import Profile from "../Pages/Profile/profile";
 import Terms from "../Pages/Terms/terms";
 export const router = [
     {
@@ -65,8 +66,13 @@ export const router = [
         element: FAQ,
     },
     {
+        name: "Profile",
+        path: "/profile",
+        element: Profile,
+    },
+    {
         name: "Page not found",
-        path: "/error",
+        path: "*",
         element: Error,
     },
 ];

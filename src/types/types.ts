@@ -50,4 +50,5 @@ export interface UserProps {
     phoneNumber: string;
     displayName: string;
     password: string;
+    joinedAt?: string;
 }

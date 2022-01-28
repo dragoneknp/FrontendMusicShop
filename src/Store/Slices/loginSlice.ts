@@ -18,6 +18,7 @@ const initialState: LoginProps = {
         phoneNumber: "",
         displayName: "",
         password: "",
+        joinedAt: "",
     },
 };
 export const loginSlice = createSlice({

@@ -10,7 +10,14 @@ export const loginUser =
             const response = await axios.get(
                 `https://nftshop-4237c-default-rtdb.firebaseio.com/accounts/${email};${password}.json`
             );
-
+            if (response.data === null) {
+                throw "Item not found";
+            }
+            localStorage.removeItem("token");
+            localStorage.setItem(
+                "token",
+                `${email};${password};${Object.keys(response.data)[0]}`
+            );
             dispatch(
                 loginSlice.actions.loginSuccess(
                     Object.values(response.data)[0] as UserProps
