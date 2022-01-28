@@ -20,7 +20,7 @@
             width: 400px;
             margin: 0 auto;
             &::before {
-                content: url("./img/email.svg");
+                content: url("./assets/email.svg");
 
                 left: 20px;
                 top: 50%;
@@ -64,7 +64,7 @@
             top: 50%;
             transform: translate(0, -50%);
             &::after {
-                content: url("./img/send.svg");
+                content: url("./assets/send.svg");
 
                 right: 18px;
                 top: 12px;
@@ -99,17 +99,17 @@
             column-gap: 12px;
             cursor: pointer;
             &__telegram {
-                background: url(./img/tg.svg);
+                background: url(./assets/tg.svg);
                 width: 35px;
                 height: 35px;
             }
             &__instagram {
-                background: url(./img/Instagram.svg);
+                background: url(./assets/Instagram.svg);
                 width: 35px;
                 height: 35px;
             }
             &__twitter {
-                background: url(./img/twitter.svg);
+                background: url(./assets/twitter.svg);
                 width: 35px;
                 height: 35px;
             }
@@ -119,12 +119,12 @@
             row-gap: 12px;
             cursor: pointer;
             &__appStore {
-                background: url("./img/App\ Store.svg");
+                background: url("./assets/App\ Store.svg");
                 width: 163px;
                 height: 53px;
             }
             &__googlePlay {
-                background: url("./img/Google\ Play.svg");
+                background: url("./assets/Google\ Play.svg");
                 width: 163px;
                 height: 53px;
             }
@@ -134,7 +134,7 @@
             list-style: none;
             cursor: pointer;
             text-transform: capitalize;
-            background: url("./img/tick.svg") no-repeat left 0 top 50%;
+            background: url("./assets/tick.svg") no-repeat left 0 top 50%;
             transition: 0.3s ease;
             & a:hover {
                 transition: 0.3s ease;

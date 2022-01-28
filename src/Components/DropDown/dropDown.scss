@@ -10,7 +10,7 @@
         min-width: 200px;
         cursor: pointer;
         &::after {
-            content: url("./dropDownArrow.svg");
+            content: url("./assets/dropDownArrow.svg");
             position: absolute;
             top: 50%;
             right: 16px;
@@ -19,7 +19,7 @@
         }
         &.open::after {
             transition: 0.3s ease;
-            content: url("./dropDownArrow.svg");
+            content: url("./assets/dropDownArrow.svg");
             position: absolute;
             top: 50%;
             right: 16px;

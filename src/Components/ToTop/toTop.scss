@@ -3,12 +3,12 @@
     height: 46px;
     cursor: pointer;
     position: fixed;
-    background: url("./arrowUp.svg");
+    background: url("./assets/arrowUp.svg");
     right: 20px;
     bottom: 20px;
     transition: 0.3s ease;
 }
 .toTop:hover {
     transition: 0.3s ease;
-    background: url("./arrowUpHover.svg");
+    background: url("./assets/arrowUpHover.svg");
 }

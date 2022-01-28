@@ -23,7 +23,7 @@
         &__email {
             position: relative;
             &::after {
-                content: url("./emailIcon.svg");
+                content: url("./assets/emailIcon.svg");
                 width: 15px;
                 left: 16px;
                 top: 50%;
@@ -34,7 +34,7 @@
         &__password {
             position: relative;
             &::after {
-                content: url("./passwordIcon.svg");
+                content: url("./assets/passwordIcon.svg");
                 width: 15px;
                 left: 16px;
                 top: 50%;

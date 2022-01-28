@@ -66,7 +66,7 @@
             padding: 12px 20px 12px 36px;
             position: relative;
             &::after {
-                content: url("./arrowRight.svg");
+                content: url("./assets/arrowRight.svg");
                 position: absolute;
                 transform: rotate(180deg) translate(0, 50%);
                 left: 16px;
@@ -85,7 +85,7 @@
             padding: 12px 36px 12px 20px;
             position: relative;
             &::after {
-                content: url("./arrowRight.svg");
+                content: url("./assets/arrowRight.svg");
                 position: absolute;
                 transform: translate(0, -50%);
                 right: 16px;
