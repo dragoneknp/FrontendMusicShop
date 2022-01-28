@@ -1,4 +1,3 @@
-import "./login.scss";
 import LoginMainContent from "../../Components/LoginMainContent/loginMainContent";
 import PageLayout from "../../Layout/pageLayout";
 const Login = () => {

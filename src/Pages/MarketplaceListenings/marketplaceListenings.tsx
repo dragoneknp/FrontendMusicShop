@@ -1,5 +1,4 @@
 import PageLayout from "../../Layout/pageLayout";
-import "./marketplaceListenings.scss";
 import MarketplaceListeningsMainContent from "../../Components/MarketplaceListeningsMainContent/marketplaceListeningsMainContent";
 
 const MarketplaceListenings = () => {

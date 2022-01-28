@@ -1,4 +1,3 @@
-import "./about.scss";
 import AboutMainContent from "../../Components/AboutMainContent/aboutMainContent";
 import PageLayout from "../../Layout/pageLayout";
 const About = () => {

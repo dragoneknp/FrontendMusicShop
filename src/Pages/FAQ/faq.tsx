@@ -1,4 +1,3 @@
-import "./faq.scss";
 import PageLayout from "../../Layout/pageLayout";
 import FAQMainContent from "../../Components/FAQMainContent/faqMainContent";
 const FAQ = () => {
