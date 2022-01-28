@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useState } from "react";
+import React, { ChangeEventHandler, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { loginUser } from "../../Store/ActionCreators/loginAction";
 import { registerUser } from "../../Store/ActionCreators/registerAction";
@@ -22,7 +22,8 @@ const RegistrationInput = (props: {
 };
 const LoginMainContent = () => {
     const dispatch = useAppDispatch();
-    const { error, isLoading } = useAppSelector((store) => store.register);
+    const register = useAppSelector((store) => store.register);
+    const login = useAppSelector((store) => store.login);
     const handleRegisterClick = () => {
         const {
             firstName,
@@ -43,12 +44,32 @@ const LoginMainContent = () => {
             dispatch(registerUser(registerForm));
         }
     };
-    const handleLoginClick = () => {
+    const handleLoginClick = async () => {
         const { email, password } = loginForm;
         if (email && password) {
             dispatch(loginUser(loginForm));
         }
     };
+    useEffect(() => {
+        if (login.isLogin) {
+            changeLoginForm({
+                email: "",
+                password: "",
+            });
+        }
+    }, [login.isLogin]);
+    useEffect(() => {
+        if (register.isRegister) {
+            changeRegisterForm({
+                firstName: "",
+                lastName: "",
+                emailAdress: "",
+                phoneNumber: "",
+                displayName: "",
+                password: "",
+            });
+        }
+    }, [register.isRegister]);
 
     const [loginForm, changeLoginForm] = useState({
         email: "",
