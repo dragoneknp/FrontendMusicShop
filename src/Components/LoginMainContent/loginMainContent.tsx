@@ -120,6 +120,7 @@ const LoginMainContent = () => {
                                     header="Password..."
                                     value={loginForm.password}
                                     setValue={handleChangeLoginForm("password")}
+                                    type="password"
                                 />
                             </div>
                         </div>

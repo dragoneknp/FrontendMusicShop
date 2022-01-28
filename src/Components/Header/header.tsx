@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../Hooks/redux";
 import "./header.scss";
 
 const Header = () => {
-    const isLogin = false;
+    const { isLogin } = useAppSelector((store) => store.login);
     const [isActive, changeActive] = useState({
         Home: false,
         Discover: false,
@@ -75,10 +76,10 @@ const Header = () => {
                             <ul className="header__dropdown-menu">
                                 <li className="header__dropdown-menu__item">
                                     <Link
-                                        to="/account"
+                                        to="/profile"
                                         className="header__dropdown-menu__item_link"
                                     >
-                                        Account
+                                        Profile
                                     </Link>
                                 </li>
                                 <li className="header__dropdown-menu__item">
