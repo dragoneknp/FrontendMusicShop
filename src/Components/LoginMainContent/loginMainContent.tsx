@@ -2,6 +2,7 @@ import React, { ChangeEventHandler, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { loginUser } from "../../Store/ActionCreators/loginAction";
 import { registerUser } from "../../Store/ActionCreators/registerAction";
+import Input from "../Input/input";
 import Label from "../Label/label";
 import "./loginMainContent.scss";
 const RegistrationInput = (props: {
@@ -15,13 +16,7 @@ const RegistrationInput = (props: {
             <div className="loginMain-registration-input__header">
                 {props.header}
             </div>
-            <input
-                type={props.type ? props.type : "text"}
-                className="loginMain-registration-input__input"
-                value={props.value}
-                onChange={(event) => props.setValue(event.target.value)}
-                placeholder={props.header}
-            />
+            <Input {...props} />
         </div>
     );
 };
@@ -93,30 +88,18 @@ const LoginMainContent = () => {
                         <div className="loginMain-login__header">Login</div>
                         <div className="loginMain-login__form">
                             <div className="loginMain-login__email">
-                                <input
-                                    type="text"
-                                    className="loginMain-login__emailInput"
-                                    placeholder="Email..."
+                                <Input
+                                    header="Email..."
                                     value={loginForm.email}
-                                    onChange={(event) =>
-                                        handleChangeLoginForm("email")(
-                                            event?.target.value
-                                        )
-                                    }
-                                ></input>
+                                    setValue={handleChangeLoginForm("email")}
+                                />
                             </div>
                             <div className="loginMain-login__password">
-                                <input
-                                    type="password"
-                                    className="loginMain-login__passwordInput"
-                                    placeholder="Password..."
+                                <Input
+                                    header="Password..."
                                     value={loginForm.password}
-                                    onChange={(event) =>
-                                        handleChangeLoginForm("password")(
-                                            event?.target.value
-                                        )
-                                    }
-                                ></input>
+                                    setValue={handleChangeLoginForm("password")}
+                                />
                             </div>
                         </div>
                         <div className="loginMain-login__footer">
