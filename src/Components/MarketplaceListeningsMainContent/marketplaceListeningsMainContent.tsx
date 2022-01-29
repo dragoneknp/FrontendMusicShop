@@ -8,6 +8,27 @@ import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchAlbumCardDetails } from "../../Store/ActionCreators/albumCardDetailsAction";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { v4 as uuid4 } from "uuid";
+const SellingItem = (props: SellingCard) => {
+    return (
+        <div className="marketplaceListeningsMain-listOfSellingsNFTs__sellingItem">
+            <div className="marketplaceListeningsMain-listOfSellingsNFTs__edition">
+                {props.edition}
+            </div>
+            <div className="marketplaceListeningsMain-listOfSellingsNFTs__price">
+                ${formatPrice(props.price)}
+            </div>
+            <div className="marketplaceListeningsMain-listOfSellingsNFTs__timeRemaining">
+                {props.timeRemaining}
+            </div>
+            <div className="marketplaceListeningsMain-listOfSellingsNFTs__token">
+                {props.token}
+            </div>
+            <div className="marketplaceListeningsMain-listOfSellingsNFTs__seller">
+                {props.seller}
+            </div>
+        </div>
+    );
+};
 const MarketplaceListeningsMainContent = () => {
     const { id } = useParams();
     const history = useNavigate();
@@ -28,27 +49,7 @@ const MarketplaceListeningsMainContent = () => {
             history("/error");
         }
     }, [error]);
-    const SellingItem = (props: SellingCard) => {
-        return (
-            <div className="marketplaceListeningsMain-listOfSellingsNFTs__sellingItem">
-                <div className="marketplaceListeningsMain-listOfSellingsNFTs__edition">
-                    {props.edition}
-                </div>
-                <div className="marketplaceListeningsMain-listOfSellingsNFTs__price">
-                    ${formatPrice(props.price)}
-                </div>
-                <div className="marketplaceListeningsMain-listOfSellingsNFTs__timeRemaining">
-                    {props.timeRemaining}
-                </div>
-                <div className="marketplaceListeningsMain-listOfSellingsNFTs__token">
-                    {props.token}
-                </div>
-                <div className="marketplaceListeningsMain-listOfSellingsNFTs__seller">
-                    {props.seller}
-                </div>
-            </div>
-        );
-    };
+
     return (
         <main className="marketplaceListeningsMain">
             <Label

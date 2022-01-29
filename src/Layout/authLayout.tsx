@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { useAppSelector } from "../Hooks/redux";
+import { useAppDispatch, useAppSelector } from "../Hooks/redux";
+import { loginUser } from "../Store/ActionCreators/loginAction";
 
 interface RouteProps {
     name: string;
@@ -13,6 +14,15 @@ interface AuthLayoutProps {
 }
 const AuthLayout = ({ router }: AuthLayoutProps) => {
     const { isLogin } = useAppSelector((store) => store.login);
+    const dispatch = useAppDispatch();
+
+    if (!isLogin) {
+        const token = localStorage.getItem("token");
+        const data = token?.split(";");
+        if (data) {
+            dispatch(loginUser({ email: data[0], password: data[1] }));
+        }
+    }
     return (
         <Routes>
             {router.map((route: RouteProps) =>

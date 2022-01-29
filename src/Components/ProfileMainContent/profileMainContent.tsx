@@ -4,6 +4,9 @@ import Input from "../Input/input";
 import ProfileAside from "../ProfileAside/profileAside";
 import "./profileMainContent.scss";
 const ProfileMainContent = () => {
+    const {
+        userData: { firstName, lastName, joinedAt },
+    } = useAppSelector((store) => store.login);
     const [userData, changeData] = useState({
         firstName: "",
         lastName: "",
@@ -18,7 +21,10 @@ const ProfileMainContent = () => {
     return (
         <main className="profileMain">
             <div className="profileMain__container container">
-                <ProfileAside name={"Genadiy Petrov"} joinedAt="Nov 25, 2021" />
+                <ProfileAside
+                    name={`${firstName} ${lastName}`}
+                    joinedAt={joinedAt || "smth went wrong :("}
+                />
                 <section className="profileMain__content">
                     <div className="profileMain__title">
                         Update your profile

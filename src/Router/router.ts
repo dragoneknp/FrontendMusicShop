@@ -86,5 +86,6 @@ export const router = [
         name: "Page not found",
         path: "*",
         element: Error,
+        private: false,
     },
 ];

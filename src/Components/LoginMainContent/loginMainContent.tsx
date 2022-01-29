@@ -1,4 +1,5 @@
 import React, { ChangeEventHandler, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { loginUser } from "../../Store/ActionCreators/loginAction";
 import { registerUser } from "../../Store/ActionCreators/registerAction";
@@ -22,8 +23,13 @@ const RegistrationInput = (props: {
 };
 const LoginMainContent = () => {
     const dispatch = useAppDispatch();
+
     const register = useAppSelector((store) => store.register);
+
     const login = useAppSelector((store) => store.login);
+
+    const history = useNavigate();
+
     const handleRegisterClick = () => {
         const {
             firstName,
@@ -44,20 +50,38 @@ const LoginMainContent = () => {
             dispatch(registerUser(registerForm));
         }
     };
-    const handleLoginClick = async () => {
+
+    const handleLoginClick = () => {
         const { email, password } = loginForm;
         if (email && password) {
             dispatch(loginUser(loginForm));
         }
     };
+
+    const [loginForm, changeLoginForm] = useState({
+        email: "",
+        password: "",
+    });
+
+    const [registerForm, changeRegisterForm] = useState({
+        firstName: "",
+        lastName: "",
+        emailAdress: "",
+        phoneNumber: "",
+        displayName: "",
+        password: "",
+    });
+
     useEffect(() => {
         if (login.isLogin) {
             changeLoginForm({
                 email: "",
                 password: "",
             });
+            history("/profile");
         }
     }, [login.isLogin]);
+
     useEffect(() => {
         if (register.isRegister) {
             changeRegisterForm({
@@ -70,19 +94,6 @@ const LoginMainContent = () => {
             });
         }
     }, [register.isRegister]);
-
-    const [loginForm, changeLoginForm] = useState({
-        email: "",
-        password: "",
-    });
-    const [registerForm, changeRegisterForm] = useState({
-        firstName: "",
-        lastName: "",
-        emailAdress: "",
-        phoneNumber: "",
-        displayName: "",
-        password: "",
-    });
 
     const handleChangeRegisterForm = (form: string) => {
         return (value: string) =>
