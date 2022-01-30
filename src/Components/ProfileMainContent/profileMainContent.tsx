@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAppSelector } from "../../Hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import Input from "../Input/input";
 import ProfileAside from "../ProfileAside/profileAside";
 import "./profileMainContent.scss";

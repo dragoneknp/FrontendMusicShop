@@ -41,5 +41,19 @@ export const loginSlice = createSlice({
             state.isLoading = false;
             state.isLogin = false;
         },
+        logout(state) {
+            state.error = "";
+            state.isLoading = false;
+            state.isLogin = false;
+            state.userData = {
+                firstName: "",
+                lastName: "",
+                emailAdress: "",
+                phoneNumber: "",
+                displayName: "",
+                password: "",
+                joinedAt: "",
+            };
+        },
     },
 });

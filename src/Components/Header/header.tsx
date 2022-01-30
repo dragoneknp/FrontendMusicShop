@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../Hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
+import { logout } from "../../Store/ActionCreators/logoutAction";
 import "./header.scss";
 
 const Header = () => {
+    const dispatch = useAppDispatch();
+    const handleLogoutClick = () => {
+        dispatch(logout());
+    };
     const { isLogin } = useAppSelector((store) => store.login);
     const [isActive, changeActive] = useState({
         Home: false,
@@ -84,8 +89,9 @@ const Header = () => {
                                 </li>
                                 <li className="header__dropdown-menu__item">
                                     <Link
-                                        to="/logout"
+                                        to="/home"
                                         className="header__dropdown-menu__item_link"
+                                        onClick={handleLogoutClick}
                                     >
                                         Logout
                                     </Link>

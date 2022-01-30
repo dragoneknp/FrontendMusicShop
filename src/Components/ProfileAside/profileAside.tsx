@@ -1,5 +1,7 @@
 import "./profileAside.scss";
 import { Link } from "react-router-dom";
+import { useAppDispatch } from "../../Hooks/redux";
+import { logout } from "../../Store/ActionCreators/logoutAction";
 interface ProfileAsideProps {
     avatar?: string;
     name: string;
@@ -9,23 +11,38 @@ const ListItem = ({
     icon,
     label,
     to,
+    handleClick,
 }: {
     icon: string;
     label: string;
     to: string;
+    handleClick?: any;
 }) => {
     return (
         <li className="list__item list-item">
-            <Link to={to}>
-                <button className="list-item__button">
-                    <i className="list-item__icon" data-icon={icon} />
-                    <div className="list-item__label">{label}</div>
-                </button>
-            </Link>
+            {handleClick ? (
+                <Link to={to} onClick={handleClick}>
+                    <button className="list-item__button">
+                        <i className="list-item__icon" data-icon={icon} />
+                        <div className="list-item__label">{label}</div>
+                    </button>
+                </Link>
+            ) : (
+                <Link to={to}>
+                    <button className="list-item__button">
+                        <i className="list-item__icon" data-icon={icon} />
+                        <div className="list-item__label">{label}</div>
+                    </button>
+                </Link>
+            )}
         </li>
     );
 };
 const ProfileAside = ({ avatar, name, joinedAt }: ProfileAsideProps) => {
+    const dispatch = useAppDispatch();
+    const handleLogoutClick = () => {
+        dispatch(logout());
+    };
     return (
         <aside className="aside">
             <div className="aside__header">
@@ -56,7 +73,12 @@ const ProfileAside = ({ avatar, name, joinedAt }: ProfileAsideProps) => {
                         to="/profile/payouts"
                     />
                     <ListItem label="Profile" icon="profile" to="/profile" />
-                    <ListItem label="Logout" icon="logout" to="/home" />
+                    <ListItem
+                        label="Logout"
+                        icon="logout"
+                        to="/home"
+                        handleClick={handleLogoutClick}
+                    />
                 </ul>
             </nav>
         </aside>
