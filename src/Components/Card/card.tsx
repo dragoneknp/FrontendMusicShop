@@ -12,12 +12,18 @@ const Card = (props: CardProps) => {
             </div>
 
             <div className="card__header">{props.performer}</div>
-            {props.bidding && props.minBid && (
+            {(props.bidding && props.minBid && props.currentBid && (
                 <div className="card__minBid">
-                    <span className="card__label_bold">min bid </span>$
-                    {formatPrice(props.minBid.toString())}
+                    <span className="card__label_bold">current bid </span>$
+                    {formatPrice(props.currentBid.toString())}
                 </div>
-            )}
+            )) ||
+                (props.bidding && props.minBid && (
+                    <div className="card__minBid">
+                        <span className="card__label_bold">min bid </span>$
+                        {formatPrice(props.minBid.toString())}
+                    </div>
+                ))}
             {props.buyNow && (
                 <div className="card__buyNow">
                     <span className="card__label_bold">buy now </span>$

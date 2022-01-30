@@ -4,6 +4,7 @@ import { albumCardSlice } from "./Slices/albumCardSlice";
 import { cardDetailsSlice } from "./Slices/cardDetailsSlice";
 import { cardSlice } from "./Slices/cardSlice";
 import { loginSlice } from "./Slices/loginSlice";
+import { myBidsSlice } from "./Slices/myBidsSlice";
 import { registerSlice } from "./Slices/registerSlice";
 export const store = configureStore({
     reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
         albumCardDetails: albumCardDetailsSlice.reducer,
         register: registerSlice.reducer,
         login: loginSlice.reducer,
+        myBids: myBidsSlice.reducer,
     },
 });
 

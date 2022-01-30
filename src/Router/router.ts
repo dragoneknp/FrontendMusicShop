@@ -1,4 +1,5 @@
 import About from "../Pages/About/about";
+import MyBids from "../Pages/MyBids/myBids";
 import CardDetails from "../Pages/CardDetails/cardDetails";
 import Discover from "../Pages/Discover/discover";
 import Error from "../Pages/Error/error";
@@ -80,6 +81,12 @@ export const router = [
         name: "Profile",
         path: "/profile",
         element: Profile,
+        private: true,
+    },
+    {
+        name: "My Bids",
+        path: "profile/myBids",
+        element: MyBids,
         private: true,
     },
     {

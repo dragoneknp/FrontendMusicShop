@@ -21,6 +21,7 @@ export interface Card {
     bidding?: boolean;
     minBid?: number;
     buyNow?: number;
+    currentBid?: number;
     picture: string;
     id: string;
     album?: boolean;
