@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchMyNFTs } from "../../Store/ActionCreators/myNFTsAction";
+import { getToken } from "../../utils/getToken";
 import ProfileAside from "../ProfileAside/profileAside";
 import WalletCard from "../WalletCard/walletCard";
 import "./myNFTsMainContent.scss";
@@ -13,9 +14,7 @@ const MyNFTsMainContent = () => {
     );
     const dispatch = useAppDispatch();
     useEffect(() => {
-        dispatch(
-            fetchMyNFTs(localStorage.getItem("token")?.split(";")[2] || "")
-        );
+        dispatch(fetchMyNFTs(getToken()));
     }, []);
     console.log(walletCards);
     return (

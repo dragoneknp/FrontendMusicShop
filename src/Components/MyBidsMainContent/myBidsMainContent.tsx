@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchMyBids } from "../../Store/ActionCreators/myBidsAction";
+import { getToken } from "../../utils/getToken";
 import GridOfCards from "../GridOfCards/gridOfCards";
 import ProfileAside from "../ProfileAside/profileAside";
 import "./myBidsMainContent.scss";
@@ -12,9 +13,7 @@ const MyBidsMainContent = () => {
     const { isLoading, error, cards } = useAppSelector((store) => store.myBids);
     const dispatch = useAppDispatch();
     useEffect(() => {
-        dispatch(
-            fetchMyBids(localStorage.getItem("token")?.split(";")[2] || "")
-        );
+        dispatch(fetchMyBids(getToken()));
     }, []);
     return (
         <main className="myBidsMain">

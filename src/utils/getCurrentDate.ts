@@ -1,4 +1,4 @@
-const getStringifyMonth = (month: number) => {
+const getStringifyMonth = (month: number): string => {
     switch (month) {
         case 0:
             return "Jan";
@@ -24,6 +24,8 @@ const getStringifyMonth = (month: number) => {
             return "Nov";
         case 11:
             return "Dec";
+        default:
+            return "Smth went Wrong";
     }
 };
 const getCurrentDate = (): string => {
