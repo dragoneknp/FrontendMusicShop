@@ -3,7 +3,15 @@ import axios from "axios";
 import { loginSlice } from "../Slices/loginSlice";
 import { UserProps } from "../../types/types";
 export const loginUser =
-    ({ email, password }: { email: string; password: string }) =>
+    ({
+        email,
+        password,
+        isRemembered,
+    }: {
+        email: string;
+        password: string;
+        isRemembered: boolean;
+    }) =>
     async (dispatch: AppDispatch) => {
         try {
             dispatch(loginSlice.actions.loginStart());
@@ -14,10 +22,12 @@ export const loginUser =
                 throw "Item not found";
             }
             localStorage.removeItem("token");
+
             localStorage.setItem(
                 "token",
-                `${email};${password};${Object.keys(response.data)[0]}`
+                `${email};${password};${Object.keys(response.data)[0]};${isRemembered}`
             );
+
             dispatch(
                 loginSlice.actions.loginSuccess(
                     Object.values(response.data)[0] as UserProps

@@ -16,7 +16,6 @@ const MyNFTsMainContent = () => {
     useEffect(() => {
         dispatch(fetchMyNFTs(getToken()));
     }, []);
-    console.log(walletCards);
     return (
         <main className="myNFTsMain">
             <div className="myNFTsMain__container container">

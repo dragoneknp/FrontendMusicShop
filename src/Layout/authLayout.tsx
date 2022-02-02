@@ -19,8 +19,18 @@ const AuthLayout = ({ router }: AuthLayoutProps) => {
     if (!isLogin) {
         const token = localStorage.getItem("token");
         const data = token?.split(";");
-        if (data) {
-            dispatch(loginUser({ email: data[0], password: data[1] }));
+
+        if (data && data[3] === "true") {
+            console.log(data);
+            dispatch(
+                loginUser({
+                    email: data[0],
+                    password: data[1],
+                    isRemembered: true,
+                })
+            );
+        } else {
+            localStorage.removeItem("token");
         }
     }
     return (

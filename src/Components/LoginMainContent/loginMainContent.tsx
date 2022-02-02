@@ -22,6 +22,8 @@ const RegistrationInput = (props: {
     );
 };
 const LoginMainContent = () => {
+    const [isRemembered, changeRemembered] = useState(false);
+
     const dispatch = useAppDispatch();
 
     const register = useAppSelector((store) => store.register);
@@ -54,8 +56,12 @@ const LoginMainContent = () => {
     const handleLoginClick = () => {
         const { email, password } = loginForm;
         if (email && password) {
-            dispatch(loginUser(loginForm));
+            dispatch(loginUser({ ...loginForm, isRemembered }));
         }
+    };
+
+    const handleRememberClick = () => {
+        changeRemembered(!isRemembered);
     };
 
     const [loginForm, changeLoginForm] = useState({
@@ -142,6 +148,7 @@ const LoginMainContent = () => {
                                         type="checkbox"
                                         className="loginMain-login__checkbox"
                                         id="loginCheckbox"
+                                        onClick={handleRememberClick}
                                     />
                                     <label htmlFor="loginCheckbox">
                                         Remember me
