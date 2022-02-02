@@ -53,3 +53,12 @@ export interface UserProps {
     password: string;
     joinedAt?: string;
 }
+
+export interface WalletCardProps {
+    count: number;
+    description: string;
+    editionOf: number;
+    header: string;
+    id: string;
+    picture: string;
+}

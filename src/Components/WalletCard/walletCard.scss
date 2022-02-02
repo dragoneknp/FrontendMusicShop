@@ -1,0 +1,62 @@
+.walletCard {
+    padding: 24px;
+    background: rgba(187, 130, 219, 0.7);
+    border-radius: 10px;
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 24px;
+    margin: 0 0 32px 0;
+    &__content {
+        display: grid;
+    }
+
+    &__image {
+        border-radius: 5px;
+    }
+    &__header {
+        font-weight: bold;
+        font-size: 20px;
+        margin: 0 0 16px 0;
+    }
+    &__editionOf {
+        font-size: 16px;
+        line-height: 140%;
+        margin: 0 0 16px 0;
+    }
+    &__description {
+        font-size: 16px;
+        line-height: 140%;
+        margin: 0 0 16px 0;
+    }
+    &__footer {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 3fr 4fr;
+        column-gap: 24px;
+        align-items: center;
+    }
+    &__button {
+        background: #ffffff;
+        border-radius: 37px;
+        padding: 12px 40px;
+        color: #d70bca;
+        font-weight: bold;
+        font-size: 16px;
+        opacity: 0.8;
+        transition: 0.3s ease;
+        &:hover {
+            opacity: 1;
+            transition: 0.3s ease;
+        }
+        &:active {
+            transition: 0.3s ease;
+            transform: scale(110%);
+        }
+    }
+    &__countOfTokens {
+        font-weight: bold;
+        font-size: 14px;
+
+        color: #5b00fb;
+    }
+}

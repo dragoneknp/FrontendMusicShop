@@ -5,6 +5,7 @@ import { cardDetailsSlice } from "./Slices/cardDetailsSlice";
 import { cardSlice } from "./Slices/cardSlice";
 import { loginSlice } from "./Slices/loginSlice";
 import { myBidsSlice } from "./Slices/myBidsSlice";
+import { myNFTsSlice } from "./Slices/myNFTsSlice";
 import { registerSlice } from "./Slices/registerSlice";
 export const store = configureStore({
     reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
         register: registerSlice.reducer,
         login: loginSlice.reducer,
         myBids: myBidsSlice.reducer,
+        myNFTs: myNFTsSlice.reducer,
     },
 });
 
