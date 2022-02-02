@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchMyBids } from "../../Store/ActionCreators/myBidsAction";
 import { getToken } from "../../utils/getToken";
 import GridOfCards from "../GridOfCards/gridOfCards";
+import Loader from "../Loader/loader";
 import ProfileAside from "../ProfileAside/profileAside";
 import "./myBidsMainContent.scss";
 const MyBidsMainContent = () => {
@@ -24,12 +25,16 @@ const MyBidsMainContent = () => {
                 />
                 <section className="myBidsMain__content">
                     <div className="myBidsMain__header">Your Bids</div>
-                    <GridOfCards
-                        columns={2}
-                        rows={2}
-                        cards={cards}
-                        to={"/discover"}
-                    />
+                    {isLoading ? (
+                        <Loader />
+                    ) : (
+                        <GridOfCards
+                            columns={2}
+                            rows={2}
+                            cards={cards}
+                            to={"/discover"}
+                        />
+                    )}
                 </section>
             </div>
         </main>

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchMyNFTs } from "../../Store/ActionCreators/myNFTsAction";
 import { getToken } from "../../utils/getToken";
+import Loader from "../Loader/loader";
 import ProfileAside from "../ProfileAside/profileAside";
 import WalletCard from "../WalletCard/walletCard";
 import "./myNFTsMainContent.scss";
@@ -25,27 +26,21 @@ const MyNFTsMainContent = () => {
                 />
                 <section className="myNFTsMain__content">
                     <div className="myNFTsMain__header">Wallet</div>
-                    {walletCards.map((card) => (
-                        <WalletCard
-                            key={card.id}
-                            id={card.id}
-                            count={card.count}
-                            description={card.description}
-                            editionOf={card.editionOf}
-                            header={card.header}
-                            picture={card.picture}
-                        />
-                    ))}
-                    {/* <WalletCard
-                        count={2}
-                        description={
-                            "This includes x10 exclusive images from some of the best moments from past VERZUZ events."
-                        }
-                        editionOf={50000}
-                        header={"Limited VERZUZ Commemorative NFT Bundle"}
-                        id={"trk23"}
-                        picture={"/Images/3.svg"}
-                    /> */}
+                    {isLoading ? (
+                        <Loader />
+                    ) : (
+                        walletCards.map((card) => (
+                            <WalletCard
+                                key={card.id}
+                                id={card.id}
+                                count={card.count}
+                                description={card.description}
+                                editionOf={card.editionOf}
+                                header={card.header}
+                                picture={card.picture}
+                            />
+                        ))
+                    )}
                 </section>
             </div>
         </main>
