@@ -24,13 +24,21 @@ const Header = () => {
 
     let location = useLocation();
     useEffect(() => {
-        changeActive({
-            Home: false,
-            Discover: false,
-            Marketplace: false,
-            [location.pathname[1].toUpperCase() + location.pathname.slice(2)]:
-                true,
-        });
+        if (location.pathname !== "/") {
+            changeActive({
+                Home: false,
+                Discover: false,
+                Marketplace: false,
+                [location.pathname[1].toUpperCase() +
+                location.pathname.slice(2)]: true,
+            });
+        } else {
+            changeActive({
+                Home: true,
+                Discover: false,
+                Marketplace: false,
+            });
+        }
     }, [location]);
     return (
         <header className="header">

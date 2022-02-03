@@ -60,12 +60,12 @@ export const router = [
         element: Terms,
         private: false,
     },
-    {
-        name: "Error",
-        path: "/error",
-        element: Error,
-        private: false,
-    },
+    // {
+    //     name: "Error",
+    //     path: "/error",
+    //     element: Error,
+    //     private: false,
+    // },
     {
         name: "About",
         path: "/about",
@@ -95,6 +95,12 @@ export const router = [
         path: "profile/myNFTs",
         element: MyNFTs,
         private: true,
+    },
+    {
+        name: "Home",
+        path: "/",
+        element: Home,
+        private: false,
     },
     {
         name: "Page not found",
