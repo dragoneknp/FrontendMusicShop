@@ -11,6 +11,7 @@ import MarketplaceListenings from "../Pages/MarketplaceListenings/marketplaceLis
 import Profile from "../Pages/Profile/profile";
 import Terms from "../Pages/Terms/terms";
 import MyNFTs from "../Pages/MyNFTs/myNFTs";
+import Sales from "../Pages/Sales/sales";
 export const router = [
     {
         name: "Discover",
@@ -60,12 +61,6 @@ export const router = [
         element: Terms,
         private: false,
     },
-    // {
-    //     name: "Error",
-    //     path: "/error",
-    //     element: Error,
-    //     private: false,
-    // },
     {
         name: "About",
         path: "/about",
@@ -94,6 +89,12 @@ export const router = [
         name: "My NFTs",
         path: "profile/myNFTs",
         element: MyNFTs,
+        private: true,
+    },
+    {
+        name: "sales",
+        path: "profile/sales",
+        element: Sales,
         private: true,
     },
     {

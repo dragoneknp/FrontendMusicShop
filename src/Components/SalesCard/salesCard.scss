@@ -1,0 +1,50 @@
+.salesCard {
+    padding: 24px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    column-gap: 24px;
+    text-align: center;
+    &:last-child {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    &__image {
+        height: 91px;
+        width: 91px;
+        border-radius: 5px;
+        & img {
+            height: 91px;
+            width: 91px;
+            border-radius: 5px;
+        }
+    }
+    &__section {
+        word-wrap: break-word;
+        display: grid;
+        grid-auto-flow: column;
+    }
+    &__description {
+        text-align: left;
+        width: 200px;
+    }
+    &__header {
+        font-weight: bold;
+        font-size: 18px;
+        margin: 0 0 12px 0;
+    }
+    &__purchasedBy {
+        margin: 12px 0 0 0;
+    }
+    &__date {
+        font-weight: bold;
+        font-size: 18px;
+    }
+    &__edition {
+        font-weight: bold;
+        font-size: 18px;
+    }
+    &__proceeds {
+        font-weight: bold;
+        font-size: 18px;
+    }
+}

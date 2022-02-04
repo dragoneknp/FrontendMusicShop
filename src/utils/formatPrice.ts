@@ -3,7 +3,7 @@ const formatPrice = (price: string): string => {
     let newString: string = "";
     let index = 1;
     for (let char of price) {
-        if (index % 3 === 0) {
+        if (index % 3 === 0 && price.length > 3) {
             newString += char;
             newString += ",";
         } else {

@@ -1,0 +1,43 @@
+.salesMain {
+    background: #101029;
+
+    padding: 104px 0 160px 0;
+}
+.salesMain {
+    &__container {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 1fr 3fr;
+        column-gap: 64px;
+    }
+    &__content {
+        margin: 64px 0 0 0;
+    }
+    &__header {
+        font-weight: bold;
+        font-size: 30px;
+        margin: 0 0 32px 0;
+    }
+    &__description {
+        margin: 0 0 16px 0;
+    }
+    &__alert {
+        & span {
+            color: #5b00fb;
+        }
+    }
+    &-headers {
+        &__item:first-child {
+            text-align: left;
+        }
+    }
+    &__headers {
+        margin: 36px 0 0 0;
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr 1fr;
+        text-align: center;
+        column-gap: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 16px 0;
+    }
+}

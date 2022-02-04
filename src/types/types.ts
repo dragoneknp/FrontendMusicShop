@@ -44,6 +44,15 @@ export interface CardDetails extends Omit<Card, "picture"> {
     creator: string;
 }
 
+export interface SalesCardProps
+    extends Pick<CardDetails, "header" | "editionOf" | "collectionId"> {
+    picture: string;
+    purchasedBy: string;
+    date: string;
+    proceeds: number;
+    id: string;
+}
+
 export interface UserProps {
     firstName: string;
     lastName: string;
