@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
+import { useError } from "../../Hooks/useError";
 import { fetchCards } from "../../Store/ActionCreators/cardAction";
 import DropDown from "../DropDown/dropDown";
 import GridOfCards from "../GridOfCards/gridOfCards";
@@ -13,7 +14,7 @@ const DiscoverMainContent = () => {
         dispatch(fetchCards());
     }, []);
     const [isGrid, changeGrid] = useState(true);
-
+    useError(error);
     const handleClick = () => {
         changeGrid(!isGrid);
     };

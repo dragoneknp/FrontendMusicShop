@@ -55,5 +55,8 @@ export const loginSlice = createSlice({
                 joinedAt: "",
             };
         },
+        changeErrorStatus(state, action: PayloadAction<string>) {
+            state.error = action.payload;
+        },
     },
 });

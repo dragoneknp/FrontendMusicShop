@@ -21,5 +21,8 @@ export const fetchAlbumCardDetails =
             dispatch(
                 albumCardDetailsSlice.actions.albumCardDetailsFetchingFailed(e)
             );
+            setTimeout(() => {
+                dispatch(albumCardDetailsSlice.actions.changeErrorStatus(""));
+            }, 2000);
         }
     };

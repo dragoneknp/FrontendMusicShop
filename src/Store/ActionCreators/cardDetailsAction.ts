@@ -20,5 +20,8 @@ export const fetchCardDetails =
             );
         } catch (e: any) {
             dispatch(cardDetailsSlice.actions.cardDetailsFetchingFailed(e));
+            setTimeout(() => {
+                dispatch(cardDetailsSlice.actions.changeErrorStatus(""));
+            }, 2000);
         }
     };

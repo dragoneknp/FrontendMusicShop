@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
+import { useError } from "../../Hooks/useError";
 import { fetchMyBids } from "../../Store/ActionCreators/myBidsAction";
 import { getToken } from "../../utils/getToken";
 import GridOfCards from "../GridOfCards/gridOfCards";
@@ -16,6 +17,7 @@ const MyBidsMainContent = () => {
     useEffect(() => {
         dispatch(fetchMyBids(getToken()));
     }, []);
+    useError(error);
     return (
         <main className="myBidsMain">
             <div className="myBidsMain__container container">

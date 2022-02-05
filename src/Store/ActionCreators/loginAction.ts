@@ -35,5 +35,8 @@ export const loginUser =
             );
         } catch (e: any) {
             dispatch(loginSlice.actions.loginFailed(e));
+            setTimeout(() => {
+                dispatch(loginSlice.actions.changeErrorStatus(""));
+            }, 2000);
         }
     };

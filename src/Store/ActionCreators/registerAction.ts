@@ -29,5 +29,8 @@ export const registerUser =
             dispatch(registerSlice.actions.registerSuccess());
         } catch (e: any) {
             dispatch(registerSlice.actions.registerFailed(e));
+            setTimeout(() => {
+                dispatch(registerSlice.actions.changeErrorStatus(""));
+            }, 2000);
         }
     };

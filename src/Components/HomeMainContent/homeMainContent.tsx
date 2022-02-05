@@ -4,12 +4,14 @@ import "./homeMainContent.scss";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchCards } from "../../Store/ActionCreators/cardAction";
 import Loader from "../Loader/loader";
+import { useError } from "../../Hooks/useError";
 const HomeMainContent = (props: { reference: React.Ref<HTMLDivElement> }) => {
     const dispatch = useAppDispatch();
     const { cards, isLoading, error } = useAppSelector((state) => state.card);
     useEffect(() => {
         dispatch(fetchCards());
     }, []);
+    useError(error);
     const [isActive, changeActive] = useState({
         All: true,
         Audio: false,

@@ -15,5 +15,8 @@ export const fetchMyNFTs = (token: string) => async (dispatch: AppDispatch) => {
         dispatch(myNFTsSlice.actions.myNFTsFetchingSuccess(response.data));
     } catch (e: any) {
         dispatch(myNFTsSlice.actions.myNFTsFetchingFailed(e));
+        setTimeout(() => {
+            dispatch(myNFTsSlice.actions.changeErrorStatus(""));
+        }, 2000);
     }
 };

@@ -27,5 +27,8 @@ export const albumCardSlice = createSlice({
             state.isLoading = false;
             state.error = action.payload;
         },
+        changeErrorStatus(state, action: PayloadAction<string>) {
+            state.error = action.payload;
+        },
     },
 });

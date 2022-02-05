@@ -10,5 +10,8 @@ export const fetchCards = () => async (dispatch: AppDispatch) => {
         dispatch(cardSlice.actions.cardsFetchingSuccess(response.data));
     } catch (e: any) {
         dispatch(cardSlice.actions.cardsFetchingFailed(e.message));
+        setTimeout(() => {
+            dispatch(cardSlice.actions.changeErrorStatus(""));
+        }, 2000);
     }
 };

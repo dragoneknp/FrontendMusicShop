@@ -14,5 +14,8 @@ export const fetchMyBids = (token: string) => async (dispatch: AppDispatch) => {
         dispatch(myBidsSlice.actions.myBidsFetchingSuccess(response.data));
     } catch (e: any) {
         dispatch(myBidsSlice.actions.myBidsFetchingFailed(e));
+        setTimeout(() => {
+            dispatch(myBidsSlice.actions.changeErrorStatus(""));
+        }, 2000);
     }
 };

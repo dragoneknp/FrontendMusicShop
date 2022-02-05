@@ -16,19 +16,22 @@ export const myBidsSlice = createSlice({
     initialState,
     reducers: {
         myBidsFetching(state) {
-          state.isLoading = true;
-          state.error = "";
-          state.cards = [];
+            state.isLoading = true;
+            state.error = "";
+            state.cards = [];
         },
-        myBidsFetchingSuccess(state, action : PayloadAction<Card[]>){
-          state.isLoading = false;
-          state.error = "";
-          state.cards = action.payload;
+        myBidsFetchingSuccess(state, action: PayloadAction<Card[]>) {
+            state.isLoading = false;
+            state.error = "";
+            state.cards = action.payload;
         },
-        myBidsFetchingFailed(state, action : PayloadAction<string>){
-          state.isLoading = false;
-          state.error = action.payload;
-          state.cards = [];
-        }
+        myBidsFetchingFailed(state, action: PayloadAction<string>) {
+            state.isLoading = false;
+            state.error = action.payload;
+            state.cards = [];
+        },
+        changeErrorStatus(state, action: PayloadAction<string>) {
+            state.error = action.payload;
+        },
     },
 });

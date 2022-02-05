@@ -12,5 +12,8 @@ export const fetchAlbumCards = () => async (dispatch: AppDispatch) => {
         dispatch(albumCardSlice.actions.cardsFetchingSuccess(response.data));
     } catch (e: any) {
         dispatch(albumCardSlice.actions.cardsFetchingFailed(e.message));
+        setTimeout(() => {
+            dispatch(albumCardSlice.actions.changeErrorStatus(""));
+        }, 2000);
     }
 };

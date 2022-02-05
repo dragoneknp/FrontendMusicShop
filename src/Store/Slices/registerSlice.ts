@@ -29,5 +29,8 @@ export const registerSlice = createSlice({
             state.error = action.payload;
             state.isRegister = false;
         },
+        changeErrorStatus(state, action: PayloadAction<string>) {
+            state.error = action.payload;
+        },
     },
 });

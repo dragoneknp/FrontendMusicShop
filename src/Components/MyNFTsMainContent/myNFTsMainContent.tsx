@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
+import { useError } from "../../Hooks/useError";
 import { fetchMyNFTs } from "../../Store/ActionCreators/myNFTsAction";
 import { getToken } from "../../utils/getToken";
 import Loader from "../Loader/loader";
@@ -13,6 +14,7 @@ const MyNFTsMainContent = () => {
     const { isLoading, error, walletCards } = useAppSelector(
         (store) => store.myNFTs
     );
+    useError(error);
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(fetchMyNFTs(getToken()));

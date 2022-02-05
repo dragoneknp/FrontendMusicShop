@@ -6,7 +6,7 @@ interface myNFTsProps {
     walletCards: WalletCardProps[];
 }
 
-const initialState : myNFTsProps = {
+const initialState: myNFTsProps = {
     error: "",
     isLoading: false,
     walletCards: [],
@@ -16,21 +16,23 @@ export const myNFTsSlice = createSlice({
     name: "myNFTs",
     initialState,
     reducers: {
-      myNFTsFetching(state) {
-        state.isLoading = true;
-        state.error = "";
-        state.walletCards = []
-      },
-      myNFTsFetchingSuccess(state, action: PayloadAction<WalletCardProps[]>){
-        state.isLoading = false;
-        state.error = "";
-        state.walletCards = action.payload;
-      },
-      myNFTsFetchingFailed(state, action: PayloadAction<string>){
-        state.isLoading = false;
-        state.error = action.payload
-        state.walletCards = [];
-      }
-
+        myNFTsFetching(state) {
+            state.isLoading = true;
+            state.error = "";
+            state.walletCards = [];
+        },
+        myNFTsFetchingSuccess(state, action: PayloadAction<WalletCardProps[]>) {
+            state.isLoading = false;
+            state.error = "";
+            state.walletCards = action.payload;
+        },
+        myNFTsFetchingFailed(state, action: PayloadAction<string>) {
+            state.isLoading = false;
+            state.error = action.payload;
+            state.walletCards = [];
+        },
+        changeErrorStatus(state, action: PayloadAction<string>) {
+            state.error = action.payload;
+        },
     },
 });
