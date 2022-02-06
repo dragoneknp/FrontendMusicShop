@@ -7,20 +7,25 @@ import GridOfCards from "../GridOfCards/gridOfCards";
 import Label from "../Label/label";
 import Loader from "../Loader/loader";
 import "./marketplaceMainContent.scss";
+
 const MarketplaceMainContent = () => {
     const dispatch = useAppDispatch();
     const { cards, isLoading, error } = useAppSelector(
         (state) => state.albumCard
     );
+
     useEffect(() => {
         dispatch(fetchAlbumCards());
-    }, []);
+    }, [dispatch]);
+
     useError(error);
+
     const [isGrid, changeGrid] = useState(true);
 
     const handleClick = () => {
         changeGrid(!isGrid);
     };
+
     return (
         <main className="marketplaceMain">
             <Label
@@ -98,4 +103,5 @@ const MarketplaceMainContent = () => {
         </main>
     );
 };
+
 export default MarketplaceMainContent;

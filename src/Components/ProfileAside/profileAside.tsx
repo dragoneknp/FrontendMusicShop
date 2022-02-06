@@ -2,11 +2,13 @@ import "./profileAside.scss";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../Hooks/redux";
 import { logout } from "../../Store/ActionCreators/logoutAction";
+
 interface ProfileAsideProps {
     avatar?: string;
     name: string;
     joinedAt: string;
 }
+
 const ListItem = ({
     icon,
     label,
@@ -38,11 +40,13 @@ const ListItem = ({
         </li>
     );
 };
+
 const ProfileAside = ({ avatar, name, joinedAt }: ProfileAsideProps) => {
     const dispatch = useAppDispatch();
     const handleLogoutClick = () => {
         dispatch(logout());
     };
+
     return (
         <aside className="aside">
             <div className="aside__header">
@@ -84,4 +88,5 @@ const ProfileAside = ({ avatar, name, joinedAt }: ProfileAsideProps) => {
         </aside>
     );
 };
+
 export default ProfileAside;

@@ -3,10 +3,12 @@ import { useAppSelector } from "../../Hooks/redux";
 import Input from "../Input/input";
 import ProfileAside from "../ProfileAside/profileAside";
 import "./profileMainContent.scss";
+
 const ProfileMainContent = () => {
     const {
         userData: { firstName, lastName, joinedAt },
     } = useAppSelector((store) => store.login);
+
     const [userData, changeData] = useState({
         firstName: "",
         lastName: "",
@@ -15,9 +17,11 @@ const ProfileMainContent = () => {
         displayName: "",
         password: "",
     });
+
     const handleChange = (form: string) => {
         return (value: string) => changeData({ ...userData, [form]: value });
     };
+
     return (
         <main className="profileMain">
             <div className="profileMain__container container">
@@ -72,4 +76,5 @@ const ProfileMainContent = () => {
         </main>
     );
 };
+
 export default ProfileMainContent;

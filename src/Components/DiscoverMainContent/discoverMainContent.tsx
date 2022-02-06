@@ -7,17 +7,23 @@ import GridOfCards from "../GridOfCards/gridOfCards";
 import Label from "../Label/label";
 import Loader from "../Loader/loader";
 import "./discoverMainContent.scss";
+
 const DiscoverMainContent = () => {
     const dispatch = useAppDispatch();
     const { cards, isLoading, error } = useAppSelector((state) => state.card);
+
     useEffect(() => {
         dispatch(fetchCards());
-    }, []);
+    }, [dispatch]);
+
     const [isGrid, changeGrid] = useState(true);
+
     useError(error);
+
     const handleClick = () => {
         changeGrid(!isGrid);
     };
+
     return (
         <main className="discoverMain">
             <Label
@@ -95,4 +101,5 @@ const DiscoverMainContent = () => {
         </main>
     );
 };
+
 export default DiscoverMainContent;

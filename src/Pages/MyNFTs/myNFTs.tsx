@@ -1,5 +1,6 @@
 import PageLayout from "../../Layout/pageLayout";
 import MyNFTsMainContent from "../../Components/MyNFTsMainContent/myNFTsMainContent";
+
 const MyNFTs = () => {
     return (
         <PageLayout page={"myNFTs"}>
@@ -7,4 +8,5 @@ const MyNFTs = () => {
         </PageLayout>
     );
 };
+
 export default MyNFTs;

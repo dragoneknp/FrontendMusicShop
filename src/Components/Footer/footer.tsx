@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import "./footer.scss";
+
 const Footer = () => {
     return (
         <footer className="footer">
@@ -65,7 +66,6 @@ const Footer = () => {
                             </ul>
                         </div>
                     </div>
-
                     <div className="footer__topic footer-topic">
                         <div className="footer-topic__header">Legalese</div>
                         <div className="footer-topic__content">
@@ -98,4 +98,5 @@ const Footer = () => {
         </footer>
     );
 };
+
 export default memo(Footer);

@@ -1,7 +1,6 @@
 import React from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../Hooks/redux";
-import Home from "../Pages/Home/home";
 import { loginUser } from "../Store/ActionCreators/loginAction";
 
 interface RouteProps {
@@ -10,12 +9,15 @@ interface RouteProps {
     element: React.FC;
     private: boolean;
 }
+
 interface AuthLayoutProps {
     router: RouteProps[];
 }
+
 const AuthLayout = ({ router }: AuthLayoutProps) => {
     const { isLogin } = useAppSelector((store) => store.login);
     const dispatch = useAppDispatch();
+
     if (!isLogin) {
         const token = localStorage.getItem("token");
         const data = token?.split(";");
@@ -54,4 +56,5 @@ const AuthLayout = ({ router }: AuthLayoutProps) => {
         </Routes>
     );
 };
+
 export default AuthLayout;

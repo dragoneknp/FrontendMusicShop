@@ -7,6 +7,7 @@ interface LoginProps {
     isLogin: boolean;
     userData: UserProps;
 }
+
 const initialState: LoginProps = {
     error: "",
     isLoading: false,
@@ -21,6 +22,7 @@ const initialState: LoginProps = {
         joinedAt: "",
     },
 };
+
 export const loginSlice = createSlice({
     name: "login",
     initialState,

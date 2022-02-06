@@ -7,22 +7,25 @@ import "./header.scss";
 
 const Header = () => {
     const dispatch = useAppDispatch();
-    const handleLogoutClick = () => {
-        dispatch(logout());
-    };
     const { isLogin } = useAppSelector((store) => store.login);
+
+    const location = useLocation();
+
     const [isActive, changeActive] = useState({
         Home: false,
         Discover: false,
         Marketplace: false,
     });
-
     const [isOpen, changeOpen] = useState(false);
+
     const handleClick = () => {
         changeOpen(!isOpen);
     };
 
-    let location = useLocation();
+    const handleLogoutClick = () => {
+        dispatch(logout());
+    };
+
     useEffect(() => {
         if (location.pathname !== "/") {
             changeActive({
@@ -40,6 +43,7 @@ const Header = () => {
             });
         }
     }, [location]);
+    
     return (
         <header className="header">
             <div className="header__container container">
@@ -81,7 +85,6 @@ const Header = () => {
                         alt="avatar"
                         className="avatar__icon"
                     />
-
                     <div
                         className={`header__dropdown ${isOpen ? "active" : ""}`}
                     >
@@ -123,4 +126,5 @@ const Header = () => {
         </header>
     );
 };
+
 export default Header;

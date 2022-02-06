@@ -3,24 +3,28 @@ import { NFTTypes } from "../../types/types";
 import "./cardDetailsMainContent.scss";
 import Label from "../Label/label";
 import { formatPrice } from "../../utils/formatPrice";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Slider from "../Slider/slider";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchCardDetails } from "../../Store/ActionCreators/cardDetailsAction";
 import Loader from "../Loader/loader";
 import { useError } from "../../Hooks/useError";
+
 const CardDetailsMainContent = () => {
     const location = useLocation();
     const { id } = useParams();
+
     const dispatch = useAppDispatch();
-    const history = useNavigate();
 
     const data = useAppSelector((state) => state.cardDetails);
     let { isLoading, error, cardDetails } = data;
+
     useEffect(() => {
         dispatch(fetchCardDetails(id as string));
-    }, []);
+    }, [dispatch, id]);
+
     useError(error);
+
     return (
         <main className="cardDetailsMain">
             <Label
@@ -129,4 +133,5 @@ const CardDetailsMainContent = () => {
         </main>
     );
 };
+
 export default CardDetailsMainContent;

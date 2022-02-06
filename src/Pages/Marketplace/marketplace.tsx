@@ -1,5 +1,6 @@
 import MarketplaceMainContent from "../../Components/MarketplaceMainContent/marketplaceMainContent";
 import PageLayout from "../../Layout/pageLayout";
+
 const Marketplace = () => {
     return (
         <PageLayout page={"marketplace"}>
@@ -7,4 +8,5 @@ const Marketplace = () => {
         </PageLayout>
     );
 };
+
 export default Marketplace;

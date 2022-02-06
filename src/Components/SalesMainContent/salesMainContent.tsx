@@ -1,8 +1,8 @@
 import { useAppSelector } from "../../Hooks/redux";
 import ProfileAside from "../ProfileAside/profileAside";
 import SalesCard from "../SalesCard/salesCard";
-
 import "./salesMainContent.scss";
+
 const SalesMainContent = () => {
     const {
         userData: { firstName, lastName, joinedAt },
@@ -51,4 +51,5 @@ const SalesMainContent = () => {
         </main>
     );
 };
+
 export default SalesMainContent;

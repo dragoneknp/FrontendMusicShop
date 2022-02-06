@@ -1,5 +1,6 @@
 import TermsMainContent from "../../Components/TermsMainContent/termsMainContent";
 import PageLayout from "../../Layout/pageLayout";
+
 const Terms = () => {
     return (
         <PageLayout page={"terms"}>
@@ -7,4 +8,5 @@ const Terms = () => {
         </PageLayout>
     );
 };
+
 export default Terms;

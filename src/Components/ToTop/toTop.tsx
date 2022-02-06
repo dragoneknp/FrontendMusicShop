@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./toTop.scss";
+
 const ToTop = () => {
     const [Yoffset, setYOffset] = useState(0);
 
@@ -19,4 +20,5 @@ const ToTop = () => {
         <></>
     );
 };
+
 export default ToTop;

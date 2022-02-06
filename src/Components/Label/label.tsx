@@ -1,14 +1,17 @@
 import React from "react";
 import "./label.scss";
 import BreadCrumbs from "../BreadCrumbs/breadCrumbs";
+
 interface BreadCrumb {
     title: string;
     path?: string;
 }
+
 interface LabelProps {
     header: string;
     breadCrumbs: BreadCrumb[];
 }
+
 const Label = (props: LabelProps) => {
     return (
         <div className="label">
@@ -21,4 +24,5 @@ const Label = (props: LabelProps) => {
         </div>
     );
 };
+
 export default Label;

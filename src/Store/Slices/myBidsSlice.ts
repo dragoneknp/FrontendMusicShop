@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Card } from "../../types/types";
+
 interface MyBidsProps {
     isLoading: boolean;
     error: string;
@@ -11,6 +12,7 @@ const initialState: MyBidsProps = {
     error: "",
     cards: [],
 };
+
 export const myBidsSlice = createSlice({
     name: "myBids",
     initialState,

@@ -1,4 +1,5 @@
 import "./loader.scss";
+
 const Loader = () => {
     return (
         <div className="lds-ring">
@@ -9,4 +10,5 @@ const Loader = () => {
         </div>
     );
 };
+
 export default Loader;

@@ -1,5 +1,6 @@
 import React from "react";
 import "./errorMainContent.scss";
+
 const ErrorMainContent = () => {
     return (
         <main className="errorMain">
@@ -13,4 +14,5 @@ const ErrorMainContent = () => {
         </main>
     );
 };
+
 export default ErrorMainContent;

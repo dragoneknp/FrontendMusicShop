@@ -1,14 +1,16 @@
 import Label from "../Label/label";
 import "./termsMainContent.scss";
+
+const Rule = (props: { text: string; header: string; item: number }) => {
+    return (
+        <section className="termsMain__rule termsMain-rule">
+            <div className="termsMain-rule__header">{`${props.item}.${props.header}`}</div>
+            <div className="termsMain-rule__text">{props.text}</div>
+        </section>
+    );
+};
+
 const TermsMainContent = () => {
-    const Rule = (props: { text: string; header: string; item: number }) => {
-        return (
-            <section className="termsMain__rule termsMain-rule">
-                <div className="termsMain-rule__header">{`${props.item}.${props.header}`}</div>
-                <div className="termsMain-rule__text">{props.text}</div>
-            </section>
-        );
-    };
     return (
         <main className="termsMain">
             <Label
@@ -100,4 +102,5 @@ We will not be liable or responsible to you, nor be deemed to have defaulted und
         </main>
     );
 };
+
 export default TermsMainContent;

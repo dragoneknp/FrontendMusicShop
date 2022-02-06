@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 interface RegisterState {
     error: string;
     isLoading: boolean;
@@ -10,6 +11,7 @@ const initialState: RegisterState = {
     isLoading: false,
     isRegister: false,
 };
+
 export const registerSlice = createSlice({
     name: "register",
     initialState,

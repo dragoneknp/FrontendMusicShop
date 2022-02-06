@@ -10,7 +10,6 @@ const Card = (props: CardProps) => {
             <div className="card__picture">
                 <img src={props.picture} alt="Artist" />
             </div>
-
             <div className="card__header">{props.performer}</div>
             {(props.bidding && props.minBid && props.currentBid && (
                 <div className="card__minBid">
@@ -50,4 +49,5 @@ const Card = (props: CardProps) => {
         </div>
     );
 };
+
 export default memo(Card);

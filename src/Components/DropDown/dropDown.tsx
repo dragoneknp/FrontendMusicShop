@@ -1,21 +1,27 @@
 import React, { memo, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import "./dropDown.scss";
+
 interface DropDownProps {
     defaultValue: string;
     values: string[];
 }
+
 const DropDown = (props: DropDownProps) => {
     const [isOpen, changeOpened] = useState(false);
     const [filter, changeFilter] = useState(props.defaultValue);
+
     const handleOpenClick = () => {
         changeOpened(!isOpen);
     };
+
     const handleFilterClick = (value: string) => {
         return () => {
             changeFilter(value);
             handleOpenClick();
         };
     };
+
     return (
         <div className="dropDown">
             <div
@@ -30,7 +36,7 @@ const DropDown = (props: DropDownProps) => {
                         {props.values.map((item) => (
                             <li
                                 className="dropDown-menu__item"
-                                key={`${item}_${Math.random() * 10000}`}
+                                key={uuidv4()}
                                 onClick={handleFilterClick(item)}
                             >
                                 {item}
@@ -42,4 +48,5 @@ const DropDown = (props: DropDownProps) => {
         </div>
     );
 };
+
 export default memo(DropDown);

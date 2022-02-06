@@ -8,4 +8,5 @@ const MarketplaceListenings = () => {
         </PageLayout>
     );
 };
+
 export default MarketplaceListenings;

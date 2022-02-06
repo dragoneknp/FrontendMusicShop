@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { loginUser } from "../../Store/ActionCreators/loginAction";
@@ -6,6 +6,7 @@ import { registerUser } from "../../Store/ActionCreators/registerAction";
 import Input from "../Input/input";
 import Label from "../Label/label";
 import "./loginMainContent.scss";
+
 const RegistrationInput = (props: {
     header: string;
     value: string;
@@ -21,6 +22,7 @@ const RegistrationInput = (props: {
         </div>
     );
 };
+
 const LoginMainContent = () => {
     const [isRemembered, changeRemembered] = useState(false);
 
@@ -31,6 +33,20 @@ const LoginMainContent = () => {
     const login = useAppSelector((store) => store.login);
 
     const history = useNavigate();
+
+    const [loginForm, changeLoginForm] = useState({
+        email: "",
+        password: "",
+    });
+
+    const [registerForm, changeRegisterForm] = useState({
+        firstName: "",
+        lastName: "",
+        emailAdress: "",
+        phoneNumber: "",
+        displayName: "",
+        password: "",
+    });
 
     const handleRegisterClick = () => {
         const {
@@ -64,20 +80,6 @@ const LoginMainContent = () => {
         changeRemembered(!isRemembered);
     };
 
-    const [loginForm, changeLoginForm] = useState({
-        email: "",
-        password: "",
-    });
-
-    const [registerForm, changeRegisterForm] = useState({
-        firstName: "",
-        lastName: "",
-        emailAdress: "",
-        phoneNumber: "",
-        displayName: "",
-        password: "",
-    });
-
     useEffect(() => {
         if (login.isLogin) {
             changeLoginForm({
@@ -86,7 +88,7 @@ const LoginMainContent = () => {
             });
             history("/profile");
         }
-    }, [login.isLogin]);
+    }, [login.isLogin, history]);
 
     useEffect(() => {
         if (register.isRegister) {
@@ -237,4 +239,5 @@ const LoginMainContent = () => {
         </main>
     );
 };
+
 export default LoginMainContent;

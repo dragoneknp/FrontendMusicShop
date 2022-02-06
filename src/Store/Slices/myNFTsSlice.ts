@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { WalletCardProps } from "../../types/types";
+
 interface myNFTsProps {
     isLoading: boolean;
     error: string;

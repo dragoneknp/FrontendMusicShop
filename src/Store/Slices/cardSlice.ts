@@ -1,15 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Card } from "../../types/types";
+
 interface CardState {
     cards: Card[];
     error: string;
     isLoading: boolean;
 }
+
 const initialState: CardState = {
     error: "",
     isLoading: false,
     cards: [],
 };
+
 export const cardSlice = createSlice({
     name: "card",
     initialState,

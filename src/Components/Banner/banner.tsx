@@ -1,10 +1,13 @@
 import React, { memo, useEffect, useRef, useState } from "react";
 import "./banner.scss";
+
 const Banner = (props: { reference: React.RefObject<HTMLDivElement> }) => {
     const [ref, changeRef] = useState(useRef<HTMLDivElement>(null));
+
     useEffect(() => {
         changeRef(props.reference);
     }, [props.reference]);
+
     return (
         <div className="banner">
             <div className="banner__container container">
@@ -27,4 +30,5 @@ const Banner = (props: { reference: React.RefObject<HTMLDivElement> }) => {
         </div>
     );
 };
+
 export default memo(Banner);

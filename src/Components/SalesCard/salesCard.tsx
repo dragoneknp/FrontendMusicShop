@@ -37,4 +37,5 @@ const SalesCard: FC<SalesCardProps> = ({
         </div>
     );
 };
+
 export default SalesCard;

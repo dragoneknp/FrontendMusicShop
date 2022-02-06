@@ -1,5 +1,6 @@
 import PageLayout from "../../Layout/pageLayout";
 import FAQMainContent from "../../Components/FAQMainContent/faqMainContent";
+
 const FAQ = () => {
     return (
         <PageLayout page={"faq"}>
@@ -7,4 +8,5 @@ const FAQ = () => {
         </PageLayout>
     );
 };
+
 export default FAQ;

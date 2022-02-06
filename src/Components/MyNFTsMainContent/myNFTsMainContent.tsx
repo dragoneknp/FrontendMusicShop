@@ -7,18 +7,24 @@ import Loader from "../Loader/loader";
 import ProfileAside from "../ProfileAside/profileAside";
 import WalletCard from "../WalletCard/walletCard";
 import "./myNFTsMainContent.scss";
+
 const MyNFTsMainContent = () => {
+    const dispatch = useAppDispatch();
+
     const {
         userData: { firstName, lastName, joinedAt },
     } = useAppSelector((store) => store.login);
+
     const { isLoading, error, walletCards } = useAppSelector(
         (store) => store.myNFTs
     );
-    useError(error);
-    const dispatch = useAppDispatch();
+
     useEffect(() => {
         dispatch(fetchMyNFTs(getToken()));
-    }, []);
+    }, [dispatch]);
+
+    useError(error);
+
     return (
         <main className="myNFTsMain">
             <div className="myNFTsMain__container container">
@@ -48,4 +54,5 @@ const MyNFTsMainContent = () => {
         </main>
     );
 };
+
 export default MyNFTsMainContent;

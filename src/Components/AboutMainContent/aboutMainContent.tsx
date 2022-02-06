@@ -1,5 +1,6 @@
 import Label from "../Label/label";
 import "./aboutMainContent.scss";
+
 const AboutMainContent = () => {
     return (
         <main className="aboutMain">
@@ -56,4 +57,5 @@ const AboutMainContent = () => {
         </main>
     );
 };
+
 export default AboutMainContent;

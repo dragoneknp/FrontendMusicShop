@@ -1,5 +1,6 @@
 import DiscoverMainContent from "../../Components/DiscoverMainContent/discoverMainContent";
 import PageLayout from "../../Layout/pageLayout";
+
 const Discover = () => {
     return (
         <PageLayout page={"discover"}>
@@ -7,4 +8,5 @@ const Discover = () => {
         </PageLayout>
     );
 };
+
 export default Discover;

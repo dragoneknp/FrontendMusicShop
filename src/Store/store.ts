@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { albumCardDetailsSlice } from "./Slices/albumCardDetailsSlice";
 import { albumCardSlice } from "./Slices/albumCardSlice";
 import { cardDetailsSlice } from "./Slices/cardDetailsSlice";
@@ -7,6 +7,7 @@ import { loginSlice } from "./Slices/loginSlice";
 import { myBidsSlice } from "./Slices/myBidsSlice";
 import { myNFTsSlice } from "./Slices/myNFTsSlice";
 import { registerSlice } from "./Slices/registerSlice";
+
 export const store = configureStore({
     reducer: {
         card: cardSlice.reducer,

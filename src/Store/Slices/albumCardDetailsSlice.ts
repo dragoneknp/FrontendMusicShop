@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { MarketPlaceCard } from "../../types/types";
+
 interface CardState {
     card: MarketPlaceCard;
     error: string;
     isLoading: boolean;
 }
+
 const initialState: CardState = {
     card: {
         performer: "Come down official music",
@@ -27,6 +29,7 @@ const initialState: CardState = {
     error: "",
     isLoading: false,
 };
+
 export const albumCardDetailsSlice = createSlice({
     name: "albumCardDetails",
     reducers: {
@@ -49,7 +52,6 @@ export const albumCardDetailsSlice = createSlice({
         changeErrorStatus(state, action: PayloadAction<string>) {
             state.error = action.payload;
         },
-        
     },
     initialState,
 });

@@ -7,5 +7,5 @@ export const useError = (error: string) => {
         if (error) {
             history("/error");
         }
-    }, [error]);
+    }, [error, history]);
 };

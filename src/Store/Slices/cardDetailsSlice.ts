@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CardDetails, NFTTypes } from "../../types/types";
+
 interface CardState {
     error: string;
     isLoading: boolean;
     cardDetails: CardDetails;
 }
+
 const initialState: CardState = {
     error: "",
     isLoading: false,
@@ -31,6 +33,7 @@ const initialState: CardState = {
         creator: "Best Music",
     },
 };
+
 export const cardDetailsSlice = createSlice({
     name: "cardDetails",
     initialState,

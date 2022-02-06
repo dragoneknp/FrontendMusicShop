@@ -8,4 +8,5 @@ const PastSales = () => {
         </PageLayout>
     );
 };
+
 export default PastSales;

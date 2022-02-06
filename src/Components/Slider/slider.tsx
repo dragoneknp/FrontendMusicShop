@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { v4 as uuidv4 } from "uuid";
@@ -52,4 +52,5 @@ const Slider = (props: { pictures: string[] }) => {
         </div>
     );
 };
+
 export default Slider;

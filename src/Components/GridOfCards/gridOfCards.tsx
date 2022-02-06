@@ -2,12 +2,14 @@ import React, { memo } from "react";
 import "./gridOfCards.scss";
 import Card from "../Card/card";
 import { Card as ICard } from "../../types/types";
+
 interface GridOfCardsProps {
     columns: number;
     rows: number;
     cards: ICard[];
     to: string;
 }
+
 const GridOfCards = (props: GridOfCardsProps) => {
     return (
         <div
@@ -18,9 +20,10 @@ const GridOfCards = (props: GridOfCardsProps) => {
             }}
         >
             {props.cards.slice(0, props.columns * props.rows).map((card) => {
-                return <Card {...card} key={card.id} to={props.to}/>;
+                return <Card {...card} key={card.id} to={props.to} />;
             })}
         </div>
     );
 };
+
 export default memo(GridOfCards);

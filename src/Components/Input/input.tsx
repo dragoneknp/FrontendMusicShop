@@ -1,10 +1,12 @@
 import "./input.scss";
+
 interface InputProps {
     type?: string;
     value: string;
     header: string;
     setValue: Function;
 }
+
 const Input = (props: InputProps) => {
     return (
         <input
@@ -16,4 +18,5 @@ const Input = (props: InputProps) => {
         />
     );
 };
+
 export default Input;

@@ -1,5 +1,6 @@
 import LoginMainContent from "../../Components/LoginMainContent/loginMainContent";
 import PageLayout from "../../Layout/pageLayout";
+
 const Login = () => {
     return (
         <PageLayout page={"login"}>
@@ -7,4 +8,5 @@ const Login = () => {
         </PageLayout>
     );
 };
+
 export default Login;

@@ -5,19 +5,24 @@ import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchCards } from "../../Store/ActionCreators/cardAction";
 import Loader from "../Loader/loader";
 import { useError } from "../../Hooks/useError";
+
 const HomeMainContent = (props: { reference: React.Ref<HTMLDivElement> }) => {
     const dispatch = useAppDispatch();
     const { cards, isLoading, error } = useAppSelector((state) => state.card);
+
     useEffect(() => {
         dispatch(fetchCards());
-    }, []);
+    }, [dispatch]);
+
     useError(error);
+
     const [isActive, changeActive] = useState({
         All: true,
         Audio: false,
         Artwork: false,
         Video: false,
     });
+
     const handleClick = (item: string) => {
         return () => {
             changeActive({
@@ -29,6 +34,7 @@ const HomeMainContent = (props: { reference: React.Ref<HTMLDivElement> }) => {
             });
         };
     };
+
     return (
         <main className="main">
             <div className="main__container container">
@@ -103,4 +109,5 @@ const HomeMainContent = (props: { reference: React.Ref<HTMLDivElement> }) => {
         </main>
     );
 };
+
 export default HomeMainContent;

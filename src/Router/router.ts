@@ -12,6 +12,7 @@ import Profile from "../Pages/Profile/profile";
 import Terms from "../Pages/Terms/terms";
 import MyNFTs from "../Pages/MyNFTs/myNFTs";
 import Sales from "../Pages/Sales/sales";
+
 export const router = [
     {
         name: "Discover",

@@ -1,5 +1,6 @@
 import ErrorMainContent from "../../Components/ErrorMainContent/errorMainContent";
 import PageLayout from "../../Layout/pageLayout";
+
 const Error = () => {
     return (
         <PageLayout page={"error"}>
@@ -7,4 +8,5 @@ const Error = () => {
         </PageLayout>
     );
 };
+
 export default Error;

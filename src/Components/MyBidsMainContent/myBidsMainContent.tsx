@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { useError } from "../../Hooks/useError";
 import { fetchMyBids } from "../../Store/ActionCreators/myBidsAction";
@@ -8,16 +7,22 @@ import GridOfCards from "../GridOfCards/gridOfCards";
 import Loader from "../Loader/loader";
 import ProfileAside from "../ProfileAside/profileAside";
 import "./myBidsMainContent.scss";
+
 const MyBidsMainContent = () => {
     const {
         userData: { firstName, lastName, joinedAt },
     } = useAppSelector((store) => store.login);
+
     const { isLoading, error, cards } = useAppSelector((store) => store.myBids);
+
     const dispatch = useAppDispatch();
+
     useEffect(() => {
         dispatch(fetchMyBids(getToken()));
-    }, []);
+    }, [dispatch]);
+
     useError(error);
+
     return (
         <main className="myBidsMain">
             <div className="myBidsMain__container container">
@@ -42,4 +47,5 @@ const MyBidsMainContent = () => {
         </main>
     );
 };
+
 export default MyBidsMainContent;

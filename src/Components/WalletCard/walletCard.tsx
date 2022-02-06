@@ -1,5 +1,6 @@
 import { WalletCardProps } from "../../types/types";
 import "./walletCard.scss";
+
 const WalletCard = ({
     count,
     picture,
@@ -30,4 +31,5 @@ const WalletCard = ({
         </div>
     );
 };
+
 export default WalletCard;

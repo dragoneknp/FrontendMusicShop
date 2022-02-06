@@ -1,29 +1,32 @@
 import React, { useState } from "react";
 import Label from "../Label/label";
 import "./faqMainContent.scss";
-const FAQMainContent = () => {
-    const Accordion = ({
-        header,
-        description,
-    }: {
-        header: string;
-        description: string;
-    }) => {
-        const [isOpen, changeOpen] = useState(false);
-        return (
-            <div className="accordion">
-                <button
-                    className={`accordion__header ${isOpen ? "active" : ""}`}
-                    onClick={() => changeOpen(!isOpen)}
-                >
-                    {header}
-                </button>
-                <div className={`accordion__panel ${isOpen ? "active" : ""}`}>
-                    <p>{description}</p>
-                </div>
+
+const Accordion = ({
+    header,
+    description,
+}: {
+    header: string;
+    description: string;
+}) => {
+    const [isOpen, changeOpen] = useState(false);
+
+    return (
+        <div className="accordion">
+            <button
+                className={`accordion__header ${isOpen ? "active" : ""}`}
+                onClick={() => changeOpen(!isOpen)}
+            >
+                {header}
+            </button>
+            <div className={`accordion__panel ${isOpen ? "active" : ""}`}>
+                <p>{description}</p>
             </div>
-        );
-    };
+        </div>
+    );
+};
+
+const FAQMainContent = () => {
     return (
         <main className="faqMain">
             <Label
@@ -76,4 +79,5 @@ const FAQMainContent = () => {
         </main>
     );
 };
+
 export default FAQMainContent;
