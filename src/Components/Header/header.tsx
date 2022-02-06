@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { logout } from "../../Store/ActionCreators/logoutAction";
 import "./header.scss";
 
-const Header = () => {
+const Header = ({ headerRef } : any) => {
     const dispatch = useAppDispatch();
     const { isLogin } = useAppSelector((store) => store.login);
 
@@ -43,9 +43,9 @@ const Header = () => {
             });
         }
     }, [location]);
-    
+
     return (
-        <header className="header">
+        <header className="header" ref={headerRef}>
             <div className="header__container container">
                 <ul className="header__menu header-menu">
                     <li
