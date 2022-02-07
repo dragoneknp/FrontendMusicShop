@@ -1,11 +1,19 @@
 import Label from "../Label/label";
 import "./termsMainContent.scss";
 
-const Rule = (props: { text: string; header: string; item: number }) => {
+const Rule = ({
+    text,
+    header,
+    item,
+}: {
+    text: string;
+    header: string;
+    item: number;
+}) => {
     return (
         <section className="termsMain__rule termsMain-rule">
-            <div className="termsMain-rule__header">{`${props.item}.${props.header}`}</div>
-            <div className="termsMain-rule__text">{props.text}</div>
+            <div className="termsMain-rule__header">{`${item}.${header}`}</div>
+            <div className="termsMain-rule__text">{text}</div>
         </section>
     );
 };

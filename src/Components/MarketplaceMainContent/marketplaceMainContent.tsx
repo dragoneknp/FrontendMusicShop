@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { useError } from "../../Hooks/useError";
+import { useLoading } from "../../Hooks/useLoading";
 import { fetchAlbumCards } from "../../Store/ActionCreators/albumCardAction";
 import { getAlbumCards } from "../../Store/selectors";
 import DropDown from "../DropDown/dropDown";
 import GridOfCards from "../GridOfCards/gridOfCards";
 import Label from "../Label/label";
-import Loader from "../Loader/loader";
 import "./marketplaceMainContent.scss";
 
 const MarketplaceMainContent = () => {
     const dispatch = useAppDispatch();
     const { cards, isLoading, error } = useAppSelector(getAlbumCards);
+    const [isGrid, changeGrid] = useState(true);
+    const [load] = useLoading();
 
     useEffect(() => {
         dispatch(fetchAlbumCards());
     }, [dispatch]);
 
     useError(error);
-
-    const [isGrid, changeGrid] = useState(true);
 
     const handleClick = () => {
         changeGrid(!isGrid);
@@ -65,27 +65,29 @@ const MarketplaceMainContent = () => {
                             />
                         </div>
                     </div>
-                    {isGrid ? (
-                        isLoading ? (
-                            <Loader />
-                        ) : (
-                            <GridOfCards
-                                cards={cards}
-                                columns={3}
-                                rows={1}
-                                to="/marketplace"
-                            />
-                        )
-                    ) : isLoading ? (
-                        <Loader />
-                    ) : (
-                        <GridOfCards
-                            cards={cards}
-                            columns={3}
-                            rows={1}
-                            to="/marketplace"
-                        />
-                    )}
+                    {isGrid
+                        ? load({
+                              flag: isLoading,
+                              component: (
+                                  <GridOfCards
+                                      cards={cards}
+                                      columns={3}
+                                      rows={1}
+                                      to="/marketplace"
+                                  />
+                              ),
+                          })
+                        : load({
+                              flag: isLoading,
+                              component: (
+                                  <GridOfCards
+                                      cards={cards}
+                                      columns={3}
+                                      rows={1}
+                                      to="/marketplace"
+                                  />
+                              ),
+                          })}
                 </section>
                 <div className="marketplaceMain__pagination marketplaceMain-pagination">
                     <div className="marketplaceMain-pagination__prevPage">

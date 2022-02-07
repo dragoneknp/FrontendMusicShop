@@ -26,13 +26,9 @@ const RegistrationInput = (props: {
 
 const LoginMainContent = () => {
     const [isRemembered, changeRemembered] = useState(false);
-
     const dispatch = useAppDispatch();
-
     const register = useAppSelector(getRegister);
-
     const login = useAppSelector(getLogin);
-
     const history = useNavigate();
 
     const [loginForm, changeLoginForm] = useState({

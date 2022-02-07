@@ -1,12 +1,16 @@
 import React, { memo, useEffect, useRef, useState } from "react";
 import "./banner.scss";
 
-const Banner = (props: { reference: React.RefObject<HTMLDivElement> }) => {
+const Banner = ({
+    reference,
+}: {
+    reference: React.RefObject<HTMLDivElement>;
+}) => {
     const [ref, changeRef] = useState(useRef<HTMLDivElement>(null));
 
     useEffect(() => {
-        changeRef(props.reference);
-    }, [props.reference]);
+        changeRef(reference);
+    }, [reference]);
 
     return (
         <div className="banner">

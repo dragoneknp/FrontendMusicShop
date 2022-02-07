@@ -8,9 +8,7 @@ interface BreadCrumb {
     path?: string;
 }
 
-const BreadCrumbs = (props: { breadCrumbs: BreadCrumb[] }) => {
-    const { breadCrumbs } = props;
-
+const BreadCrumbs = ({ breadCrumbs }: { breadCrumbs: BreadCrumb[] }) => {
     return (
         <div className="breadCrumbs">
             {breadCrumbs.map((item) => (

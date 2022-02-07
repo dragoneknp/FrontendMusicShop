@@ -1,22 +1,21 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { useError } from "../../Hooks/useError";
+import { useLoading } from "../../Hooks/useLoading";
 import { fetchMyNFTs } from "../../Store/ActionCreators/myNFTsAction";
 import { getLogin, getNFTs } from "../../Store/selectors";
 import { getToken } from "../../utils/getToken";
-import Loader from "../Loader/loader";
 import ProfileAside from "../ProfileAside/profileAside";
 import WalletCard from "../WalletCard/walletCard";
 import "./myNFTsMainContent.scss";
 
 const MyNFTsMainContent = () => {
     const dispatch = useAppDispatch();
-
     const {
         userData: { firstName, lastName, joinedAt },
     } = useAppSelector(getLogin);
-
     const { isLoading, error, walletCards } = useAppSelector(getNFTs);
+    const [load] = useLoading();
 
     useEffect(() => {
         dispatch(fetchMyNFTs(getToken()));
@@ -33,10 +32,9 @@ const MyNFTsMainContent = () => {
                 />
                 <section className="myNFTsMain__content">
                     <div className="myNFTsMain__header">Wallet</div>
-                    {isLoading ? (
-                        <Loader />
-                    ) : (
-                        walletCards.map((card) => (
+                    {load({
+                        flag: isLoading,
+                        component: walletCards.map((card) => (
                             <WalletCard
                                 key={card.id}
                                 id={card.id}
@@ -46,8 +44,8 @@ const MyNFTsMainContent = () => {
                                 header={card.header}
                                 picture={card.picture}
                             />
-                        ))
-                    )}
+                        )),
+                    })}
                 </section>
             </div>
         </main>

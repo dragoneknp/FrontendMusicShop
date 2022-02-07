@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { useError } from "../../Hooks/useError";
+import { useLoading } from "../../Hooks/useLoading";
 import { fetchCards } from "../../Store/ActionCreators/cardAction";
 import { getCards } from "../../Store/selectors";
 import DropDown from "../DropDown/dropDown";
 import GridOfCards from "../GridOfCards/gridOfCards";
 import Label from "../Label/label";
-import Loader from "../Loader/loader";
 import "./discoverMainContent.scss";
 
 const DiscoverMainContent = () => {
     const dispatch = useAppDispatch();
     const { cards, isLoading, error } = useAppSelector(getCards);
+    const [isGrid, changeGrid] = useState(true);
+    const [load] = useLoading();
 
     useEffect(() => {
         dispatch(fetchCards());
     }, [dispatch]);
-
-    const [isGrid, changeGrid] = useState(true);
 
     useError(error);
 
@@ -65,27 +65,29 @@ const DiscoverMainContent = () => {
                             />
                         </div>
                     </div>
-                    {isGrid ? (
-                        isLoading ? (
-                            <Loader />
-                        ) : (
-                            <GridOfCards
-                                cards={cards}
-                                columns={4}
-                                rows={3}
-                                to="/discover"
-                            />
-                        )
-                    ) : isLoading ? (
-                        <Loader />
-                    ) : (
-                        <GridOfCards
-                            cards={cards}
-                            columns={2}
-                            rows={2}
-                            to="/discover"
-                        />
-                    )}
+                    {isGrid
+                        ? load({
+                              flag: isLoading,
+                              component: (
+                                  <GridOfCards
+                                      cards={cards}
+                                      columns={4}
+                                      rows={3}
+                                      to="/discover"
+                                  />
+                              ),
+                          })
+                        : load({
+                              flag: isLoading,
+                              component: (
+                                  <GridOfCards
+                                      cards={cards}
+                                      columns={2}
+                                      rows={2}
+                                      to="/discover"
+                                  />
+                              ),
+                          })}
                 </section>
                 <div className="discoverMain__pagination discoverMain-pagination">
                     <div className="discoverMain-pagination__prevPage">

@@ -9,15 +9,12 @@ import "./header.scss";
 const Header = ({ headerRef }: any) => {
     const dispatch = useAppDispatch();
     const { isLogin } = useAppSelector(getLogin);
-
     const location = useLocation();
-
     const [isActive, changeActive] = useState({
         Home: false,
         Discover: false,
         Marketplace: false,
     });
-
     const [isOpen, changeOpen] = useState(false);
 
     const handleClick = () => {

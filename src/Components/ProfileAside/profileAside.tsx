@@ -43,6 +43,7 @@ const ListItem = ({
 
 const ProfileAside = ({ avatar, name, joinedAt }: ProfileAsideProps) => {
     const dispatch = useAppDispatch();
+
     const handleLogoutClick = () => {
         dispatch(logout());
     };

@@ -3,13 +3,18 @@ import GridOfCards from "../GridOfCards/gridOfCards";
 import "./homeMainContent.scss";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchCards } from "../../Store/ActionCreators/cardAction";
-import Loader from "../Loader/loader";
 import { useError } from "../../Hooks/useError";
 import { getCards } from "../../Store/selectors";
+import { useLoading } from "../../Hooks/useLoading";
 
-const HomeMainContent = (props: { reference: React.Ref<HTMLDivElement> }) => {
+const HomeMainContent = ({
+    reference,
+}: {
+    reference: React.Ref<HTMLDivElement>;
+}) => {
     const dispatch = useAppDispatch();
     const { cards, isLoading, error } = useAppSelector(getCards);
+    const [load] = useLoading();
 
     useEffect(() => {
         dispatch(fetchCards());
@@ -43,22 +48,20 @@ const HomeMainContent = (props: { reference: React.Ref<HTMLDivElement> }) => {
                     <div className="main-featuredNFTs__header">
                         Featured NFTs
                     </div>
-                    {isLoading ? (
-                        <Loader />
-                    ) : (
-                        <GridOfCards
-                            cards={cards}
-                            columns={4}
-                            rows={1}
-                            to="/home"
-                        />
-                    )}
+                    {load({
+                        flag: isLoading,
+                        component: (
+                            <GridOfCards
+                                cards={cards}
+                                columns={4}
+                                rows={1}
+                                to="/home"
+                            />
+                        ),
+                    })}
                 </section>
                 <section className="main__latestNFTs main-latestNFTs">
-                    <div
-                        className="main-latestNFTs__header"
-                        ref={props.reference}
-                    >
+                    <div className="main-latestNFTs__header" ref={reference}>
                         Latest NFTs
                     </div>
                     <div className="main-latestNFTs__filters">
@@ -95,16 +98,17 @@ const HomeMainContent = (props: { reference: React.Ref<HTMLDivElement> }) => {
                             Video
                         </div>
                     </div>
-                    {isLoading ? (
-                        <Loader />
-                    ) : (
-                        <GridOfCards
-                            cards={cards}
-                            columns={4}
-                            rows={2}
-                            to="/home"
-                        />
-                    )}
+                    {load({
+                        flag: isLoading,
+                        component: (
+                            <GridOfCards
+                                cards={cards}
+                                columns={4}
+                                rows={2}
+                                to="/home"
+                            />
+                        ),
+                    })}
                 </section>
             </div>
         </main>

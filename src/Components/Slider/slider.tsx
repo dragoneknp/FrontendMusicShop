@@ -14,7 +14,7 @@ import SwiperCore, { FreeMode, Navigation, Thumbs } from "swiper";
 
 SwiperCore.use([FreeMode, Navigation, Thumbs]);
 
-const Slider = (props: { pictures: string[] }) => {
+const Slider = ({ pictures }: { pictures: string[] }) => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
     return (
@@ -27,7 +27,7 @@ const Slider = (props: { pictures: string[] }) => {
                     prevEl: ".slider__prevEl",
                 }}
             >
-                {props.pictures.map((item) => (
+                {pictures.map((item) => (
                     <SwiperSlide key={uuidv4()}>
                         <img src={item} alt="" />
                     </SwiperSlide>
@@ -41,7 +41,7 @@ const Slider = (props: { pictures: string[] }) => {
                 watchSlidesProgress={true}
                 className="mySwiper"
             >
-                {props.pictures.map((item) => (
+                {pictures.map((item) => (
                     <SwiperSlide key={uuidv4()}>
                         <img src={item} alt="" />
                     </SwiperSlide>

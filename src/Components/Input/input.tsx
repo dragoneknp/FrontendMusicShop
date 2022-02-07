@@ -7,14 +7,14 @@ interface InputProps {
     setValue: Function;
 }
 
-const Input = (props: InputProps) => {
+const Input = ({ type = undefined, value, header, setValue }: InputProps) => {
     return (
         <input
-            type={props.type ? props.type : "text"}
+            type={type ? type : "text"}
             className="input"
-            value={props.value}
-            onChange={(event) => props.setValue(event.target.value)}
-            placeholder={props.header}
+            value={value}
+            onChange={(event) => setValue(event.target.value)}
+            placeholder={header}
         />
     );
 };

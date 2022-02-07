@@ -10,17 +10,17 @@ interface GridOfCardsProps {
     to: string;
 }
 
-const GridOfCards = (props: GridOfCardsProps) => {
+const GridOfCards = ({ columns, rows, to, cards }: GridOfCardsProps) => {
     return (
         <div
             className="gridOfCards"
             style={{
-                gridTemplateColumns: `repeat(${props.columns}, 1fr)`,
-                gridTemplateRows: `repeat(${props.rows}, 1fr)`,
+                gridTemplateColumns: `repeat(${columns}, 1fr)`,
+                gridTemplateRows: `repeat(${rows}, 1fr)`,
             }}
         >
-            {props.cards.slice(0, props.columns * props.rows).map((card) => {
-                return <Card {...card} key={card.id} to={props.to} />;
+            {cards.slice(0, columns * rows).map((card) => {
+                return <Card {...card} key={card.id} to={to} />;
             })}
         </div>
     );

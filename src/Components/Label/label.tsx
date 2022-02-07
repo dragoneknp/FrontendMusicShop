@@ -12,14 +12,14 @@ interface LabelProps {
     breadCrumbs: BreadCrumb[];
 }
 
-const Label = (props: LabelProps) => {
+const Label = ({ header, breadCrumbs }: LabelProps) => {
     return (
         <div className="label">
             <div className="container label__container">
                 <div className="label__header">
-                    <h4>{props.header}</h4>
+                    <h4>{header}</h4>
                 </div>
-                <BreadCrumbs breadCrumbs={props.breadCrumbs} />
+                <BreadCrumbs breadCrumbs={breadCrumbs} />
             </div>
         </div>
     );

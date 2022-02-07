@@ -48,7 +48,7 @@ const AboutMainContent = () => {
                     <section className="aboutMain__picture">
                         <img
                             src="/Images/aboutImage.svg"
-                            alt="moon"
+                            alt="Moon"
                             className="aboutMain__picture_pic"
                         />
                     </section>

@@ -7,9 +7,9 @@ interface DropDownProps {
     values: string[];
 }
 
-const DropDown = (props: DropDownProps) => {
+const DropDown = ({ defaultValue, values }: DropDownProps) => {
     const [isOpen, changeOpened] = useState(false);
-    const [filter, changeFilter] = useState(props.defaultValue);
+    const [filter, changeFilter] = useState(defaultValue);
 
     const handleOpenClick = () => {
         changeOpened(!isOpen);
@@ -33,7 +33,7 @@ const DropDown = (props: DropDownProps) => {
             {isOpen && (
                 <div className="dropDown__menu">
                     <ul className="dropDown-menu">
-                        {props.values.map((item) => (
+                        {values.map((item) => (
                             <li
                                 className="dropDown-menu__item"
                                 key={uuidv4()}
