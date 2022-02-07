@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import { v4 as uuid4 } from "uuid";
 import { useError } from "../../Hooks/useError";
 import Loader from "../Loader/loader";
+import { getAlbumCardDetails } from "../../Store/selectors";
 
 const SellingItem = (props: SellingCard) => {
     return (
@@ -37,9 +38,7 @@ const MarketplaceListeningsMainContent = () => {
     const { id } = useParams();
 
     const dispatch = useAppDispatch();
-    let { isLoading, error, card } = useAppSelector(
-        (state) => state.albumCardDetails
-    );
+    let { isLoading, error, card } = useAppSelector(getAlbumCardDetails);
 
     useEffect(() => {
         dispatch(fetchAlbumCardDetails(id as string));

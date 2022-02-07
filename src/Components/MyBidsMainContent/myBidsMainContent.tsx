@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { useError } from "../../Hooks/useError";
 import { fetchMyBids } from "../../Store/ActionCreators/myBidsAction";
+import { getBids, getLogin } from "../../Store/selectors";
 import { getToken } from "../../utils/getToken";
 import GridOfCards from "../GridOfCards/gridOfCards";
 import Loader from "../Loader/loader";
@@ -11,9 +12,9 @@ import "./myBidsMainContent.scss";
 const MyBidsMainContent = () => {
     const {
         userData: { firstName, lastName, joinedAt },
-    } = useAppSelector((store) => store.login);
+    } = useAppSelector(getLogin);
 
-    const { isLoading, error, cards } = useAppSelector((store) => store.myBids);
+    const { isLoading, error, cards } = useAppSelector(getBids);
 
     const dispatch = useAppDispatch();
 

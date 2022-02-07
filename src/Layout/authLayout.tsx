@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../Hooks/redux";
 import { loginUser } from "../Store/ActionCreators/loginAction";
+import { getLogin } from "../Store/selectors";
 
 interface RouteProps {
     name: string;
@@ -15,7 +16,7 @@ interface AuthLayoutProps {
 }
 
 const AuthLayout = ({ router }: AuthLayoutProps) => {
-    const { isLogin } = useAppSelector((store) => store.login);
+    const { isLogin } = useAppSelector(getLogin);
     const dispatch = useAppDispatch();
 
     if (!isLogin) {

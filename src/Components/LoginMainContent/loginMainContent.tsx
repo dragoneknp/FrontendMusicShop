@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { loginUser } from "../../Store/ActionCreators/loginAction";
 import { registerUser } from "../../Store/ActionCreators/registerAction";
+import { getLogin, getRegister } from "../../Store/selectors";
 import Input from "../Input/input";
 import Label from "../Label/label";
 import "./loginMainContent.scss";
@@ -28,9 +29,9 @@ const LoginMainContent = () => {
 
     const dispatch = useAppDispatch();
 
-    const register = useAppSelector((store) => store.register);
+    const register = useAppSelector(getRegister);
 
-    const login = useAppSelector((store) => store.login);
+    const login = useAppSelector(getLogin);
 
     const history = useNavigate();
 

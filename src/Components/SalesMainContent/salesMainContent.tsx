@@ -1,4 +1,5 @@
 import { useAppSelector } from "../../Hooks/redux";
+import { getLogin } from "../../Store/selectors";
 import ProfileAside from "../ProfileAside/profileAside";
 import SalesCard from "../SalesCard/salesCard";
 import "./salesMainContent.scss";
@@ -6,7 +7,7 @@ import "./salesMainContent.scss";
 const SalesMainContent = () => {
     const {
         userData: { firstName, lastName, joinedAt },
-    } = useAppSelector((store) => store.login);
+    } = useAppSelector(getLogin);
 
     return (
         <main className="salesMain">

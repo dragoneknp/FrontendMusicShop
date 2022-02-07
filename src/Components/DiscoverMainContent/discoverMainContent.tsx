@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { useError } from "../../Hooks/useError";
 import { fetchCards } from "../../Store/ActionCreators/cardAction";
+import { getCards } from "../../Store/selectors";
 import DropDown from "../DropDown/dropDown";
 import GridOfCards from "../GridOfCards/gridOfCards";
 import Label from "../Label/label";
@@ -10,7 +11,7 @@ import "./discoverMainContent.scss";
 
 const DiscoverMainContent = () => {
     const dispatch = useAppDispatch();
-    const { cards, isLoading, error } = useAppSelector((state) => state.card);
+    const { cards, isLoading, error } = useAppSelector(getCards);
 
     useEffect(() => {
         dispatch(fetchCards());

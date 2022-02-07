@@ -5,10 +5,11 @@ import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchCards } from "../../Store/ActionCreators/cardAction";
 import Loader from "../Loader/loader";
 import { useError } from "../../Hooks/useError";
+import { getCards } from "../../Store/selectors";
 
 const HomeMainContent = (props: { reference: React.Ref<HTMLDivElement> }) => {
     const dispatch = useAppDispatch();
-    const { cards, isLoading, error } = useAppSelector((state) => state.card);
+    const { cards, isLoading, error } = useAppSelector(getCards);
 
     useEffect(() => {
         dispatch(fetchCards());

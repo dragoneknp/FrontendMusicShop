@@ -19,13 +19,13 @@
         }
     }
     &__section {
-        word-wrap: break-word;
+        word-break: break-all;
         display: grid;
         grid-auto-flow: column;
     }
     &__description {
         text-align: left;
-        width: 200px;
+        margin: 0 0 0 24px;
     }
     &__header {
         font-weight: bold;

@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchCardDetails } from "../../Store/ActionCreators/cardDetailsAction";
 import Loader from "../Loader/loader";
 import { useError } from "../../Hooks/useError";
+import { getCardDetails } from "../../Store/selectors";
 
 const CardDetailsMainContent = () => {
     const location = useLocation();
@@ -16,7 +17,7 @@ const CardDetailsMainContent = () => {
 
     const dispatch = useAppDispatch();
 
-    const data = useAppSelector((state) => state.cardDetails);
+    const data = useAppSelector(getCardDetails);
     let { isLoading, error, cardDetails } = data;
 
     useEffect(() => {

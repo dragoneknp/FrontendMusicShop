@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAppSelector } from "../../Hooks/redux";
+import { getLogin } from "../../Store/selectors";
 import Input from "../Input/input";
 import ProfileAside from "../ProfileAside/profileAside";
 import "./profileMainContent.scss";
@@ -7,7 +8,7 @@ import "./profileMainContent.scss";
 const ProfileMainContent = () => {
     const {
         userData: { firstName, lastName, joinedAt },
-    } = useAppSelector((store) => store.login);
+    } = useAppSelector(getLogin);
 
     const [userData, changeData] = useState({
         firstName: "",

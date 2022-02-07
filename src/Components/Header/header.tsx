@@ -3,11 +3,12 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { logout } from "../../Store/ActionCreators/logoutAction";
+import { getLogin } from "../../Store/selectors";
 import "./header.scss";
 
-const Header = ({ headerRef } : any) => {
+const Header = ({ headerRef }: any) => {
     const dispatch = useAppDispatch();
-    const { isLogin } = useAppSelector((store) => store.login);
+    const { isLogin } = useAppSelector(getLogin);
 
     const location = useLocation();
 
@@ -16,6 +17,7 @@ const Header = ({ headerRef } : any) => {
         Discover: false,
         Marketplace: false,
     });
+
     const [isOpen, changeOpen] = useState(false);
 
     const handleClick = () => {

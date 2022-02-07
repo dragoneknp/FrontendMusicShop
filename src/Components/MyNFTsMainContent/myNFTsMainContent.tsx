@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { useError } from "../../Hooks/useError";
 import { fetchMyNFTs } from "../../Store/ActionCreators/myNFTsAction";
+import { getLogin, getNFTs } from "../../Store/selectors";
 import { getToken } from "../../utils/getToken";
 import Loader from "../Loader/loader";
 import ProfileAside from "../ProfileAside/profileAside";
@@ -13,11 +14,9 @@ const MyNFTsMainContent = () => {
 
     const {
         userData: { firstName, lastName, joinedAt },
-    } = useAppSelector((store) => store.login);
+    } = useAppSelector(getLogin);
 
-    const { isLoading, error, walletCards } = useAppSelector(
-        (store) => store.myNFTs
-    );
+    const { isLoading, error, walletCards } = useAppSelector(getNFTs);
 
     useEffect(() => {
         dispatch(fetchMyNFTs(getToken()));

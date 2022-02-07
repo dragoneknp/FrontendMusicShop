@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { useError } from "../../Hooks/useError";
 import { fetchAlbumCards } from "../../Store/ActionCreators/albumCardAction";
+import { getAlbumCards } from "../../Store/selectors";
 import DropDown from "../DropDown/dropDown";
 import GridOfCards from "../GridOfCards/gridOfCards";
 import Label from "../Label/label";
@@ -10,9 +11,7 @@ import "./marketplaceMainContent.scss";
 
 const MarketplaceMainContent = () => {
     const dispatch = useAppDispatch();
-    const { cards, isLoading, error } = useAppSelector(
-        (state) => state.albumCard
-    );
+    const { cards, isLoading, error } = useAppSelector(getAlbumCards);
 
     useEffect(() => {
         dispatch(fetchAlbumCards());
