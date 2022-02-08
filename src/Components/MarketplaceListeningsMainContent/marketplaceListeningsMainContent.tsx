@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
-import { SellingCard } from "../../types/types";
 import "./marketplaceListeningsMainContent.scss";
 import DropDown from "../DropDown/dropDown";
 import Label from "../Label/label";
-import { formatPrice } from "../../utils/formatPrice";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchAlbumCardDetails } from "../../Store/ActionCreators/albumCardDetailsAction";
 import { useParams } from "react-router-dom";
@@ -11,34 +9,9 @@ import { v4 as uuid4 } from "uuid";
 import { useError } from "../../Hooks/useError";
 import { getAlbumCardDetails } from "../../Store/selectors";
 import { useLoading } from "../../Hooks/useLoading";
+import SellingItem from "./SellingItem/sellingItem";
 
-const SellingItem = ({
-    edition,
-    price,
-    timeRemaining,
-    token,
-    seller,
-}: SellingCard) => {
-    return (
-        <div className="marketplaceListeningsMain-listOfSellingsNFTs__sellingItem">
-            <div className="marketplaceListeningsMain-listOfSellingsNFTs__edition">
-                {edition}
-            </div>
-            <div className="marketplaceListeningsMain-listOfSellingsNFTs__price">
-                ${formatPrice(price)}
-            </div>
-            <div className="marketplaceListeningsMain-listOfSellingsNFTs__timeRemaining">
-                {timeRemaining}
-            </div>
-            <div className="marketplaceListeningsMain-listOfSellingsNFTs__token">
-                {token}
-            </div>
-            <div className="marketplaceListeningsMain-listOfSellingsNFTs__seller">
-                {seller}
-            </div>
-        </div>
-    );
-};
+
 
 const MarketplaceListeningsMainContent = () => {
     const { id } = useParams();

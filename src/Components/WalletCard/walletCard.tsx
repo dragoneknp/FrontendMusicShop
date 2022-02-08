@@ -11,7 +11,7 @@ const WalletCard = ({
     return (
         <div className="walletCard">
             <div className="walletCard__image">
-                <img src={picture} alt="Author"/>
+                <img src={picture} alt="Author" />
             </div>
             <div className="walletCard__content">
                 <div className="walletCard__header">{header}</div>

@@ -1,30 +1,9 @@
 import React, { useState } from "react";
 import Label from "../Label/label";
+import Accordion from "./Accordion/accordion";
 import "./faqMainContent.scss";
 
-const Accordion = ({
-    header,
-    description,
-}: {
-    header: string;
-    description: string;
-}) => {
-    const [isOpen, changeOpen] = useState(false);
 
-    return (
-        <div className="accordion">
-            <button
-                className={`accordion__header ${isOpen ? "active" : ""}`}
-                onClick={() => changeOpen(!isOpen)}
-            >
-                {header}
-            </button>
-            <div className={`accordion__panel ${isOpen ? "active" : ""}`}>
-                <p>{description}</p>
-            </div>
-        </div>
-    );
-};
 
 const FAQMainContent = () => {
     return (

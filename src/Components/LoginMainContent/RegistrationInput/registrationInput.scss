@@ -1,0 +1,45 @@
+.loginMain {
+    &-registration {
+        &__form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 32px;
+            row-gap: 24px;
+        }
+        &__registerButton {
+            padding: 16px 40px;
+            background: linear-gradient(90deg, #5d00fa 0%, #d70bca 100%);
+            border-radius: 46px;
+            font-weight: bold;
+            font-size: 18px;
+            opacity: 0.8;
+            transition: 0.3s ease;
+            &:hover {
+                transition: 0.3s ease;
+                opacity: 1;
+            }
+            &:active {
+                transition: 0.3s ease;
+                transform: scale(110%);
+            }
+        }
+        &__footer {
+            margin: 24px 0 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+        }
+        &__header {
+            font-weight: bold;
+            font-size: 20px;
+            margin: 0 0 16px 0;
+        }
+        &__checkbox {
+            margin: 0 8px 0 0px;
+            border: 1px solid #ffffff;
+
+            border-radius: 3px;
+        }
+    }
+}

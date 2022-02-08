@@ -1,45 +1,13 @@
 import "./profileAside.scss";
-import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../Hooks/redux";
 import { logout } from "../../Store/ActionCreators/logoutAction";
+import ListItemButton from "./ListItemButton/listItemButton";
 
 interface ProfileAsideProps {
     avatar?: string;
     name: string;
     joinedAt: string;
 }
-
-const ListItem = ({
-    icon,
-    label,
-    to,
-    handleClick,
-}: {
-    icon: string;
-    label: string;
-    to: string;
-    handleClick?: any;
-}) => {
-    return (
-        <li className="list__item list-item">
-            {handleClick ? (
-                <Link to={to} onClick={handleClick}>
-                    <button className="list-item__button">
-                        <i className="list-item__icon" data-icon={icon} />
-                        <div className="list-item__label">{label}</div>
-                    </button>
-                </Link>
-            ) : (
-                <Link to={to}>
-                    <button className="list-item__button">
-                        <i className="list-item__icon" data-icon={icon} />
-                        <div className="list-item__label">{label}</div>
-                    </button>
-                </Link>
-            )}
-        </li>
-    );
-};
 
 const ProfileAside = ({ avatar, name, joinedAt }: ProfileAsideProps) => {
     const dispatch = useAppDispatch();
@@ -61,24 +29,32 @@ const ProfileAside = ({ avatar, name, joinedAt }: ProfileAsideProps) => {
             </div>
             <nav className="aside__nav">
                 <ul className="aside__list aside-list">
-                    <ListItem
+                    <ListItemButton
                         label="My NFTs"
                         icon="shoppingBasket"
                         to="/profile/myNFTs"
                     />
-                    <ListItem
+                    <ListItemButton
                         label="My Bids"
                         icon="bids"
                         to="/profile/myBids"
                     />
-                    <ListItem label="Sales" icon="sales" to="/profile/sales" />
-                    <ListItem
+                    <ListItemButton
+                        label="Sales"
+                        icon="sales"
+                        to="/profile/sales"
+                    />
+                    <ListItemButton
                         label="Payouts"
                         icon="payouts"
                         to="/profile/payouts"
                     />
-                    <ListItem label="Profile" icon="profile" to="/profile" />
-                    <ListItem
+                    <ListItemButton
+                        label="Profile"
+                        icon="profile"
+                        to="/profile"
+                    />
+                    <ListItemButton
                         label="Logout"
                         icon="logout"
                         to="/home"

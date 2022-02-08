@@ -7,22 +7,9 @@ import { getLogin, getRegister } from "../../Store/selectors";
 import Input from "../Input/input";
 import Label from "../Label/label";
 import "./loginMainContent.scss";
+import RegistrationInput from "./RegistrationInput/registrationInput";
 
-const RegistrationInput = (props: {
-    header: string;
-    value: string;
-    setValue: Function;
-    type?: string;
-}) => {
-    return (
-        <div className="loginMain-registration__input loginMain-registration-input">
-            <div className="loginMain-registration-input__header">
-                {props.header}
-            </div>
-            <Input {...props} />
-        </div>
-    );
-};
+
 
 const LoginMainContent = () => {
     const [isRemembered, changeRemembered] = useState(false);
