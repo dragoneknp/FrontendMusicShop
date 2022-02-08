@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { useError } from "../../Hooks/useError";
 import { useLoading } from "../../Hooks/useLoading";
+import { usePagination } from "../../Hooks/usePagination";
 import { fetchCards } from "../../Store/ActionCreators/cardAction";
 import { getCards } from "../../Store/selectors";
 import DropDown from "../DropDown/dropDown";
 import GridOfCards from "../GridOfCards/gridOfCards";
 import Label from "../Label/label";
+import Pagination from "../Pagination/pagination";
 import "./discoverMainContent.scss";
 
 const DiscoverMainContent = () => {
@@ -14,6 +16,17 @@ const DiscoverMainContent = () => {
     const { cards, isLoading, error } = useAppSelector(getCards);
     const [isGrid, changeGrid] = useState(true);
     const [load] = useLoading();
+    const [
+        currentPage,
+        getCountOfPages,
+        handleNextClick,
+        handlePrevClick,
+        getCurrentPageData,
+    ] = usePagination({
+        countOfCards: cards.length,
+        countOfCardsPerPage: isGrid ? 12 : 4,
+        data: cards,
+    });
 
     useEffect(() => {
         dispatch(fetchCards());
@@ -53,7 +66,15 @@ const DiscoverMainContent = () => {
                                 />
                             </div>
                             <div className="discoverMain-sorts__results">
-                                Showing 1-12 items
+                                Showing{" "}
+                                {isGrid
+                                    ? cards.length > 12
+                                        ? `1 - ${4 * 3}`
+                                        : `1 - ${cards.length}`
+                                    : cards.length > 4
+                                    ? `1 - ${2 * 2}`
+                                    : `1 - ${cards.length}`}{" "}
+                                items
                             </div>
                         </div>
                         <div className="discoverMain__grid">
@@ -70,7 +91,7 @@ const DiscoverMainContent = () => {
                               flag: isLoading,
                               component: (
                                   <GridOfCards
-                                      cards={cards}
+                                      cards={getCurrentPageData()}
                                       columns={4}
                                       rows={3}
                                       to="/discover"
@@ -81,7 +102,7 @@ const DiscoverMainContent = () => {
                               flag: isLoading,
                               component: (
                                   <GridOfCards
-                                      cards={cards}
+                                      cards={getCurrentPageData()}
                                       columns={2}
                                       rows={2}
                                       to="/discover"
@@ -89,17 +110,12 @@ const DiscoverMainContent = () => {
                               ),
                           })}
                 </section>
-                <div className="discoverMain__pagination discoverMain-pagination">
-                    <div className="discoverMain-pagination__prevPage">
-                        PREV
-                    </div>
-                    <div className="discoverMain-pagination__countOfPages">
-                        Page 1 of 1
-                    </div>
-                    <div className="discoverMain-pagination__nextPage">
-                        NEXT
-                    </div>
-                </div>
+                <Pagination
+                    countOfPages={getCountOfPages()}
+                    currentPage={currentPage}
+                    onNextClick={handleNextClick}
+                    onPrevClick={handlePrevClick}
+                />
             </div>
         </main>
     );

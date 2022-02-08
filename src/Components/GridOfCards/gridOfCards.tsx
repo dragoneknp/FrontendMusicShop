@@ -16,12 +16,24 @@ const GridOfCards = ({ columns, rows, to, cards }: GridOfCardsProps) => {
             className="gridOfCards"
             style={{
                 gridTemplateColumns: `repeat(${columns}, 1fr)`,
-                gridTemplateRows: `repeat(${rows}, 1fr)`,
+                gridTemplateRows: `repeat(${
+                    cards.length / columns >= rows
+                        ? rows
+                        : cards.length / columns
+                }, 1fr)`,
             }}
         >
-            {cards.slice(0, columns * rows).map((card) => {
-                return <Card {...card} key={card.id} to={to} />;
-            })}
+            {cards
+                .slice(
+                    0,
+                    columns *
+                        (cards.length / columns >= rows
+                            ? rows
+                            : cards.length / columns)
+                )
+                .map((card) => {
+                    return <Card {...card} key={card.id} to={to} />;
+                })}
         </div>
     );
 };

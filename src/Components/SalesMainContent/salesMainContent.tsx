@@ -1,5 +1,10 @@
-import { useAppSelector } from "../../Hooks/redux";
-import { getLogin } from "../../Store/selectors";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
+import { useError } from "../../Hooks/useError";
+import { useLoading } from "../../Hooks/useLoading";
+import { fetchMySales } from "../../Store/ActionCreators/mySalesAction";
+import { getLogin, getSales } from "../../Store/selectors";
+import { getToken } from "../../utils/getToken";
 import ProfileAside from "../ProfileAside/profileAside";
 import SalesCard from "../SalesCard/salesCard";
 import "./salesMainContent.scss";
@@ -8,6 +13,14 @@ const SalesMainContent = () => {
     const {
         userData: { firstName, lastName, joinedAt },
     } = useAppSelector(getLogin);
+    const { isLoading, error, salesCards } = useAppSelector(getSales);
+    const [load] = useLoading();
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(fetchMySales(getToken()));
+    }, [dispatch]);
+    useError(error);
 
     return (
         <main className="salesMain">
@@ -35,18 +48,21 @@ const SalesMainContent = () => {
                         <div className="salesMain-headers__item">Edition</div>
                         <div className="salesMain-headers__item">Proceeds</div>
                     </div>
-                    <SalesCard
-                        picture={"/Images/3.svg"}
-                        purchasedBy={"@curios"}
-                        date={"2021-11-07"}
-                        proceeds={199}
-                        id={"qweqweqweqweqwe"}
-                        header={"Limited VERZUZ Commemorative NFT Bundle"}
-                        editionOf={3}
-                        collectionId={
-                            "0x2d0c8af807ef45ac17cafb2973d866ba8f38caa9"
-                        }
-                    />
+                    {load({
+                        flag: isLoading,
+                        component: salesCards.map((item) => (
+                            <SalesCard
+                                picture={item.picture}
+                                purchasedBy={item.purchasedBy}
+                                date={item.date}
+                                proceeds={item.proceeds}
+                                id={item.id}
+                                header={item.header}
+                                editionOf={item.editionOf}
+                                collectionId={item.collectionId}
+                            />
+                        )),
+                    })}
                 </section>
             </div>
         </main>

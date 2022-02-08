@@ -6,6 +6,7 @@ import { cardSlice } from "./Slices/cardSlice";
 import { loginSlice } from "./Slices/loginSlice";
 import { myBidsSlice } from "./Slices/myBidsSlice";
 import { myNFTsSlice } from "./Slices/myNFTsSlice";
+import { mySalesSlice } from "./Slices/mySalesSlice";
 import { registerSlice } from "./Slices/registerSlice";
 
 export const store = configureStore({
@@ -18,6 +19,7 @@ export const store = configureStore({
         login: loginSlice.reducer,
         myBids: myBidsSlice.reducer,
         myNFTs: myNFTsSlice.reducer,
+        mySales: mySalesSlice.reducer,
     },
 });
 

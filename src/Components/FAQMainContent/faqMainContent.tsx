@@ -1,9 +1,6 @@
-import React, { useState } from "react";
 import Label from "../Label/label";
 import Accordion from "./Accordion/accordion";
 import "./faqMainContent.scss";
-
-
 
 const FAQMainContent = () => {
     return (

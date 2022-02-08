@@ -15,3 +15,5 @@ export const getAlbumCards = (state: RootState) => state.albumCard;
 export const getBids = (state: RootState) => state.myBids;
 
 export const getNFTs = (state: RootState) => state.myNFTs;
+
+export const getSales = (state: RootState) => state.mySales;

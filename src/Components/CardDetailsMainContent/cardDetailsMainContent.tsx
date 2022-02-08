@@ -8,8 +8,9 @@ import Slider from "../Slider/slider";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchCardDetails } from "../../Store/ActionCreators/cardDetailsAction";
 import { useError } from "../../Hooks/useError";
-import { getCardDetails } from "../../Store/selectors";
+import { getCardDetails, getLogin } from "../../Store/selectors";
 import { useLoading } from "../../Hooks/useLoading";
+import DropDown from "../DropDown/dropDown";
 
 const CardDetailsMainContent = () => {
     const location = useLocation();
@@ -17,6 +18,7 @@ const CardDetailsMainContent = () => {
     const dispatch = useAppDispatch();
     const data = useAppSelector(getCardDetails);
     const { isLoading, error, cardDetails } = data;
+    const { isLogin } = useAppSelector(getLogin);
     const [load] = useLoading();
     useEffect(() => {
         dispatch(fetchCardDetails(id as string));
@@ -70,9 +72,27 @@ const CardDetailsMainContent = () => {
                                                   )
                                                 : null}
                                         </div>
-                                        <button className="cardDetailsMain-information__button">
-                                            Register/ Login to buy/ BID
-                                        </button>
+                                        {isLogin ? (
+                                            <div className="cardDetailsMain-information__order">
+                                                <div className="cardDetailsMain-information__quantity">
+                                                    <DropDown
+                                                        defaultValue={1}
+                                                        values={[
+                                                            1, 2, 3, 4, 5, 6, 7,
+                                                            8, 9, 10,
+                                                        ]}
+                                                    />
+                                                </div>
+                                                <button className="cardDetailsMain-information__button">
+                                                    Buy now
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <button className="cardDetailsMain-information__button">
+                                                Register/ Login to buy/ BID
+                                            </button>
+                                        )}
+
                                         <div className="cardDetailsMain-information__collectionId">
                                             <span>Collection id</span>
                                             {cardDetails.collectionId}

@@ -93,7 +93,7 @@
             font-weight: bold;
             font-size: 18px;
             position: relative;
-            margin: 0 0 48px 0;
+
             &::after {
                 content: url("./assets/shoppingBasket.svg");
                 position: absolute;
@@ -110,6 +110,7 @@
             }
         }
         &__collectionId {
+            margin: 48px 0 0 0;
             & span {
                 font-weight: bold;
                 font-size: 14px;
@@ -126,5 +127,14 @@
                 margin: 0 8px 0 0;
             }
         }
+        &__order {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
     }
+}
+
+.cardDetailsMain-information__quantity {
+    margin: 0 24px 0 0;
 }

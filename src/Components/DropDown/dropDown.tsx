@@ -2,9 +2,9 @@ import React, { memo, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import "./dropDown.scss";
 
-interface DropDownProps {
-    defaultValue: string;
-    values: string[];
+interface DropDownProps<T = string | number> {
+    defaultValue: T;
+    values: T[];
 }
 
 const DropDown = ({ defaultValue, values }: DropDownProps) => {
@@ -15,7 +15,7 @@ const DropDown = ({ defaultValue, values }: DropDownProps) => {
         changeOpened(!isOpen);
     };
 
-    const handleFilterClick = (value: string) => {
+    const handleFilterClick = (value: typeof defaultValue) => {
         return () => {
             changeFilter(value);
             handleOpenClick();

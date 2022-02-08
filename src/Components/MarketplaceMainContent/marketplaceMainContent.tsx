@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { useError } from "../../Hooks/useError";
 import { useLoading } from "../../Hooks/useLoading";
+import { usePagination } from "../../Hooks/usePagination";
 import { fetchAlbumCards } from "../../Store/ActionCreators/albumCardAction";
 import { getAlbumCards } from "../../Store/selectors";
 import DropDown from "../DropDown/dropDown";
 import GridOfCards from "../GridOfCards/gridOfCards";
 import Label from "../Label/label";
+import Pagination from "../Pagination/pagination";
 import "./marketplaceMainContent.scss";
 
 const MarketplaceMainContent = () => {
@@ -14,6 +16,17 @@ const MarketplaceMainContent = () => {
     const { cards, isLoading, error } = useAppSelector(getAlbumCards);
     const [isGrid, changeGrid] = useState(true);
     const [load] = useLoading();
+    const [
+        currentPage,
+        getCountOfPages,
+        handleNextClick,
+        handlePrevClick,
+        getCurrentPageData,
+    ] = usePagination({
+        countOfCards: cards.length,
+        countOfCardsPerPage: isGrid ? 3 : 2,
+        data: cards,
+    });
 
     useEffect(() => {
         dispatch(fetchAlbumCards());
@@ -53,7 +66,14 @@ const MarketplaceMainContent = () => {
                                 />
                             </div>
                             <div className="marketplaceMain-sorts__results">
-                                Showing 1-3 items
+                                {isGrid
+                                    ? cards.length > 3
+                                        ? `1 - ${3}`
+                                        : `1 - ${cards.length}`
+                                    : cards.length > 2
+                                    ? `1 - ${2}`
+                                    : `1 - ${cards.length}`}{" "}
+                                items
                             </div>
                         </div>
                         <div className="marketplaceMain__grid">
@@ -70,7 +90,7 @@ const MarketplaceMainContent = () => {
                               flag: isLoading,
                               component: (
                                   <GridOfCards
-                                      cards={cards}
+                                      cards={getCurrentPageData()}
                                       columns={3}
                                       rows={1}
                                       to="/marketplace"
@@ -81,25 +101,20 @@ const MarketplaceMainContent = () => {
                               flag: isLoading,
                               component: (
                                   <GridOfCards
-                                      cards={cards}
-                                      columns={3}
+                                      cards={getCurrentPageData()}
+                                      columns={2}
                                       rows={1}
                                       to="/marketplace"
                                   />
                               ),
                           })}
                 </section>
-                <div className="marketplaceMain__pagination marketplaceMain-pagination">
-                    <div className="marketplaceMain-pagination__prevPage">
-                        PREV
-                    </div>
-                    <div className="marketplaceMain-pagination__countOfPages">
-                        Page 1 of 1
-                    </div>
-                    <div className="marketplaceMain-pagination__nextPage">
-                        NEXT
-                    </div>
-                </div>
+                <Pagination
+                    countOfPages={getCountOfPages()}
+                    currentPage={currentPage}
+                    onNextClick={handleNextClick}
+                    onPrevClick={handlePrevClick}
+                />
             </div>
         </main>
     );
