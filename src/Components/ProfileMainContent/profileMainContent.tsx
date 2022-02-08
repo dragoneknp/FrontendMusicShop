@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useAppSelector } from "../../Hooks/redux";
 import { getLogin } from "../../Store/selectors";
 import Input from "../Input/input";
@@ -19,9 +19,9 @@ const ProfileMainContent = () => {
         password: "",
     });
 
-    const handleChange = (form: string) => {
+    const handleChange = useCallback((form: string) => {
         return (value: string) => changeData({ ...userData, [form]: value });
-    };
+    }, []);
 
     return (
         <main className="profileMain">

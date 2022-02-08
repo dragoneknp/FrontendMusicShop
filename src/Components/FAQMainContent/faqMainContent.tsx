@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Label from "../Label/label";
 import Accordion from "./Accordion/accordion";
 import "./faqMainContent.scss";
@@ -56,4 +57,4 @@ const FAQMainContent = () => {
     );
 };
 
-export default FAQMainContent;
+export default memo(FAQMainContent);

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import "./accordion.scss";
 
 const Accordion = ({
@@ -9,7 +9,7 @@ const Accordion = ({
     description: string;
 }) => {
     const [isOpen, changeOpen] = useState(false);
-
+    console.log(1);
     return (
         <div className="accordion">
             <button
@@ -24,4 +24,4 @@ const Accordion = ({
         </div>
     );
 };
-export default Accordion;
+export default memo(Accordion);

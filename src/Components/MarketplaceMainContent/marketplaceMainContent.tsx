@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { useError } from "../../Hooks/useError";
 import { useLoading } from "../../Hooks/useLoading";
@@ -18,6 +18,7 @@ const MarketplaceMainContent = () => {
     const [load] = useLoading();
     const [
         currentPage,
+        changeCurrentPage,
         getCountOfPages,
         handleNextClick,
         handlePrevClick,
@@ -27,6 +28,7 @@ const MarketplaceMainContent = () => {
         countOfCardsPerPage: isGrid ? 3 : 2,
         data: cards,
     });
+    const currentPageData = getCurrentPageData();
 
     useEffect(() => {
         dispatch(fetchAlbumCards());
@@ -36,6 +38,7 @@ const MarketplaceMainContent = () => {
 
     const handleClick = () => {
         changeGrid(!isGrid);
+        // changeCurrentPage(1);
     };
 
     return (
@@ -67,12 +70,12 @@ const MarketplaceMainContent = () => {
                             </div>
                             <div className="marketplaceMain-sorts__results">
                                 {isGrid
-                                    ? cards.length > 3
+                                    ? currentPageData.length > 3
                                         ? `1 - ${3}`
-                                        : `1 - ${cards.length}`
-                                    : cards.length > 2
+                                        : `1 - ${currentPageData.length}`
+                                    : currentPageData.length > 2
                                     ? `1 - ${2}`
-                                    : `1 - ${cards.length}`}{" "}
+                                    : `1 - ${currentPageData.length}`}{" "}
                                 items
                             </div>
                         </div>
@@ -90,7 +93,7 @@ const MarketplaceMainContent = () => {
                               flag: isLoading,
                               component: (
                                   <GridOfCards
-                                      cards={getCurrentPageData()}
+                                      cards={currentPageData}
                                       columns={3}
                                       rows={1}
                                       to="/marketplace"
@@ -101,7 +104,7 @@ const MarketplaceMainContent = () => {
                               flag: isLoading,
                               component: (
                                   <GridOfCards
-                                      cards={getCurrentPageData()}
+                                      cards={currentPageData}
                                       columns={2}
                                       rows={1}
                                       to="/marketplace"

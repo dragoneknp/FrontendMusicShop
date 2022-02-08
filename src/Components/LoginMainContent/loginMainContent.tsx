@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { loginUser } from "../../Store/ActionCreators/loginAction";
@@ -8,8 +8,6 @@ import Input from "../Input/input";
 import Label from "../Label/label";
 import "./loginMainContent.scss";
 import RegistrationInput from "./RegistrationInput/registrationInput";
-
-
 
 const LoginMainContent = () => {
     const [isRemembered, changeRemembered] = useState(false);
@@ -87,16 +85,16 @@ const LoginMainContent = () => {
         }
     }, [register.isRegister]);
 
-    const handleChangeRegisterForm = (form: string) => {
+    const handleChangeRegisterForm = useCallback((form: string) => {
         return (value: string) =>
             changeRegisterForm({ ...registerForm, [form]: value });
-    };
+    }, []);
 
-    const handleChangeLoginForm = (form: string) => {
+    const handleChangeLoginForm = useCallback((form: string) => {
         return (value: string) => {
             changeLoginForm({ ...loginForm, [form]: value });
         };
-    };
+    }, []);
     return (
         <main className="loginMain">
             <Label

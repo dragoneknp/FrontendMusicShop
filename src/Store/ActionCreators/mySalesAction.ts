@@ -11,10 +11,6 @@ export const fetchMySales = (id: string) => async (dispatch: AppDispatch) => {
             `https://nftshop-4237c-default-rtdb.firebaseio.com/sales/${id}.json`
         );
 
-        if (response.data === null) {
-            throw new Error("Item not found");
-        }
-
         dispatch(mySalesSlice.actions.mySalesFetchingSuccess(response.data));
     } catch (e: any) {
         dispatch(mySalesSlice.actions.mySalesFetchingFailed(e));

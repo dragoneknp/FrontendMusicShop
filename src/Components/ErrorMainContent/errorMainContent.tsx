@@ -1,5 +1,6 @@
-import React from "react";
+import { memo } from "react";
 import "./errorMainContent.scss";
+
 
 const ErrorMainContent = () => {
     return (
@@ -15,4 +16,4 @@ const ErrorMainContent = () => {
     );
 };
 
-export default ErrorMainContent;
+export default memo(ErrorMainContent);

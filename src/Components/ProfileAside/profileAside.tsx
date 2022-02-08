@@ -2,6 +2,7 @@ import "./profileAside.scss";
 import { useAppDispatch } from "../../Hooks/redux";
 import { logout } from "../../Store/ActionCreators/logoutAction";
 import ListItemButton from "./ListItemButton/listItemButton";
+import { useCallback } from "react";
 
 interface ProfileAsideProps {
     avatar?: string;
@@ -12,9 +13,9 @@ interface ProfileAsideProps {
 const ProfileAside = ({ avatar, name, joinedAt }: ProfileAsideProps) => {
     const dispatch = useAppDispatch();
 
-    const handleLogoutClick = () => {
+    const handleLogoutClick = useCallback(() => {
         dispatch(logout());
-    };
+    }, []);
 
     return (
         <aside className="aside">

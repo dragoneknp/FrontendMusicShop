@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Label from "../Label/label";
 import "./aboutMainContent.scss";
 
@@ -58,4 +59,4 @@ const AboutMainContent = () => {
     );
 };
 
-export default AboutMainContent;
+export default memo(AboutMainContent);

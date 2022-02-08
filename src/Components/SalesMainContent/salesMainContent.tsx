@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
-import { useError } from "../../Hooks/useError";
 import { useLoading } from "../../Hooks/useLoading";
 import { fetchMySales } from "../../Store/ActionCreators/mySalesAction";
 import { getLogin, getSales } from "../../Store/selectors";
@@ -20,7 +19,6 @@ const SalesMainContent = () => {
     useEffect(() => {
         dispatch(fetchMySales(getToken()));
     }, [dispatch]);
-    useError(error);
 
     return (
         <main className="salesMain">
@@ -48,21 +46,28 @@ const SalesMainContent = () => {
                         <div className="salesMain-headers__item">Edition</div>
                         <div className="salesMain-headers__item">Proceeds</div>
                     </div>
-                    {load({
-                        flag: isLoading,
-                        component: salesCards.map((item) => (
-                            <SalesCard
-                                picture={item.picture}
-                                purchasedBy={item.purchasedBy}
-                                date={item.date}
-                                proceeds={item.proceeds}
-                                id={item.id}
-                                header={item.header}
-                                editionOf={item.editionOf}
-                                collectionId={item.collectionId}
-                            />
-                        )),
-                    })}
+                    {!salesCards ? (
+                        <div style={{ textAlign: "center" }}>
+                            <h2>Nothing here :(</h2>
+                        </div>
+                    ) : (
+                        load({
+                            flag: isLoading,
+                            component: salesCards.map((item) => (
+                                <SalesCard
+                                    key={item.id}
+                                    picture={item.picture}
+                                    purchasedBy={item.purchasedBy}
+                                    date={item.date}
+                                    proceeds={item.proceeds}
+                                    id={item.id}
+                                    header={item.header}
+                                    editionOf={item.editionOf}
+                                    collectionId={item.collectionId}
+                                />
+                            )),
+                        })
+                    )}
                 </section>
             </div>
         </main>

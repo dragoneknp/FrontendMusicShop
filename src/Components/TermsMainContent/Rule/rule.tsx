@@ -1,3 +1,4 @@
+import { memo } from "react";
 import "./rule.scss";
 
 const Rule = ({
@@ -17,4 +18,4 @@ const Rule = ({
     );
 };
 
-export default Rule;
+export default memo(Rule);

@@ -11,16 +11,8 @@ export const fetchMyBids = (token: string) => async (dispatch: AppDispatch) => {
             `https://nftshop-4237c-default-rtdb.firebaseio.com/bids/${token}.json`
         );
 
-        if (response.data === null) {
-            throw new Error("Item not found");
-        }
-
         dispatch(myBidsSlice.actions.myBidsFetchingSuccess(response.data));
     } catch (e: any) {
         dispatch(myBidsSlice.actions.myBidsFetchingFailed(e));
-
-        setTimeout(() => {
-            dispatch(myBidsSlice.actions.changeErrorStatus(""));
-        }, 2000);
     }
 };
