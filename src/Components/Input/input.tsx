@@ -1,3 +1,4 @@
+import React, { SyntheticEvent } from "react";
 import "./input.scss";
 
 interface InputProps {
@@ -8,12 +9,14 @@ interface InputProps {
 }
 
 const Input = ({ type = undefined, value, header, setValue }: InputProps) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+        setValue(event.target.value);
     return (
         <input
             type={type ? type : "text"}
             className="input"
             value={value}
-            onChange={(event) => setValue(event.target.value)}
+            onChange={handleChange}
             placeholder={header}
         />
     );

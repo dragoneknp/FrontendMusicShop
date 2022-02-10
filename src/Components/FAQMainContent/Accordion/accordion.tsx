@@ -9,12 +9,12 @@ const Accordion = ({
     description: string;
 }) => {
     const [isOpen, changeOpen] = useState(false);
-    console.log(1);
+    const handleClick = () => changeOpen(!isOpen)
     return (
         <div className="accordion">
             <button
                 className={`accordion__header ${isOpen ? "active" : ""}`}
-                onClick={() => changeOpen(!isOpen)}
+                onClick={handleClick}
             >
                 {header}
             </button>

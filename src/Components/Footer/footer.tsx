@@ -1,8 +1,9 @@
-import React, { memo } from "react";
+import React, { memo, SyntheticEvent } from "react";
 import { Link } from "react-router-dom";
 import "./footer.scss";
 
 const Footer = () => {
+    const onFormClick = (event: SyntheticEvent) => event.preventDefault();
     return (
         <footer className="footer">
             <div className="footer__container container">
@@ -12,7 +13,7 @@ const Footer = () => {
                     </div>
                     <form
                         className="footer-subscribe__form"
-                        onClick={(event) => event.preventDefault()}
+                        onClick={onFormClick}
                     >
                         <input
                             className="footer-subscribe__input"

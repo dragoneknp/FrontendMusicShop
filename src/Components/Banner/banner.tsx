@@ -12,6 +12,8 @@ const Banner = ({
         changeRef(reference);
     }, [reference]);
 
+    const handleClick = () =>
+        ref.current?.scrollIntoView({ behavior: "smooth" });
     return (
         <div className="banner">
             <div className="banner__container container">
@@ -22,11 +24,7 @@ const Banner = ({
                     <h4>Own a one-of-a-kind and limited digital collectible</h4>
                 </div>
                 <div className="banner__button">
-                    <button
-                        onClick={() =>
-                            ref.current?.scrollIntoView({ behavior: "smooth" })
-                        }
-                    >
+                    <button onClick={handleClick}>
                         <h5>Latest NFT drops</h5>
                     </button>
                 </div>

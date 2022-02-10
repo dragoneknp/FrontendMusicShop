@@ -1,12 +1,8 @@
 import "./toTop.scss";
 
 const ToTop = () => {
-    return (
-        <div
-            className="toTop"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        ></div>
-    );
+    const handleClick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+    return <div className="toTop" onClick={handleClick}></div>;
 };
 
 export default ToTop;
