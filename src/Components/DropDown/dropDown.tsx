@@ -5,9 +5,10 @@ import "./dropDown.scss";
 interface DropDownProps<T = string | number> {
     defaultValue: T;
     values: T[];
+    setValue: (value: T) => void;
 }
 
-const DropDown = ({ defaultValue, values }: DropDownProps) => {
+const DropDown = ({ defaultValue, values, setValue }: DropDownProps) => {
     const [isOpen, changeOpened] = useState(false);
     const [filter, changeFilter] = useState(defaultValue);
 
@@ -18,6 +19,12 @@ const DropDown = ({ defaultValue, values }: DropDownProps) => {
     const handleFilterClick = (value: typeof defaultValue) => {
         return () => {
             changeFilter(value);
+            if (typeof value === "string") {
+                setValue(value.toLowerCase());
+            } else {
+                setValue(value);
+            }
+
             handleOpenClick();
         };
     };

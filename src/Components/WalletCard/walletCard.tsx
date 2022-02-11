@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { WalletCardProps } from "../../types/types";
 import "./walletCard.scss";
 
@@ -7,6 +8,7 @@ const WalletCard = ({
     description,
     editionOf,
     header,
+    id,
 }: WalletCardProps) => {
     return (
         <div className="walletCard">
@@ -20,7 +22,11 @@ const WalletCard = ({
                 </div>
                 <div className="walletCard__description">{description}</div>
                 <div className="walletCard__footer">
-                    <button className="walletCard__button">View tokens</button>
+                    <Link to={`/discover/${id}`}>
+                        <button className="walletCard__button">
+                            View tokens
+                        </button>
+                    </Link>
                     <div className="walletCard__countOfTokens">
                         {count === 1
                             ? `You own ${count}x token`

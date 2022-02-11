@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CardDetails, NFTTypes } from "../../types/types";
+import { CardDetails } from "../../types/types";
 
 interface CardState {
     error: string;
@@ -29,7 +29,7 @@ const initialState: CardState = {
         editionOf: 20000,
         description:
             "Run the Jewels 2 is the second studio album by American hip hop duo Run the Jewels, which consists of Killer Mike and El-P. The album was released early for free on October 24, 2014, and the following day on iTunes. It was made available on CD and LP by Mass Appeal Records and RBC Records on October 28, 2014.",
-        type: NFTTypes.Audio,
+        type: "Audio",
         creator: "Best Music",
     },
 };

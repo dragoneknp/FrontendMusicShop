@@ -11,6 +11,12 @@
     }
 
     &__image {
+        width: 215px;
+        height: 215px;
+        & img {
+            width: 215px;
+            height: 215px;
+        }
         border-radius: 5px;
     }
     &__header {
@@ -27,6 +33,8 @@
         font-size: 16px;
         line-height: 140%;
         margin: 0 0 16px 0;
+        overflow: scroll;
+        height: 54px;
     }
     &__footer {
         display: grid;
@@ -39,6 +47,7 @@
         background: #ffffff;
         border-radius: 37px;
         padding: 12px 40px;
+        cursor: pointer;
         color: #d70bca;
         font-weight: bold;
         font-size: 16px;
@@ -51,6 +60,9 @@
         &:active {
             transition: 0.3s ease;
             transform: scale(110%);
+        }
+        & a {
+            color: #d70bca;
         }
     }
     &__countOfTokens {

@@ -6,6 +6,8 @@ import { fetchCards } from "../../Store/ActionCreators/cardAction";
 import { useError } from "../../Hooks/useError";
 import { getCards } from "../../Store/selectors";
 import { useLoading } from "../../Hooks/useLoading";
+import { Filters } from "../../types/types";
+
 
 const HomeMainContent = ({
     reference,
@@ -15,10 +17,11 @@ const HomeMainContent = ({
     const dispatch = useAppDispatch();
     const { cards, isLoading, error } = useAppSelector(getCards);
     const [load] = useLoading();
+    const [filter, changeFilter] = useState<Filters>("all");
 
     useEffect(() => {
-        dispatch(fetchCards());
-    }, [dispatch]);
+        dispatch(fetchCards(filter));
+    }, [dispatch, filter]);
 
     useError(error);
 
@@ -31,6 +34,7 @@ const HomeMainContent = ({
 
     const handleClick = (item: string) => {
         return () => {
+            changeFilter(item.toLowerCase() as Filters);
             changeActive({
                 All: false,
                 Audio: false,

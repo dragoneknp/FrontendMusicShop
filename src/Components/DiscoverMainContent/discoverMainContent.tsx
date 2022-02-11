@@ -5,6 +5,7 @@ import { useLoading } from "../../Hooks/useLoading";
 import { usePagination } from "../../Hooks/usePagination";
 import { fetchCards } from "../../Store/ActionCreators/cardAction";
 import { getCards } from "../../Store/selectors";
+import { Filters } from "../../types/types";
 import DropDown from "../DropDown/dropDown";
 import GridOfCards from "../GridOfCards/gridOfCards";
 import Label from "../Label/label";
@@ -16,9 +17,10 @@ const DiscoverMainContent = () => {
     const { cards, isLoading, error } = useAppSelector(getCards);
     const [isGrid, changeGrid] = useState(true);
     const [load] = useLoading();
+    const [filter, changeFilter] = useState<Filters>("all");
     useEffect(() => {
-        dispatch(fetchCards());
-    }, [dispatch]);
+        dispatch(fetchCards(filter));
+    }, [dispatch, filter]);
     const [
         currentPage,
         changeCurrentPage,
@@ -57,13 +59,17 @@ const DiscoverMainContent = () => {
                             </div>
                             <div className="discoverMain-sorts__select">
                                 <DropDown
-                                    defaultValue="Popularity"
+                                    defaultValue="All"
                                     values={[
                                         "Video",
                                         "Audio",
                                         "Artwork",
-                                        "Popularity",
+                                        "All",
                                     ]}
+                                    setValue={(value) => {
+                                        changeFilter(value as Filters);
+                                        changeCurrentPage(1);
+                                    }}
                                 />
                             </div>
                             <div className="discoverMain-sorts__results">

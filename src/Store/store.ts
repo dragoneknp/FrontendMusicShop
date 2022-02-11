@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { albumCardDetailsSlice } from "./Slices/albumCardDetailsSlice";
 import { albumCardSlice } from "./Slices/albumCardSlice";
+import { buyNFTSlice } from "./Slices/buyNFTSlice";
 import { cardDetailsSlice } from "./Slices/cardDetailsSlice";
 import { cardSlice } from "./Slices/cardSlice";
 import { loginSlice } from "./Slices/loginSlice";
@@ -21,7 +22,8 @@ export const store = configureStore({
         myBids: myBidsSlice.reducer,
         myNFTs: myNFTsSlice.reducer,
         mySales: mySalesSlice.reducer,
-        updateProfile: updateProfileSlice.reducer
+        updateProfile: updateProfileSlice.reducer,
+        buyNFT: buyNFTSlice.reducer,
     },
 });
 

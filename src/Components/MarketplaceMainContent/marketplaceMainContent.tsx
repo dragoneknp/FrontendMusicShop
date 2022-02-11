@@ -5,6 +5,7 @@ import { useLoading } from "../../Hooks/useLoading";
 import { usePagination } from "../../Hooks/usePagination";
 import { fetchAlbumCards } from "../../Store/ActionCreators/albumCardAction";
 import { getAlbumCards } from "../../Store/selectors";
+import { Filters } from "../../types/types";
 import DropDown from "../DropDown/dropDown";
 import GridOfCards from "../GridOfCards/gridOfCards";
 import Label from "../Label/label";
@@ -16,6 +17,7 @@ const MarketplaceMainContent = () => {
     const { cards, isLoading, error } = useAppSelector(getAlbumCards);
     const [isGrid, changeGrid] = useState(true);
     const [load] = useLoading();
+    const [filter, changeFilter] = useState<Filters>("all");
     const [
         currentPage,
         changeCurrentPage,
@@ -28,11 +30,10 @@ const MarketplaceMainContent = () => {
         countOfCardsPerPage: isGrid ? 3 : 2,
         data: cards,
     });
-    
 
     useEffect(() => {
-        dispatch(fetchAlbumCards());
-    }, [dispatch]);
+        dispatch(fetchAlbumCards(filter));
+    }, [dispatch, filter]);
 
     useError(error);
 
@@ -64,8 +65,12 @@ const MarketplaceMainContent = () => {
                                         "Video",
                                         "Audio",
                                         "Artwork",
-                                        "Popularity",
+                                        "All",
                                     ]}
+                                    setValue={(value) => {
+                                        changeFilter(value as Filters);
+                                        changeCurrentPage(1);
+                                    }}
                                 />
                             </div>
                             <div className="marketplaceMain-sorts__results">

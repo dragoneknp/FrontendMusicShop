@@ -68,6 +68,7 @@ const MarketplaceListeningsMainContent = () => {
                                                         "Artwork",
                                                         "Popularity",
                                                     ]}
+                                                    setValue={(value) => {}}
                                                 />
                                             </div>
                                             <div className="marketplaceListeningsMain-card-sorts__results">

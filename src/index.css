@@ -33,3 +33,6 @@ input:focus {
     margin: 0 auto;
     width: 1110px;
 }
+button:hover {
+    transform: scale(110%);
+}

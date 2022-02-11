@@ -67,6 +67,7 @@
         }
     }
     &-information {
+        position: relative;
         &__title {
             font-weight: bold;
             font-size: 36px;
@@ -132,6 +133,12 @@
             flex-direction: row;
             align-items: center;
         }
+    }
+    &__alert {
+        position: absolute;
+        left: 24px;
+        margin: 8px 0 0 0;
+        color: #00ff55;
     }
 }
 

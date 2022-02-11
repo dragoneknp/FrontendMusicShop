@@ -29,10 +29,6 @@ export interface Card {
     to?: string;
 }
 
-export enum NFTTypes {
-    Audio,
-    Video,
-}
 export interface CardDetails extends Omit<Card, "picture"> {
     pictures: string[];
     timeRemaining: string;
@@ -40,7 +36,7 @@ export interface CardDetails extends Omit<Card, "picture"> {
     collectionId: string;
     editionOf: number;
     description: string;
-    type: NFTTypes;
+    type: "Audio" | "Video";
     creator: string;
 }
 
@@ -71,3 +67,5 @@ export interface WalletCardProps {
     id: string;
     picture: string;
 }
+
+export type Filters = "all" | "artwork" | "audio" | "video";

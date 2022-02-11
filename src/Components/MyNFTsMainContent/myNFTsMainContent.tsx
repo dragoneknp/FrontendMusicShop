@@ -15,7 +15,6 @@ const MyNFTsMainContent = () => {
     } = useAppSelector(getLogin);
     const { isLoading, error, walletCards } = useAppSelector(getNFTs);
     const [load] = useLoading();
-
     useEffect(() => {
         dispatch(fetchMyNFTs(getToken()));
     }, [dispatch]);

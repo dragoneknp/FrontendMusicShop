@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { NFTTypes } from "../../types/types";
+import React, { useEffect, useState } from "react";
 import "./cardDetailsMainContent.scss";
 import Label from "../Label/label";
 import { formatPrice } from "../../utils/formatPrice";
@@ -8,9 +7,11 @@ import Slider from "../Slider/slider";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { fetchCardDetails } from "../../Store/ActionCreators/cardDetailsAction";
 import { useError } from "../../Hooks/useError";
-import { getCardDetails, getLogin } from "../../Store/selectors";
+import { getButNFT, getCardDetails, getLogin } from "../../Store/selectors";
 import { useLoading } from "../../Hooks/useLoading";
 import DropDown from "../DropDown/dropDown";
+import { buyNFT } from "../../Store/ActionCreators/buyNFTAction";
+import { getToken } from "../../utils/getToken";
 
 const CardDetailsMainContent = () => {
     const location = useLocation();
@@ -18,8 +19,24 @@ const CardDetailsMainContent = () => {
     const dispatch = useAppDispatch();
     const data = useAppSelector(getCardDetails);
     const { isLoading, error, cardDetails } = data;
+    const { isSuccess } = useAppSelector(getButNFT);
     const { isLogin } = useAppSelector(getLogin);
     const [load] = useLoading();
+    const [count, setCount] = useState(0);
+
+    const handleBuyClick = () => {
+        dispatch(
+            buyNFT(getToken(), {
+                count: count,
+                description: cardDetails.description,
+                editionOf: cardDetails.editionOf,
+                header: cardDetails.header,
+                id: cardDetails.id,
+                picture: cardDetails.pictures[0],
+            })
+        );
+    };
+
     useEffect(() => {
         dispatch(fetchCardDetails(id as string));
     }, [dispatch, id]);
@@ -73,20 +90,37 @@ const CardDetailsMainContent = () => {
                                                 : null}
                                         </div>
                                         {isLogin ? (
-                                            <div className="cardDetailsMain-information__order">
-                                                <div className="cardDetailsMain-information__quantity">
-                                                    <DropDown
-                                                        defaultValue={1}
-                                                        values={[
-                                                            1, 2, 3, 4, 5, 6, 7,
-                                                            8, 9, 10,
-                                                        ]}
-                                                    />
+                                            <>
+                                                <div className="cardDetailsMain-information__order">
+                                                    <div className="cardDetailsMain-information__quantity">
+                                                        <DropDown
+                                                            defaultValue={1}
+                                                            values={[
+                                                                1, 2, 3, 4, 5,
+                                                                6, 7, 8, 9, 10,
+                                                            ]}
+                                                            setValue={(value) =>
+                                                                setCount(
+                                                                    value as number
+                                                                )
+                                                            }
+                                                        />
+                                                    </div>
+                                                    <button
+                                                        className="cardDetailsMain-information__button"
+                                                        onClick={handleBuyClick}
+                                                    >
+                                                        Buy now
+                                                    </button>
                                                 </div>
-                                                <button className="cardDetailsMain-information__button">
-                                                    Buy now
-                                                </button>
-                                            </div>
+                                                {isSuccess && (
+                                                    <span className="cardDetailsMain__alert">
+                                                        Operation Success you
+                                                        can check tokens in your
+                                                        profile
+                                                    </span>
+                                                )}
+                                            </>
                                         ) : (
                                             <button className="cardDetailsMain-information__button">
                                                 Register/ Login to buy/ BID
@@ -132,7 +166,7 @@ const CardDetailsMainContent = () => {
                                                 Type
                                             </div>
                                             <div className="cardDetailsMain-details-information__value">
-                                                {NFTTypes[cardDetails.type]}
+                                                {cardDetails.type}
                                             </div>
                                         </div>
                                         <div className="cardDetailsMain-details__creator">

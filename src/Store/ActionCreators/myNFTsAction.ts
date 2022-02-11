@@ -7,11 +7,15 @@ export const fetchMyNFTs = (token: string) => async (dispatch: AppDispatch) => {
     try {
         dispatch(myNFTsSlice.actions.myNFTsFetching());
 
-        const response: { data: WalletCardProps[] } = await axios.get(
-            `https://nftshop-4237c-default-rtdb.firebaseio.com/wallet/${token}.json`
+        const response: { data: Record<string | number, WalletCardProps> } =
+            await axios.get(
+                `https://nftshop-4237c-default-rtdb.firebaseio.com/wallet/${token}.json`
+            );
+        dispatch(
+            myNFTsSlice.actions.myNFTsFetchingSuccess(
+                Object.values(response.data)
+            )
         );
-
-        dispatch(myNFTsSlice.actions.myNFTsFetchingSuccess(response.data));
     } catch (e: any) {
         dispatch(myNFTsSlice.actions.myNFTsFetchingFailed(e.message));
     }
