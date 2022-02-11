@@ -10,8 +10,18 @@
     padding: 16px 24px 16px 24px;
     background: transparent;
     transition: 0.3s ease;
+    position: relative;
     &:focus {
         transition: 0.3s ease;
         border: 0.5px solid #d70bca;
     }
+}
+.input__container {
+    position: relative;
+}
+.alert {
+    position: absolute;
+    bottom: -8px;
+    left: 24px;
+    color: red;
 }

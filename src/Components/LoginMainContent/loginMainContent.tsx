@@ -1,9 +1,15 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { loginUser } from "../../Store/ActionCreators/loginAction";
 import { registerUser } from "../../Store/ActionCreators/registerAction";
 import { getLogin, getRegister } from "../../Store/selectors";
+import {
+    isEmailValid,
+    isNameValid,
+    isNumberValid,
+    isPasswordValid,
+} from "../../utils/formValidators";
 import Input from "../Input/input";
 import Label from "../Label/label";
 import "./loginMainContent.scss";
@@ -40,12 +46,12 @@ const LoginMainContent = () => {
             password,
         } = registerForm;
         if (
-            firstName &&
-            lastName &&
-            emailAdress &&
-            phoneNumber &&
-            displayName &&
-            password
+            isNameValid(firstName) &&
+            isNameValid(lastName) &&
+            isEmailValid(emailAdress) &&
+            isNumberValid(phoneNumber) &&
+            isNameValid(displayName) &&
+            isPasswordValid(password)
         ) {
             dispatch(registerUser(registerForm));
         }
@@ -53,7 +59,7 @@ const LoginMainContent = () => {
 
     const handleLoginClick = () => {
         const { email, password } = loginForm;
-        if (email && password) {
+        if (isEmailValid(email) && isPasswordValid(password)) {
             dispatch(loginUser({ ...loginForm, isRemembered }));
         }
     };
@@ -85,16 +91,16 @@ const LoginMainContent = () => {
         }
     }, [register.isRegister]);
 
-    const handleChangeRegisterForm = useCallback((form: string) => {
+    const handleChangeRegisterForm = (form: string) => {
         return (value: string) =>
             changeRegisterForm({ ...registerForm, [form]: value });
-    }, []);
+    };
 
-    const handleChangeLoginForm = useCallback((form: string) => {
+    const handleChangeLoginForm = (form: string) => {
         return (value: string) => {
             changeLoginForm({ ...loginForm, [form]: value });
         };
-    }, []);
+    };
     return (
         <main className="loginMain">
             <Label
@@ -111,17 +117,19 @@ const LoginMainContent = () => {
                         <div className="loginMain-login__form">
                             <div className="loginMain-login__email">
                                 <Input
-                                    header="Email..."
+                                    header="Email"
                                     value={loginForm.email}
                                     setValue={handleChangeLoginForm("email")}
+                                    checkValid={isEmailValid}
                                 />
                             </div>
                             <div className="loginMain-login__password">
                                 <Input
-                                    header="Password..."
+                                    header="Password"
                                     value={loginForm.password}
                                     setValue={handleChangeLoginForm("password")}
                                     type="password"
+                                    checkValid={isPasswordValid}
                                 />
                             </div>
                         </div>
@@ -161,11 +169,13 @@ const LoginMainContent = () => {
                                 header="First Name"
                                 value={registerForm.firstName}
                                 setValue={handleChangeRegisterForm("firstName")}
+                                checkValid={isNameValid}
                             />
                             <RegistrationInput
                                 header="Last Name"
                                 value={registerForm.lastName}
                                 setValue={handleChangeRegisterForm("lastName")}
+                                checkValid={isNameValid}
                             />
                             <RegistrationInput
                                 header="Email Adress"
@@ -173,6 +183,7 @@ const LoginMainContent = () => {
                                 setValue={handleChangeRegisterForm(
                                     "emailAdress"
                                 )}
+                                checkValid={isEmailValid}
                             />
                             <RegistrationInput
                                 header="Phone Number"
@@ -180,6 +191,7 @@ const LoginMainContent = () => {
                                 setValue={handleChangeRegisterForm(
                                     "phoneNumber"
                                 )}
+                                checkValid={isNumberValid}
                             />
                             <RegistrationInput
                                 header="Display Name"
@@ -187,12 +199,14 @@ const LoginMainContent = () => {
                                 setValue={handleChangeRegisterForm(
                                     "displayName"
                                 )}
+                                checkValid={isNameValid}
                             />
                             <RegistrationInput
                                 header="Password"
                                 type="password"
                                 value={registerForm.password}
                                 setValue={handleChangeRegisterForm("password")}
+                                checkValid={isPasswordValid}
                             />
                         </div>
                         <div className="loginMain-registration__footer">

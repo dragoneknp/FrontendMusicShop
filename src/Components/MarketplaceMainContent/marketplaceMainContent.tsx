@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { useError } from "../../Hooks/useError";
 import { useLoading } from "../../Hooks/useLoading";
@@ -28,7 +28,10 @@ const MarketplaceMainContent = () => {
         countOfCardsPerPage: isGrid ? 3 : 2,
         data: cards,
     });
-    const currentPageData = getCurrentPageData();
+    const [currentPageData, changeData] = useState(getCurrentPageData);
+    useEffect(() => {
+        changeData(getCurrentPageData());
+    }, [currentPage]);
 
     useEffect(() => {
         dispatch(fetchAlbumCards());
@@ -38,7 +41,7 @@ const MarketplaceMainContent = () => {
 
     const handleClick = () => {
         changeGrid(!isGrid);
-        // changeCurrentPage(1);
+        changeCurrentPage(1);
     };
 
     return (

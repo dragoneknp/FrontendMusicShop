@@ -9,7 +9,7 @@ const Accordion = ({
     description: string;
 }) => {
     const [isOpen, changeOpen] = useState(false);
-    const handleClick = () => changeOpen(!isOpen)
+    const handleClick = () => changeOpen(!isOpen);
     return (
         <div className="accordion">
             <button

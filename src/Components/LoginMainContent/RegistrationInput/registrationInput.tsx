@@ -1,18 +1,19 @@
 import Input from "../../Input/input";
 import "./registrationInput.scss";
 
-const RegistrationInput = (props: {
+const RegistrationInput = ({header, value, setValue, type = undefined, checkValid}: {
     header: string;
     value: string;
     setValue: Function;
     type?: string;
+    checkValid: Function;
 }) => {
     return (
         <div className="loginMain-registration__input loginMain-registration-input">
-            <div className="loginMain-registration-input__header">
-                {props.header}
-            </div>
-            <Input {...props} />
+            <label htmlFor={header} className="loginMain-registration-input__header">
+                {header}
+            </label>
+            <Input header={header} value={value} setValue={setValue} type={type} checkValid={checkValid}/>
         </div>
     );
 };

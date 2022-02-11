@@ -9,11 +9,11 @@ interface Layout {
 }
 
 const PageLayout = (props: Layout) => {
-    const { ref, inView } = useInView({});
+    const { ref, inView, entry } = useInView({});
     return (
         <div className={props.page}>
             <div className={`${props.page}__container`}>
-                {!inView && <ToTop />}
+                <ToTop inView={entry ? inView : true} />
                 <Header headerRef={ref} />
                 {props.children}
                 <Footer />

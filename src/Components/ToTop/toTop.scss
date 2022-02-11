@@ -6,7 +6,16 @@
     background: url("./assets/arrowUp.svg");
     right: 20px;
     bottom: 20px;
-    transition: 0.3s ease;
+    transition: 0.4s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(0, 100px);
+    &.visible {
+        transform: translate(0px, 0px);
+        opacity: 1;
+        visibility: visible;
+        transition: 0.4s ease;
+    }
 }
 .toTop:hover {
     transition: 0.3s ease;

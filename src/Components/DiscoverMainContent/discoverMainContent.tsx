@@ -28,7 +28,10 @@ const DiscoverMainContent = () => {
         countOfCardsPerPage: isGrid ? 12 : 4,
         data: cards,
     });
-    const currentPageData = getCurrentPageData();
+    const [currentPageData, changeData] = useState(getCurrentPageData);
+    useEffect(() => {
+        changeData(getCurrentPageData());
+    }, [currentPage]);
 
     useEffect(() => {
         dispatch(fetchCards());
@@ -38,7 +41,7 @@ const DiscoverMainContent = () => {
 
     const handleClick = () => {
         changeGrid(!isGrid);
-        // changeCurrentPage(1);
+        changeCurrentPage(1);
     };
 
     return (
