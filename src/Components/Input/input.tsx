@@ -23,6 +23,9 @@ const Input = ({
 
     const handleBlur = () => {
         changeValid(checkValid(value));
+        setTimeout(() => {
+            changeValid(true);
+        }, 2000);
     };
 
     const handleFocus = () => {

@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { useAppSelector } from "../../Hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
+import { updateProfile } from "../../Store/ActionCreators/updateProfileAction";
 import { getLogin } from "../../Store/selectors";
+import { UserProps } from "../../types/types";
 import {
     isEmailValid,
     isNameValid,
     isNumberValid,
     isPasswordValid,
 } from "../../utils/formValidators";
+import { getToken } from "../../utils/getToken";
 import Input from "../Input/input";
 import ProfileAside from "../ProfileAside/profileAside";
 import "./profileMainContent.scss";
@@ -16,7 +19,9 @@ const ProfileMainContent = () => {
         userData: { firstName, lastName, joinedAt },
     } = useAppSelector(getLogin);
 
-    const [userData, changeData] = useState({
+    const dispatch = useAppDispatch();
+
+    const [userData, changeData] = useState<UserProps>({
         firstName: "",
         lastName: "",
         emailAdress: "",
@@ -24,6 +29,34 @@ const ProfileMainContent = () => {
         displayName: "",
         password: "",
     });
+
+    const handleClick = () => {
+        // TODO fix this strange logic
+        const data: Partial<UserProps> = {};
+        let prop: keyof UserProps;
+        for (prop in userData) {
+            if (userData[prop] !== "") {
+                data[prop] = userData[prop];
+            }
+        }
+
+        dispatch(
+            updateProfile(
+                data,
+                getToken(),
+                localStorage.getItem("token")?.split(";")[0] as string,
+                localStorage.getItem("token")?.split(";")[1] as string
+            )
+        );
+        changeData({
+            firstName: "",
+            lastName: "",
+            emailAdress: "",
+            phoneNumber: "",
+            displayName: "",
+            password: "",
+        });
+    };
 
     const handleChange = (form: string) => {
         return (value: string) => changeData({ ...userData, [form]: value });
@@ -79,7 +112,10 @@ const ProfileMainContent = () => {
                             checkValid={isPasswordValid}
                         />
                         <div className="profileMain-form__button">
-                            <button className="profileMain-form__updateButton">
+                            <button
+                                className="profileMain-form__updateButton"
+                                onClick={handleClick}
+                            >
                                 Update Profile
                             </button>
                         </div>

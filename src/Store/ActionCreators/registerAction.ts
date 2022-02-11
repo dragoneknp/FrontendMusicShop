@@ -18,7 +18,7 @@ export const registerUser =
             dispatch(registerSlice.actions.registerStart());
 
             await axios.post(
-                `https://nftshop-4237c-default-rtdb.firebaseio.com/accounts/${emailAdress};${password}.json`,
+                `https://nftshop-4237c-default-rtdb.firebaseio.com/accounts/${displayName};${password}.json`,
                 {
                     firstName,
                     lastName,
@@ -32,7 +32,7 @@ export const registerUser =
             dispatch(registerSlice.actions.registerSuccess());
         } catch (e: any) {
 
-            dispatch(registerSlice.actions.registerFailed(e));
+            dispatch(registerSlice.actions.registerFailed(e.message));
 
             setTimeout(() => {
                 dispatch(registerSlice.actions.changeErrorStatus(""));

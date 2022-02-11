@@ -9,7 +9,7 @@ export const isNameValid = (name: string) => {
 };
 
 export const isPasswordValid = (password: string) => {
-    return password.length >= 8 && new Set(password).size >= 5;
+    return password.length >= 6 && new Set(password).size >= 5;
 };
 
 export const isNumberValid = (number: string) => {

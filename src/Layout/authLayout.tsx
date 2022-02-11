@@ -26,7 +26,7 @@ const AuthLayout = ({ router }: AuthLayoutProps) => {
         if (data && data[3] === "true") {
             dispatch(
                 loginUser({
-                    email: data[0],
+                    displayName: data[0],
                     password: data[1],
                     isRemembered: true,
                 })

@@ -16,6 +16,9 @@ const DiscoverMainContent = () => {
     const { cards, isLoading, error } = useAppSelector(getCards);
     const [isGrid, changeGrid] = useState(true);
     const [load] = useLoading();
+    useEffect(() => {
+        dispatch(fetchCards());
+    }, [dispatch]);
     const [
         currentPage,
         changeCurrentPage,
@@ -28,14 +31,6 @@ const DiscoverMainContent = () => {
         countOfCardsPerPage: isGrid ? 12 : 4,
         data: cards,
     });
-    const [currentPageData, changeData] = useState(getCurrentPageData);
-    useEffect(() => {
-        changeData(getCurrentPageData());
-    }, [currentPage]);
-
-    useEffect(() => {
-        dispatch(fetchCards());
-    }, [dispatch]);
 
     useError(error);
 
@@ -74,12 +69,12 @@ const DiscoverMainContent = () => {
                             <div className="discoverMain-sorts__results">
                                 Showing{" "}
                                 {isGrid
-                                    ? currentPageData.length > 12
+                                    ? getCurrentPageData().length > 12
                                         ? `1 - ${4 * 3}`
-                                        : `1 - ${currentPageData.length}`
-                                    : currentPageData.length > 4
+                                        : `1 - ${getCurrentPageData().length}`
+                                    : getCurrentPageData().length > 4
                                     ? `1 - ${2 * 2}`
-                                    : `1 - ${currentPageData.length}`}{" "}
+                                    : `1 - ${getCurrentPageData().length}`}{" "}
                                 items
                             </div>
                         </div>
@@ -97,7 +92,7 @@ const DiscoverMainContent = () => {
                               flag: isLoading,
                               component: (
                                   <GridOfCards
-                                      cards={currentPageData}
+                                      cards={getCurrentPageData()}
                                       columns={4}
                                       rows={3}
                                       to="/discover"
@@ -108,7 +103,7 @@ const DiscoverMainContent = () => {
                               flag: isLoading,
                               component: (
                                   <GridOfCards
-                                      cards={currentPageData}
+                                      cards={getCurrentPageData()}
                                       columns={2}
                                       rows={2}
                                       to="/discover"

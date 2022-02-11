@@ -4,6 +4,11 @@
     padding: 104px 0 160px 0;
 }
 .loginMain {
+    &__alert {
+        position: absolute;
+        margin: 0 0 0 24px;
+        color: red;
+    }
     &__content {
         display: grid;
         grid-template-columns: 1fr 1.7fr;
@@ -58,7 +63,7 @@
         &__footer {
             display: flex;
             justify-content: space-between;
-            margin: 16px 0 48px 0;
+            margin: 32px 0 48px 0;
         }
         &__loginButton {
             padding: 16px 40px;

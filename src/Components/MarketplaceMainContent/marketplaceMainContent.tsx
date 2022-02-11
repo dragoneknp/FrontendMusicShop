@@ -28,10 +28,7 @@ const MarketplaceMainContent = () => {
         countOfCardsPerPage: isGrid ? 3 : 2,
         data: cards,
     });
-    const [currentPageData, changeData] = useState(getCurrentPageData);
-    useEffect(() => {
-        changeData(getCurrentPageData());
-    }, [currentPage]);
+    
 
     useEffect(() => {
         dispatch(fetchAlbumCards());
@@ -73,12 +70,12 @@ const MarketplaceMainContent = () => {
                             </div>
                             <div className="marketplaceMain-sorts__results">
                                 {isGrid
-                                    ? currentPageData.length > 3
+                                    ? getCurrentPageData().length > 3
                                         ? `1 - ${3}`
-                                        : `1 - ${currentPageData.length}`
-                                    : currentPageData.length > 2
+                                        : `1 - ${getCurrentPageData().length}`
+                                    : getCurrentPageData().length > 2
                                     ? `1 - ${2}`
-                                    : `1 - ${currentPageData.length}`}{" "}
+                                    : `1 - ${getCurrentPageData().length}`}{" "}
                                 items
                             </div>
                         </div>
@@ -96,7 +93,7 @@ const MarketplaceMainContent = () => {
                               flag: isLoading,
                               component: (
                                   <GridOfCards
-                                      cards={currentPageData}
+                                      cards={getCurrentPageData()}
                                       columns={3}
                                       rows={1}
                                       to="/marketplace"
@@ -107,7 +104,7 @@ const MarketplaceMainContent = () => {
                               flag: isLoading,
                               component: (
                                   <GridOfCards
-                                      cards={currentPageData}
+                                      cards={getCurrentPageData()}
                                       columns={2}
                                       rows={1}
                                       to="/marketplace"

@@ -13,6 +13,6 @@ export const fetchMyBids = (token: string) => async (dispatch: AppDispatch) => {
 
         dispatch(myBidsSlice.actions.myBidsFetchingSuccess(response.data));
     } catch (e: any) {
-        dispatch(myBidsSlice.actions.myBidsFetchingFailed(e));
+        dispatch(myBidsSlice.actions.myBidsFetchingFailed(e.message));
     }
 };

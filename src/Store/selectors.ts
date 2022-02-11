@@ -17,3 +17,5 @@ export const getBids = (state: RootState) => state.myBids;
 export const getNFTs = (state: RootState) => state.myNFTs;
 
 export const getSales = (state: RootState) => state.mySales;
+
+export const getUpdateProfile = (state: RootState) => state.updateProfile;

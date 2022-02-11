@@ -22,7 +22,7 @@ export const fetchAlbumCardDetails =
             );
         } catch (e: any) {
             dispatch(
-                albumCardDetailsSlice.actions.albumCardDetailsFetchingFailed(e)
+                albumCardDetailsSlice.actions.albumCardDetailsFetchingFailed(e.message)
             );
 
             setTimeout(() => {

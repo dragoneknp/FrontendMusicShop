@@ -5,11 +5,11 @@ import { UserProps } from "../../types/types";
 
 export const loginUser =
     ({
-        email,
+        displayName,
         password,
         isRemembered,
     }: {
-        email: string;
+        displayName: string;
         password: string;
         isRemembered: boolean;
     }) =>
@@ -18,7 +18,7 @@ export const loginUser =
             dispatch(loginSlice.actions.loginStart());
 
             const response = await axios.get(
-                `https://nftshop-4237c-default-rtdb.firebaseio.com/accounts/${email};${password}.json`
+                `https://nftshop-4237c-default-rtdb.firebaseio.com/accounts/${displayName};${password}.json`
             );
             if (response.data === null) {
                 throw new Error("Item not found");
@@ -27,7 +27,7 @@ export const loginUser =
             localStorage.removeItem("token");
             localStorage.setItem(
                 "token",
-                `${email};${password};${
+                `${displayName};${password};${
                     Object.keys(response.data)[0]
                 };${isRemembered}`
             );
@@ -38,10 +38,6 @@ export const loginUser =
                 )
             );
         } catch (e: any) {
-            dispatch(loginSlice.actions.loginFailed(e));
-
-            setTimeout(() => {
-                dispatch(loginSlice.actions.changeErrorStatus(""));
-            }, 2000);
+            dispatch(loginSlice.actions.loginFailed(e.message));
         }
     };

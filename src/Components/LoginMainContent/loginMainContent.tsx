@@ -21,9 +21,8 @@ const LoginMainContent = () => {
     const register = useAppSelector(getRegister);
     const login = useAppSelector(getLogin);
     const history = useNavigate();
-
     const [loginForm, changeLoginForm] = useState({
-        email: "",
+        displayName: "",
         password: "",
     });
 
@@ -58,8 +57,8 @@ const LoginMainContent = () => {
     };
 
     const handleLoginClick = () => {
-        const { email, password } = loginForm;
-        if (isEmailValid(email) && isPasswordValid(password)) {
+        const { displayName, password } = loginForm;
+        if (isNameValid(displayName) && isPasswordValid(password)) {
             dispatch(loginUser({ ...loginForm, isRemembered }));
         }
     };
@@ -71,7 +70,7 @@ const LoginMainContent = () => {
     useEffect(() => {
         if (login.isLogin) {
             changeLoginForm({
-                email: "",
+                displayName: "",
                 password: "",
             });
             history("/profile");
@@ -117,10 +116,12 @@ const LoginMainContent = () => {
                         <div className="loginMain-login__form">
                             <div className="loginMain-login__email">
                                 <Input
-                                    header="Email"
-                                    value={loginForm.email}
-                                    setValue={handleChangeLoginForm("email")}
-                                    checkValid={isEmailValid}
+                                    header="Display name"
+                                    value={loginForm.displayName}
+                                    setValue={handleChangeLoginForm(
+                                        "displayName"
+                                    )}
+                                    checkValid={isNameValid}
                                 />
                             </div>
                             <div className="loginMain-login__password">
@@ -133,6 +134,11 @@ const LoginMainContent = () => {
                                 />
                             </div>
                         </div>
+                        {login.error && (
+                            <span className="loginMain__alert">
+                                Login or Password is incorrect
+                            </span>
+                        )}
                         <div className="loginMain-login__footer">
                             <div className="loginMain-login__rememberMe">
                                 <p>
@@ -151,6 +157,7 @@ const LoginMainContent = () => {
                                 <u>Forgot Password ?</u>
                             </div>
                         </div>
+
                         <div className="loginMain-login__button">
                             <button
                                 className="loginMain-login__loginButton"
@@ -202,7 +209,7 @@ const LoginMainContent = () => {
                                 checkValid={isNameValid}
                             />
                             <RegistrationInput
-                                header="Password"
+                                header="Your Password"
                                 type="password"
                                 value={registerForm.password}
                                 setValue={handleChangeRegisterForm("password")}

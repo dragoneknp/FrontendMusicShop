@@ -22,7 +22,7 @@ export const fetchCardDetails =
                 )
             );
         } catch (e: any) {
-            dispatch(cardDetailsSlice.actions.cardDetailsFetchingFailed(e));
+            dispatch(cardDetailsSlice.actions.cardDetailsFetchingFailed(e.message));
 
             setTimeout(() => {
                 dispatch(cardDetailsSlice.actions.changeErrorStatus(""));

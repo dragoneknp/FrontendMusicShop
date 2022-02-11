@@ -8,6 +8,7 @@ import { myBidsSlice } from "./Slices/myBidsSlice";
 import { myNFTsSlice } from "./Slices/myNFTsSlice";
 import { mySalesSlice } from "./Slices/mySalesSlice";
 import { registerSlice } from "./Slices/registerSlice";
+import { updateProfileSlice } from "./Slices/updateProfileSlice";
 
 export const store = configureStore({
     reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
         myBids: myBidsSlice.reducer,
         myNFTs: myNFTsSlice.reducer,
         mySales: mySalesSlice.reducer,
+        updateProfile: updateProfileSlice.reducer
     },
 });
 

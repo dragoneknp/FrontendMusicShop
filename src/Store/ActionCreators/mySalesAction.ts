@@ -13,6 +13,6 @@ export const fetchMySales = (id: string) => async (dispatch: AppDispatch) => {
 
         dispatch(mySalesSlice.actions.mySalesFetchingSuccess(response.data));
     } catch (e: any) {
-        dispatch(mySalesSlice.actions.mySalesFetchingFailed(e));
+        dispatch(mySalesSlice.actions.mySalesFetchingFailed(e.message));
     }
 };
