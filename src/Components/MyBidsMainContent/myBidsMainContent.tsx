@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
 import { useLoading } from "../../Hooks/useLoading";
+import useWindowDimensions from "../../Hooks/useWindowDimensions";
 import { fetchMyBids } from "../../Store/ActionCreators/myBidsAction";
 import { getBids, getLogin } from "../../Store/selectors";
 import { getToken } from "../../utils/getToken";
@@ -14,6 +15,7 @@ const MyBidsMainContent = () => {
     } = useAppSelector(getLogin);
     const { isLoading, error, cards } = useAppSelector(getBids);
 
+    const { width } = useWindowDimensions();
     const dispatch = useAppDispatch();
     const [load] = useLoading();
 
@@ -39,8 +41,8 @@ const MyBidsMainContent = () => {
                             flag: isLoading,
                             component: (
                                 <GridOfCards
-                                    columns={2}
-                                    rows={2}
+                                    columns={width > 520 ? 2 : 1}
+                                    rows={cards.length / (width > 520 ? 2 : 1)}
                                     cards={cards}
                                     to={"/discover"}
                                 />

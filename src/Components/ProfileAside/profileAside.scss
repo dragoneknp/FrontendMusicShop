@@ -70,7 +70,7 @@
             &:active {
                 transition: 0.3s ease-in;
                 background: rgb(30, 30, 55, 1);
-                transform: scale(110%);
+                transform: scale(120%);
             }
         }
         &__icon {
@@ -106,5 +106,11 @@
                 content: url(./assets/profile.svg);
             }
         }
+    }
+}
+@media screen and (max-width: 991px) {
+    .aside {
+        width: auto;
+        margin: 0;
     }
 }

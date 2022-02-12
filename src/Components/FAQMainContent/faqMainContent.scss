@@ -11,3 +11,17 @@
     grid-auto-flow: row dense;
     row-gap: 16px;
 }
+@media screen and (max-width: 991px) {
+    .faqMain {
+        padding: 64px 0 160px 0;
+    }
+}
+@media screen and (max-width: 520px) {
+    .faqMain__content {
+        display: grid;
+        grid-template-columns: 1fr;
+        column-gap: none;
+        grid-auto-flow: row;
+        row-gap: 16px;
+    }
+}

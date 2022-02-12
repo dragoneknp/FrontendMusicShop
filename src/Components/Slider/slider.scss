@@ -43,7 +43,7 @@
         position: absolute;
         transform: translate(0, -50%);
         right: -20px;
-        bottom: 30px;
+        bottom: 5%;
     }
 }
 .slider__prevEl {
@@ -55,6 +55,34 @@
         transform: rotate(180deg) translate(0, 50%);
         position: absolute;
         left: -20px;
-        bottom: 30px;
+        bottom: 5%;
+    }
+}
+
+@media screen and (max-width: 1296px) {
+    .swiper {
+        width: 400px;
+    }
+}
+@media screen and (max-width: 991px) {
+    .swiper {
+        width: 360px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .swiper {
+        width: 420px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .swiper {
+        width: 340px;
+    }
+}
+@media screen and (max-width: 399px) {
+    .swiper {
+        width: 280px;
     }
 }

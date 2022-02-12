@@ -44,6 +44,9 @@
                 border: 1px solid #d70bca;
             }
         }
+        & button:hover {
+            transform: translate(0, -50%);
+        }
         &__subscribeButton {
             background: linear-gradient(90deg, #5d00fa 0%, #d70bca 100%);
             border-radius: 48px;
@@ -153,5 +156,50 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 1296px) {
+}
+@media screen and (max-width: 991px) {
+    .footer {
+        &__topics {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .footer {
+        &__topics {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .footer {
+        &__topics {
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
+        &__subscribe {
+            width: 300px;
+        }
+        &-subscribe {
+            &__form {
+                width: 300px;
+            }
+            &__input {
+                width: 300px;
+            }
+        }
+        &-rights {
+            flex-direction: column;
+            justify-content: space-between;
+            &__header {
+                margin: 0 0 32px 0;
+            }
+        }
     }
 }

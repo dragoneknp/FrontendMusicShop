@@ -25,6 +25,7 @@ code {
     list-style: none;
     text-decoration: none;
     box-shadow: none;
+    word-break: break-all;
 }
 input:focus {
     outline: none;
@@ -33,6 +34,24 @@ input:focus {
     margin: 0 auto;
     width: 1110px;
 }
+
 button:hover {
     transform: scale(110%);
+}
+
+@media screen and (max-width: 1296px) {
+    .container {
+        width: 1000px;
+    }
+}
+@media screen and (max-width: 1072px) {
+    .container {
+        width: 900px;
+    }
+}
+@media screen and (max-width: 991px) {
+    .container {
+        padding: 0 16px 0 16px;
+        width: auto;
+    }
 }

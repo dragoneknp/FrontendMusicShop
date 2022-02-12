@@ -11,6 +11,7 @@ export const fetchMyNFTs = (token: string) => async (dispatch: AppDispatch) => {
             await axios.get(
                 `https://nftshop-4237c-default-rtdb.firebaseio.com/wallet/${token}.json`
             );
+
         dispatch(
             myNFTsSlice.actions.myNFTsFetchingSuccess(
                 Object.values(response.data)

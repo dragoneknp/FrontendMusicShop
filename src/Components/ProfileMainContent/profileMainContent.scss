@@ -44,3 +44,32 @@
         }
     }
 }
+@media screen and (max-width: 1296px) {
+}
+@media screen and (max-width: 991px) {
+    .profileMain {
+        &__container {
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-columns: 1fr 3fr;
+            column-gap: 64px;
+        }
+        &__form {
+            display: grid;
+            column-gap: 32px;
+            grid-template-columns: 1fr;
+        }
+    }
+}
+@media screen and (max-width: 991px) {
+    .profileMain {
+        padding: 64px 0 160px 0;
+
+        &__container {
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-columns: none;
+            column-gap: none;
+        }
+    }
+}

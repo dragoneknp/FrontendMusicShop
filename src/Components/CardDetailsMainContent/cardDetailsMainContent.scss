@@ -17,6 +17,7 @@
         background: rgb(30, 30, 55, 0.5);
         padding: 40px;
         border-radius: 10px;
+        height: fit-content;
     }
     &__details {
         background: rgba(30, 30, 55, 0.5);
@@ -36,9 +37,11 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
         &__information {
+            word-break: break-all;
             margin: 24px 0 0 0;
             display: grid;
             grid-template-columns: 1fr 1fr;
+            column-gap: 16px;
             row-gap: 40px;
         }
         &-information {
@@ -111,6 +114,7 @@
             }
         }
         &__collectionId {
+            word-break: break-all;
             margin: 48px 0 0 0;
             & span {
                 font-weight: bold;
@@ -133,6 +137,9 @@
             flex-direction: row;
             align-items: center;
         }
+        &__quantity {
+            z-index: 5;
+        }
     }
     &__alert {
         position: absolute;
@@ -145,3 +152,53 @@
 .cardDetailsMain-information__quantity {
     margin: 0 24px 0 0;
 }
+
+@media screen and (max-width: 1296px) {
+    .cardDetailsMain {
+        &-information {
+            &__collectionId {
+                word-break: break-all;
+            }
+            &__order {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                align-items: flex-start;
+            }
+        }
+        &__slider {
+            background: rgb(30, 30, 55, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    }
+}
+@media screen and (max-width: 991px) {
+    .cardDetailsMain {
+        padding: 64px 0 160px 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .cardDetailsMain {
+        &__card {
+            display: grid;
+            grid-template-columns: 1fr;
+            column-gap: none;
+            row-gap: 48px;
+            margin: 0 0 80px 0;
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .cardDetailsMain {
+        &-details {
+            &__information {
+                grid-template-columns: 1fr;
+                row-gap: 24px;
+            }
+        }
+    }
+}
+

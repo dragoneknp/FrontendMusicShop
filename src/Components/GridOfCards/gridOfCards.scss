@@ -3,3 +3,9 @@
     column-gap: 32px;
     row-gap: 32px;
 }
+@media screen and (max-width: 520px) {
+    .gridOfCards {
+        align-items: center;
+        justify-items: center;
+    }
+}

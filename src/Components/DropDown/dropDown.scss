@@ -1,4 +1,5 @@
 .dropDown {
+    z-index: 5;
     &__select {
         border: 0.5px solid #ffffff;
         display: inline-flex;
@@ -8,6 +9,7 @@
         position: relative;
         transition: 0.3s ease;
         min-width: 200px;
+
         cursor: pointer;
         &::after {
             content: url("./assets/dropDownArrow.svg");
@@ -38,6 +40,14 @@
             border: 1px solid #bb82db;
 
             cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .dropDown {
+        &__select {
+            min-width: auto;
         }
     }
 }

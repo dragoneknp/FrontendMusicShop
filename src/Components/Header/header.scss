@@ -70,11 +70,12 @@
         transform: translate(0, -50%);
     }
     &__dropdown {
+        border-radius: 8px;
         text-align: center;
-        background: rgb(24, 24, 24);
-        left: -50%;
+        background: rgba(126, 126, 126, 0.9);
+        left: 0;
         transform: translate(-25%, 0);
-        width: 200px;
+        width: 120px;
         position: absolute;
         visibility: hidden;
         opacity: 0;
@@ -100,5 +101,84 @@
         border: 0.5px solid #ffffff;
         border-radius: 50%;
         padding: 12px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .header {
+        border: none;
+        &__burger {
+            font-size: 14px;
+            display: block;
+            z-index: 5;
+            position: fixed;
+            width: 30px;
+            height: 18px;
+            cursor: pointer;
+            right: 16px;
+            top: 32px;
+            & span,
+            &::before,
+            &::after {
+                position: absolute;
+                height: 10%;
+                width: 100%;
+                transition: all 0.3s ease;
+                background-color: #fff;
+            }
+
+            &::before {
+                content: "";
+                top: 0;
+            }
+            &::after {
+                content: "";
+                bottom: 0;
+            }
+            & span {
+                top: 50%;
+                transform: scale(1) translate(0px, -50%);
+            }
+            &.opened::before {
+                top: 50%;
+                transform: translate(0px, -50%) rotate(-45deg);
+            }
+            &.opened::after {
+                bottom: 50%;
+                transform: translate(0px, 50%) rotate(45deg);
+            }
+            &.opened span {
+                display: none;
+            }
+        }
+        &-popup {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+            &.closed {
+                opacity: 0;
+                visibility: hidden;
+            }
+            &.opened {
+                opacity: 1;
+                visibility: visible;
+            }
+            &__menu {
+                padding: 200px 0 0 0;
+                display: flex;
+                flex-direction: column;
+                // justify-content: center;
+                align-items: center;
+            }
+            &-menu {
+                &__item {
+                    font-size: 28px;
+                    padding: 8px;
+                }
+            }
+        }
     }
 }

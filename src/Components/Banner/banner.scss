@@ -44,3 +44,53 @@
         }
     }
 }
+@media screen and (max-width: 1296px) {
+    .banner {
+        background: url("./assets/background.svg") no-repeat;
+        background-size: cover;
+        height: auto;
+    }
+    .banner {
+        &__container {
+            padding: 200px 0 160px 0;
+        }
+        &__header {
+            margin: 0 0 12px 0;
+            text-align: center;
+            font-size: 40px;
+        }
+    }
+}
+@media screen and (max-width: 991px) {
+    .banner {
+        background: url("./assets/background.svg") no-repeat;
+        background-size: cover;
+        height: auto;
+    }
+    .banner {
+        &__container {
+            padding: 200px 0 160px 0;
+        }
+        &__header {
+            margin: 0 0 12px 0;
+            text-align: center;
+            font-size: 32px;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .banner {
+        &__container {
+            padding: 64px 0 160px 0;
+        }
+        &__header {
+            margin: 0 0 12px 0;
+            text-align: center;
+            font-size: 32px;
+        }
+    }
+}
+
+@media screen and (max-width: 479px) {
+}

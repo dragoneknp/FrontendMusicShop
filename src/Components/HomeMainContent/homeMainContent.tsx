@@ -7,7 +7,7 @@ import { useError } from "../../Hooks/useError";
 import { getCards } from "../../Store/selectors";
 import { useLoading } from "../../Hooks/useLoading";
 import { Filters } from "../../types/types";
-
+import { useBreakPoints } from "../../Hooks/useBreakPoints";
 
 const HomeMainContent = ({
     reference,
@@ -18,7 +18,6 @@ const HomeMainContent = ({
     const { cards, isLoading, error } = useAppSelector(getCards);
     const [load] = useLoading();
     const [filter, changeFilter] = useState<Filters>("all");
-
     useEffect(() => {
         dispatch(fetchCards(filter));
     }, [dispatch, filter]);
@@ -57,7 +56,12 @@ const HomeMainContent = ({
                         component: (
                             <GridOfCards
                                 cards={cards}
-                                columns={4}
+                                columns={useBreakPoints({
+                                    1120: 4,
+                                    767: 3,
+                                    520: 2,
+                                    320: 1,
+                                })}
                                 rows={1}
                                 to="/home"
                             />
@@ -107,7 +111,12 @@ const HomeMainContent = ({
                         component: (
                             <GridOfCards
                                 cards={cards}
-                                columns={4}
+                                columns={useBreakPoints({
+                                    1120: 4,
+                                    767: 3,
+                                    520: 2,
+                                    320: 1,
+                                })}
                                 rows={2}
                                 to="/home"
                             />

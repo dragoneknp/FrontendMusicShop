@@ -1,9 +1,13 @@
 import React, { memo, SyntheticEvent } from "react";
 import { Link } from "react-router-dom";
+import useWindowDimensions from "../../Hooks/useWindowDimensions";
 import "./footer.scss";
 
 const Footer = () => {
     const onFormClick = (event: SyntheticEvent) => event.preventDefault();
+
+    const { width } = useWindowDimensions();
+
     return (
         <footer className="footer">
             <div className="footer__container container">
@@ -22,34 +26,39 @@ const Footer = () => {
                         <button className="footer-subscribe__subscribeButton"></button>
                     </form>
                 </div>
+
                 <div className="footer__topics">
-                    <div className="footer__topic footer-topic">
-                        <div className="footer-topic__header">Connect</div>
-                        <div className="footer-topic__content">
-                            <a
-                                href="dragoneknp@gmail.com"
-                                className="footer-topic__email"
-                            >
-                                dragoneknp@gmail.com
-                            </a>
-                            <div className="footer-topic-socialNetworks footer-topic__socialNetworks">
-                                <div className="footer-topic-socialNetworks__telegram"></div>
-                                <div className="footer-topic-socialNetworks__twitter"></div>
-                                <div className="footer-topic-socialNetworks__instagram"></div>
+                    {width >= 767 && (
+                        <div className="footer__topic footer-topic">
+                            <div className="footer-topic__header">Connect</div>
+                            <div className="footer-topic__content">
+                                <a
+                                    href="dragoneknp@gmail.com"
+                                    className="footer-topic__email"
+                                >
+                                    dragoneknp@gmail.com
+                                </a>
+                                <div className="footer-topic-socialNetworks footer-topic__socialNetworks">
+                                    <div className="footer-topic-socialNetworks__telegram"></div>
+                                    <div className="footer-topic-socialNetworks__twitter"></div>
+                                    <div className="footer-topic-socialNetworks__instagram"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div className="footer__topic footer-topic">
-                        <div className="footer-topic__header">Mobile App</div>
-                        <div className="footer-topic__content">
-                            <div className="footer-topic__app footer-topic-app">
-                                <div className="footer-topic-app__appStore"></div>
-                                <div className="footer-topic-app__googlePlay"></div>
+                    )}
+                    {width >= 991 && (
+                        <div className="footer__topic footer-topic">
+                            <div className="footer-topic__header">
+                                Mobile App
+                            </div>
+                            <div className="footer-topic__content">
+                                <div className="footer-topic__app footer-topic-app">
+                                    <div className="footer-topic-app__appStore"></div>
+                                    <div className="footer-topic-app__googlePlay"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
+                    )}
                     <div className="footer__topic footer-topic">
                         <div className="footer-topic__header">About</div>
                         <div className="footer-topic__content">

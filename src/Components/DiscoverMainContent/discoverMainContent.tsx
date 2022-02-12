@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
+import { useBreakPoints } from "../../Hooks/useBreakPoints";
 import { useError } from "../../Hooks/useError";
 import { useLoading } from "../../Hooks/useLoading";
 import { usePagination } from "../../Hooks/usePagination";
+import useWindowDimensions from "../../Hooks/useWindowDimensions";
 import { fetchCards } from "../../Store/ActionCreators/cardAction";
 import { getCards } from "../../Store/selectors";
 import { Filters } from "../../types/types";
@@ -21,6 +23,8 @@ const DiscoverMainContent = () => {
     useEffect(() => {
         dispatch(fetchCards(filter));
     }, [dispatch, filter]);
+    const { width } = useWindowDimensions();
+
     const [
         currentPage,
         changeCurrentPage,
@@ -30,7 +34,13 @@ const DiscoverMainContent = () => {
         getCurrentPageData,
     ] = usePagination({
         countOfCards: cards.length,
-        countOfCardsPerPage: isGrid ? 12 : 4,
+        countOfCardsPerPage:
+            useBreakPoints({
+                1120: 4,
+                767: 3,
+                520: 2,
+                320: 1,
+            }) * (isGrid ? 4 : 3),
         data: cards,
     });
 
@@ -72,17 +82,23 @@ const DiscoverMainContent = () => {
                                     }}
                                 />
                             </div>
-                            <div className="discoverMain-sorts__results">
-                                Showing{" "}
-                                {isGrid
-                                    ? getCurrentPageData().length > 12
-                                        ? `1 - ${4 * 3}`
-                                        : `1 - ${getCurrentPageData().length}`
-                                    : getCurrentPageData().length > 4
-                                    ? `1 - ${2 * 2}`
-                                    : `1 - ${getCurrentPageData().length}`}{" "}
-                                items
-                            </div>
+                            {width >= 767 && (
+                                <div className="discoverMain-sorts__results">
+                                    Showing{" "}
+                                    {isGrid
+                                        ? getCurrentPageData().length > 12
+                                            ? `1 - ${4 * 3}`
+                                            : `1 - ${
+                                                  getCurrentPageData().length
+                                              }`
+                                        : getCurrentPageData().length > 4
+                                        ? `1 - ${4 * 2}`
+                                        : `1 - ${
+                                              getCurrentPageData().length
+                                          }`}{" "}
+                                    items
+                                </div>
+                            )}
                         </div>
                         <div className="discoverMain__grid">
                             <img
@@ -93,29 +109,22 @@ const DiscoverMainContent = () => {
                             />
                         </div>
                     </div>
-                    {isGrid
-                        ? load({
-                              flag: isLoading,
-                              component: (
-                                  <GridOfCards
-                                      cards={getCurrentPageData()}
-                                      columns={4}
-                                      rows={3}
-                                      to="/discover"
-                                  />
-                              ),
-                          })
-                        : load({
-                              flag: isLoading,
-                              component: (
-                                  <GridOfCards
-                                      cards={getCurrentPageData()}
-                                      columns={2}
-                                      rows={2}
-                                      to="/discover"
-                                  />
-                              ),
-                          })}
+                    {load({
+                        flag: isLoading,
+                        component: (
+                            <GridOfCards
+                                cards={getCurrentPageData()}
+                                columns={useBreakPoints({
+                                    1120: 4,
+                                    767: 3,
+                                    520: 2,
+                                    320: 1,
+                                })}
+                                rows={isGrid ? 3 : 2}
+                                to="/discover"
+                            />
+                        ),
+                    })}
                 </section>
                 <Pagination
                     countOfPages={getCountOfPages()}

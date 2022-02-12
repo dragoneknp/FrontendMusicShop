@@ -41,3 +41,22 @@
         }
     }
 }
+
+@media screen and (max-width: 991px) {
+    .main {
+        padding: 64px 0 160px 0;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .main {
+        &__latestNFTs {
+            margin: 120px 0 0 0;
+        }
+        &-latestNFTs {
+            &__filter {
+                margin: 0 4px 0 4px;
+            }
+        }
+    }
+}

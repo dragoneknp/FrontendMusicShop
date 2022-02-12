@@ -18,7 +18,6 @@ const MyNFTsMainContent = () => {
     useEffect(() => {
         dispatch(fetchMyNFTs(getToken()));
     }, [dispatch]);
-
     return (
         <main className="myNFTsMain">
             <div className="myNFTsMain__container container">
@@ -28,7 +27,7 @@ const MyNFTsMainContent = () => {
                 />
                 <section className="myNFTsMain__content">
                     <div className="myNFTsMain__header">Wallet</div>
-                    {!walletCards ? (
+                    {!(walletCards.length > 0) ? (
                         <div style={{ textAlign: "center" }}>
                             <h2>Nothing here :(</h2>
                         </div>

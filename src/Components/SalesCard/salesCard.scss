@@ -48,3 +48,22 @@
         font-size: 18px;
     }
 }
+@media screen and (max-width: 520px) {
+    .salesCard {
+        &__section {
+            word-break: break-all;
+            display: grid;
+            grid-auto-flow: row;
+        }
+        &__description {
+            text-align: center;
+            margin: 0 0 0 0;
+        }
+    }
+}
+@media screen and (max-width: 399px) {
+    .salesCard {
+        column-gap: 8px;
+        text-align: center;
+    }
+}

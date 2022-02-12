@@ -19,3 +19,15 @@
         margin: 0 0 32px 0;
     }
 }
+@media screen and (max-width: 991px) {
+    .myBidsMain {
+        padding: 64px 0 160px 0;
+
+        &__container {
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-columns: none;
+            column-gap: none;
+        }
+    }
+}

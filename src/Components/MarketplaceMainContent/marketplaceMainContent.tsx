@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../Hooks/redux";
+import { useBreakPoints } from "../../Hooks/useBreakPoints";
 import { useError } from "../../Hooks/useError";
 import { useLoading } from "../../Hooks/useLoading";
 import { usePagination } from "../../Hooks/usePagination";
@@ -27,7 +28,12 @@ const MarketplaceMainContent = () => {
         getCurrentPageData,
     ] = usePagination({
         countOfCards: cards.length,
-        countOfCardsPerPage: isGrid ? 3 : 2,
+        countOfCardsPerPage: useBreakPoints({
+            1120: 3,
+            767: 2,
+            576: 2,
+            320: 1,
+        }),
         data: cards,
     });
 
@@ -93,29 +99,22 @@ const MarketplaceMainContent = () => {
                             />
                         </div>
                     </div>
-                    {isGrid
-                        ? load({
-                              flag: isLoading,
-                              component: (
-                                  <GridOfCards
-                                      cards={getCurrentPageData()}
-                                      columns={3}
-                                      rows={1}
-                                      to="/marketplace"
-                                  />
-                              ),
-                          })
-                        : load({
-                              flag: isLoading,
-                              component: (
-                                  <GridOfCards
-                                      cards={getCurrentPageData()}
-                                      columns={2}
-                                      rows={1}
-                                      to="/marketplace"
-                                  />
-                              ),
-                          })}
+                    {load({
+                        flag: isLoading,
+                        component: (
+                            <GridOfCards
+                                cards={getCurrentPageData()}
+                                columns={useBreakPoints({
+                                    1120: 3,
+                                    767: 2,
+                                    576: 2,
+                                    320: 1,
+                                })}
+                                rows={1}
+                                to="/marketplace"
+                            />
+                        ),
+                    })}
                 </section>
                 <Pagination
                     countOfPages={getCountOfPages()}
