@@ -23,4 +23,5 @@
 <li>Add sale functionality</li>
 <li>Add lazy loading</li>
 <li>Fix rerenders by hooks, and fixing keys</li>
+<li>Fix dropdown styles</li>
 </ul>
