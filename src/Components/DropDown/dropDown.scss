@@ -31,14 +31,15 @@
     &__menu {
         position: absolute;
         transition: 0.3s ease;
-        background: #000;
+
         min-width: 200px;
     }
     &-menu {
         &__item {
+            background: #000;
             padding: 8px;
             border: 1px solid #bb82db;
-
+            border-radius: 8px;
             cursor: pointer;
         }
     }
