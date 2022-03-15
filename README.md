@@ -22,7 +22,4 @@
 <li>Add sales page</li>
 <li>Add sale functionality</li>
 <li>Add lazy loading</li>
-<li>Fix rerenders by hooks, and fixing keys</li>
-<li>Fix dropdown styles</li>
-<li>Fix alert styles</li>
 </ul>

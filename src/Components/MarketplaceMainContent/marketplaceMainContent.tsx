@@ -29,7 +29,7 @@ const MarketplaceMainContent = () => {
     ] = usePagination({
         countOfCards: cards.length,
         countOfCardsPerPage: useBreakPoints({
-            1120: 3,
+            1120: isGrid ? 3 : 2,
             767: 2,
             576: 2,
             320: 1,
@@ -105,7 +105,7 @@ const MarketplaceMainContent = () => {
                             <GridOfCards
                                 cards={getCurrentPageData()}
                                 columns={useBreakPoints({
-                                    1120: 3,
+                                    1120: isGrid ? 3 : 2,
                                     767: 2,
                                     576: 2,
                                     320: 1,
